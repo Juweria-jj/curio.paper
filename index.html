@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>curio·paper — From curiosity to paper</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+body{background:#FFFEF8;color:#2B1A14;font-family:'Inter',sans-serif;scroll-behavior:smooth}
+.serif{font-family:'Instrument Serif',serif}
+.paper{background:#fff;border:1.2px solid #2B1A14;box-shadow:0 8px 24px rgba(43,26,20,.07)}
+.chip{border:1px solid #D9CFC0;background:#F9F5EB;border-radius:999px;padding:6px 12px;font-size:12px;cursor:pointer}
+.lock-blur{backdrop-filter:blur(6px);background:rgba(255,254,248,.85)}
+</style></head><body>
+
+<nav class="sticky top-0 z-40 bg-[#FFFEF8]/90 backdrop-blur border-b border-black/5 flex justify-between items-center px-6 md:px-10 py-4">
+<div class="serif text-[26px]">curio·paper</div>
+<div class="hidden md:flex gap-6 text-[13px]"><a href="#home">Home</a><a href="#pathway">Pathway</a><a href="#filters">Field</a><a href="#tools">Tools</a><a href="#editor">Editor</a></div>
+<button id="navSignBtn" onclick="openSignIn()" class="border border-black rounded-full px-4 py-1.5 text-[13px]">Sign in</button>
+</nav>
+
+<!-- PAGE 1 HOME -->
+<section id="home" class="max-w-[1100px] mx-auto px-6 pt-16 pb-20 text-center">
+<h1 class="serif text-[52px] md:text-[72px] leading-[0.9]">From curiosity to paper.</h1>
+<div class="mt-8 flex justify-center"><div class="paper rounded-full px-6 py-3 w-full max-w-[520px] flex gap-3"><span>🔍</span><input placeholder="Search papers, notes, ideas..." class="w-full bg-transparent outline-none text-[14px]"></div></div>
+<div class="mt-12 grid md:grid-cols-3 gap-5 text-left">
+<div onclick="openFeature('nodes')" class="paper rounded-[16px] p-7 cursor-pointer"><h3 class="serif text-[20px]">Research Nodes</h3><p class="text-[12px] opacity-70">Map ideas visually — How: +Add Node → connect</p></div>
+<div onclick="openFeature('review')" class="paper rounded-[16px] p-7 cursor-pointer"><h3 class="serif text-[20px]">Literature Review</h3><p class="text-[12px] opacity-70">Collect references — How: paste DOI/PDF/YouTube</p></div>
+<div onclick="openFeature('collab')" class="paper rounded-[16px] p-7 cursor-pointer"><h3 class="serif text-[20px]">Collaborate</h3><p class="text-[12px] opacity-70">Work together — How: Share email → roles</p></div>
+</div></section>
+
+<!-- PAGE 2 PATHWAY -->
+<section id="pathway" class="bg-[#F9F5EB] border-y py-12"><div class="max-w-[1100px] mx-auto px-6">
+<p class="text-[11px] tracking-widest">PAGE 2</p><h2 class="serif text-[32px]">Question → Explore → Design → Conduct → Write → Review → Share</h2>
+</div></section>
+
+<!-- PAGE 3 FIELD + LEVEL IN BOX -->
+<section id="filters" class="max-w-[1100px] mx-auto px-6 py-12">
+<h2 class="serif text-[28px]">PAGE 3 — Choose Field + Level</h2>
+<div class="mt-4 grid md:grid-cols-2 gap-4">
+<div class="bg-white border rounded-[14px] p-5"><p class="text-[12px]">Field / Subject</p><div class="mt-2 flex flex-wrap gap-2"><span class="chip">Biology</span><span class="chip">Climate</span><span class="chip">Education</span><span class="chip">History</span></div></div>
+<div class="bg-white border rounded-[14px] p-5"><p class="text-[12px]">Level of Research — IN A BOX</p><div class="mt-2 grid grid-cols-2 gap-2"><button class="chip">School</button><button class="chip">Individual</button><button class="chip">College</button><button class="chip">Uni level</button><button class="chip">Pro level</button></div></div>
+</div>
+<div class="mt-6 bg-white border rounded-full px-5 py-3 flex gap-3"><span>🔍</span><input placeholder="Toolbox: Type keywords, see example essays" class="w-full bg-transparent outline-none text-[13px]"></div>
+<div class="mt-6 grid md:grid-cols-3 gap-4"><div class="paper p-4 rounded-xl">Urban Green & Health — Famous</div><div class="paper p-4 rounded-xl">Peer Review — Booming</div><div class="paper p-4 rounded-xl">River Cleanup — Trending</div></div>
+</section>
+
+<!-- PAGE 4 FOUR BOXES -->
+<section id="tools" class="bg-[#F9F5EB] border-y py-12"><div class="max-w-[1100px] mx-auto px-6">
+<h2 class="serif text-[28px]">PAGE 4 — 4 Boxes (Sign in required)</h2>
+<div class="grid md:grid-cols-2 gap-5 mt-6">
+<div class="rounded-[16px] p-6 bg-[#FFD9CC] relative overflow-hidden"><div class="lock absolute inset-0 lock-blur z-10 flex items-center justify-center"><button onclick="openSignIn()" class="bg-black text-white rounded-full px-4 py-1 text-[12px]">🔒 Sign in</button></div><h3 class="serif">① Understand work behind work</h3><input placeholder="Paste YouTube URL — you will provide" class="mt-3 w-full rounded-full px-3 py-2 text-[12px] bg-white border"></div>
+<div class="rounded-[16px] p-6 bg-[#C8DAFF] relative overflow-hidden"><div class="lock absolute inset-0 lock-blur z-10 flex items-center justify-center"><button onclick="openSignIn()" class="bg-black text-white rounded-full px-4 py-1 text-[12px]">🔒 Sign in</button></div><h3 class="serif">② Turn ideas into project</h3><textarea class="mt-3 w-full h-20 bg-white rounded-xl p-3 text-[12px] border" placeholder="Templates"></textarea></div>
+<div class="rounded-[16px] p-6 bg-[#C8E6C9] border md:col-span-2 relative overflow-hidden">
+<div id="lock3" class="absolute inset-0 lock-blur z-20 flex flex-col items-center justify-center text-center"><p class="serif text-[18px]">🔒 Sign in to use AI</p><button onclick="openSignIn()" class="mt-3 bg-[#6B4A35] text-white rounded-full px-6 py-2 text-[13px]">Sign in to unlock AI</button></div>
+<h3 class="serif text-[20px]">③ Make your argument clearer — REAL AI HERE</h3>
+<textarea id="researchInput" placeholder="Paste your ENTIRE research here..." class="mt-3 w-full h-32 bg-white rounded-xl p-4 text-[13px] border"></textarea>
+<div class="mt-3 grid grid-cols-2 md:grid-cols-4 gap-2">
+<button onclick="runAI('grammar')" class="bg-white border rounded-xl py-2 text-[11px]">✓ Grammar Check</button>
+<button onclick="runAI('weakness')" class="bg-white border rounded-xl py-2 text-[11px]">❗ Show Weakness</button>
+<button onclick="runAI('humanize')" class="bg-white border rounded-xl py-2 text-[11px]">✨ Humanize — not AI look</button>
+<button onclick="runAI('phrases')" class="bg-white border rounded-xl py-2 text-[11px]">🖊️ Better Phrases</button>
+</div>
+<div id="aiResult" class="mt-4 bg-white rounded-xl p-4 text-[13px] border hidden whitespace-pre-wrap"></div>
+</div>
+<div class="rounded-[16px] p-6 bg-[#E8D6FF] relative overflow-hidden md:col-span-2"><div class="lock absolute inset-0 lock-blur z-10 flex items-center justify-center"><button onclick="openSignIn()" class="bg-black text-white rounded-full px-4 py-1 text-[12px]">🔒 Sign in</button></div><h3 class="serif">④ Find right audience</h3><input placeholder="Q: Directed towards? Which level? Who for?" class="mt-3 w-full rounded-full px-3 py-2 text-[11px] bg-white border"><button class="mt-3 w-full bg-black text-white rounded-full py-2 text-[12px]">Get publishing links →</button></div>
+</div></div></section>
+
+<!-- PAGE 5 EDITOR -->
+<section id="editor" class="max-w-[1100px] mx-auto px-6 py-12 grid md:grid-cols-2 gap-8">
+<div><h2 class="serif text-[28px]">PAGE 5 — Editor tracker</h2><div class="mt-4 bg-white border p-4 rounded-xl text-[12px]">User Rahul — Climate — College — 60% <div class="h-2 bg-[#eee] rounded-full mt-2"><div class="h-2 bg-black w-[60%] rounded-full"></div></div></div></div>
+<div class="paper p-6 rounded-xl"><h3 class="serif">Review form</h3><textarea class="mt-3 w-full h-24 bg-[#F9F5EB] rounded-xl p-3 text-[12px] border"></textarea><button class="mt-3 w-full bg-black text-white rounded-full py-2 text-[12px]">Submit</button></div>
+</section>
+
+<!-- MODALS -->
+<div id="signInModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center z-50 flex"><div class="bg-[#FFFEF8] p-7 rounded-[20px] w-[90%] max-w-[350px] border"><h3 class="serif text-[22px]">Sign in to use all tools</h3><input placeholder="Email" class="mt-4 w-full border rounded-full px-4 py-2 text-[13px]"><button onclick="doSignIn()" class="mt-3 w-full bg-black text-white rounded-full py-2 text-[13px]">Continue → Unlock</button><button onclick="closeSignIn()" class="mt-2 w-full text-[11px] opacity-60">Cancel</button></div></div>
+<div id="featModal" class="fixed inset-0 bg-black/40 hidden items-center justify-center p-4 z-50 flex"><div class="bg-[#FFFEF8] rounded-[20px] max-w-[500px] w-full p-6 border"><div id="featContent"></div><button onclick="closeFeat()" class="mt-4 w-full bg-black text-white rounded-full py-2 text-[12px]">Close</button></div></div>
+
+<script>
+let signedIn=false;
+function openSignIn(){document.getElementById('signInModal').classList.remove('hidden')}
+function closeSignIn(){document.getElementById('signInModal').classList.add('hidden')}
+function doSignIn(){signedIn=true;document.querySelectorAll('.lock').forEach(e=>e.style.display='none');document.getElementById('lock3').style.display='none';document.getElementById('navSignBtn').innerText='Signed in ✓';closeSignIn()}
+
+async function runAI(task){
+  if(!signedIn){openSignIn();return}
+  const txt=document.getElementById('researchInput').value;
+  if(!txt.trim()){alert('Paste your research first');return}
+  const r=document.getElementById('aiResult');
+  r.classList.remove('hidden');
+  r.innerHTML="✨ Real Gemini AI is checking... please wait 3-5 sec";
+  try{
+    const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({text:txt,task})});
+    const data=await res.json();
+    r.innerHTML=data.result;
+  }catch(e){r.innerHTML="Error: "+e.message+" — Check Vercel env var GEMINI_API_KEY"}
+}
+const feats={nodes:'Research Nodes: +Add Node → connect ideas → AI flags gaps',review:'Literature Review: paste DOI/PDF/YouTube → AI summarizes → toolbox keywords → 3 famous booming researches',collab:'Collaborate: Share email → Editor (you Page5) can track where anyone is'}
+function openFeature(k){document.getElementById('featContent').innerText=feats[k];document.getElementById('featModal').classList.remove('hidden')}
+function closeFeat(){document.getElementById('featModal').classList.add('hidden')}
+</script>
+</body></html>
