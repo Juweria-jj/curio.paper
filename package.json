@@ -1,0 +1,30 @@
+{
+  "name": "curio-paper",
+  "version": "1.0.0",
+  "description": "From curiosity to paper - A research workflow platform",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vercel dev",
+    "build": "echo \"Static site - no build needed\"",
+    "test": "echo \"No tests specified\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Juweria-jj/curio.paper.git"
+  },
+  "keywords": [
+    "research",
+    "paper",
+    "academic",
+    "writing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Juweria-jj/curio.paper/issues"
+  },
+  "homepage": "https://github.com/Juweria-jj/curio.paper#readme",
+  "dependencies": {
+    "@vercel/analytics": "^2.0.1"
+  }
+}
