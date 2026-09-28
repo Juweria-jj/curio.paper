@@ -1,127 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>curio.paper — From curiosity to research</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>curio.paper</title>
 <style>
-  *{margin:0;padding:0;box-sizing:border-box}
-  body{background:#fcfcfa;color:#121212;font-family:Inter,system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-  .nav{max-width:1120px;margin:0 auto;padding:0 24px;height:64px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #ecebe8}
-  .logo{font-size:13px;letter-spacing:0.12em;font-weight:500}
-  .wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-  .hero{padding:64px 0;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center}
-  .hero h1{font-size:56px;line-height:0.9;letter-spacing:-0.04em;font-weight:500}
-  .card-dark{background:#131a2b;border-radius:16px;padding:20px;color:#fff;width:340px}
-  .pill{border:1px solid #ecebe8;border-radius:999px;padding:6px 12px;font-size:12px;background:#fff;cursor:pointer}
-  .pill-black{background:#121212;color:#fff;border-color:#121212}
-  .input{width:100%;background:#fff;border:1px solid #ecebe8;border-radius:999px;padding:14px 20px;font-size:14px;outline:none}
-  .input:focus{border-color:#121212}
-  .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
-  .box{background:#fff;border:1px solid #ecebe8;border-radius:12px;padding:16px;font-size:13px;line-height:1.5}
-  .maze{border-top:1px solid #ecebe8;padding:48px 0;margin-top:24px}
-  .maze h2{font-size:20px;max-width:260px;line-height:1.1}
-  .maze-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
-  .m1{background:#e8e6ff;border-radius:14px;padding:20px}
-  .m2{background:#fff9e8;border-radius:14px;padding:20px}
-  .m3{background:#121212;color:#fff;border-radius:14px;padding:20px}
-  .m4{background:#c9f2ed;border-radius:14px;padding:20px}
-  .label{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;opacity:0.7}
-  @media(max-width:800px){.hero{grid-template-columns:1fr}.grid-3{grid-template-columns:1fr}.maze-grid{grid-template-columns:1fr}}
+*{margin:0;padding:0;box-sizing:border-box}body{background:#fcfcfa;color:#121212;font-family:Inter,system-ui,sans-serif}
+.nav{max-width:1120px;margin:0 auto;padding:0 24px;height:64px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #ecebe8;position:sticky;top:0;background:#fcfcfa;z-index:10}
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+.pill{border:1px solid #ecebe8;background:#fff;border-radius:999px;padding:7px 14px;font-size:11px;cursor:pointer;letter-spacing:.02em}
+.pill.active{background:#121212;color:#fff;border-color:#121212}
+.card{background:#fff;border:1px solid #ecebe8;border-radius:16px;padding:20px}
+.input{width:100%;border:1px solid #ecebe8;background:#fff;border-radius:12px;padding:14px 16px;font-size:13px;outline:none}
+.input:focus{border-color:#121212}
+.page{display:none}.page.active{display:block}
+.tag{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:#8a8885}
+.mini{font-size:13px;line-height:1.6;color:#5a5957;margin-top:8px}
+.btn{border:1px solid #121212;border-radius:999px;padding:8px 14px;font-size:11px;background:#121212;color:#fff;cursor:pointer;margin-top:14px}
+.btn-ghost{background:#fff;color:#121212}
 </style>
 </head>
 <body>
 
 <div class="nav">
-  <div class="logo">CURIO.PAPER</div>
-  <div style="display:flex;gap:20px;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;color:#6b6b6b;align-items:center">
-    <span>My Journey</span><span>Resources</span><span style="border:1px solid #121212;color:#121212;padding:6px 12px;border-radius:999px">New Workspace</span>
+  <div style="font-size:13px;letter-spacing:.12em;font-weight:500">CURIO.PAPER</div>
+  <div style="display:flex;gap:8px">
+    <button onclick="show(1)" class="pill active" id="b1">1 • Questions</button>
+    <button onclick="show(2)" class="pill" id="b2">2 • Roadmap</button>
+    <button onclick="show(3)" class="pill" id="b3">3 • Fields</button>
+    <button onclick="show(4)" class="pill" id="b4">4 • Practice</button>
   </div>
 </div>
 
 <div class="wrap">
-  <div class="hero">
-    <h1>From curiosity<br>to research.</h1>
-    <div style="display:flex;flex-direction:column;align-items:flex-end">
-      <div class="card-dark">
-        <div class="label" style="color:#8ea0c7">Current question</div>
-        <div style="font-size:14px;margin-top:8px;line-height:1.5">How do trees become woodwind? Exploring material acoustics...</div>
-      </div>
-      <button style="margin-top:24px;background:#121212;color:#fff;font-size:11px;text-transform:uppercase;letter-spacing:0.12em;padding:8px 16px;border-radius:999px;border:none">Start from scratch</button>
-    </div>
-  </div>
 
-  <!-- Research Questions -->
-  <div style="border-top:1px solid #ecebe8;padding:40px 0">
-    <div style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px">
-      <h2 style="font-size:20px">Research Questions</h2>
-      <div style="display:flex;gap:8px;flex-wrap:wrap">
-        <select id="diff" class="pill"><option>Beginner</option><option>Intermediate</option><option>Advanced</option></select>
-        <select id="method" class="pill"><option>Experimental</option><option>Quantitative</option><option>Qualitative</option><option>Computational</option><option>Biological (no lab)</option><option>Survey</option><option>Case Study</option></select>
-        <select id="field" class="pill"><option>Environmental Science</option><option>Physics</option><option>Biology</option><option>Chemistry</option><option>AI / CS</option><option>Aerospace</option><option>Psychology</option><option>Education</option><option>Economics</option><option>Medicine</option><option>Engineering</option><option>Social Science</option><option>History</option><option>Art & Design</option></select>
-      </div>
-    </div>
-    <input id="q" class="input" style="margin-top:24px" placeholder="What are you curious about?">
-    <div class="grid-3">
-      <div class="box">How does urban tree diversity relate to heat exposure?</div>
-      <div class="box">What is the effect of green fuel on small aircraft efficiency?</div>
-      <div class="box">How to turn an idea into a testable research project?</div>
-    </div>
-  </div>
+<!-- P1 -->
+<div id="p1" class="page active" style="padding:48px 0">
+  <h1 style="font-size:52px;line-height:.9;letter-spacing:-.04em;font-weight:500">From curiosity<br>to research.</h1>
+  <input id="kw" class="input" style="margin-top:24px;border-radius:999px" placeholder="Type keyword — e.g. green aviation, AI detection, tree acoustics">
+  <button onclick="searchPapers()" class="btn">Search — find 4 papers</button>
+  <div id="results" style="margin-top:20px;display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
+</div>
 
-  <!-- Practice not maze -->
-  <div class="maze">
-    <h2>Research is a practice, not a maze.</h2>
-    <div class="maze-grid">
-      <div class="m1">
-        <div class="label">Turn an idea into a project</div>
-        <div style="font-size:13px;margin-top:12px;line-height:1.5">Break question into hypothesis, methods, timeline.</div>
-        <button onclick="ask()" class="pill" style="margin-top:16px">Generate roadmap</button>
-      </div>
-      <div class="m2">
-        <div class="label">Find the right audience</div>
-        <div style="font-size:13px;margin-top:12px;line-height:1.5">What it's based on, what question, references, target — AI suggests journals.</div>
-        <button class="pill" style="margin-top:16px">Find journals</button>
-      </div>
-      <div class="m3">
-        <div class="label" style="color:#9a9a9a">Understand the work behind the work</div>
-        <div style="font-size:13px;margin-top:12px;color:#c8c8c8;line-height:1.5">Paste YouTube links teaching research.</div>
-        <input placeholder="https://youtube.com/..." style="margin-top:16px;width:100%;background:#1e1e1e;border-radius:999px;padding:8px 16px;font-size:12px;border:none;color:#fff">
-      </div>
-      <div class="m4">
-        <div class="label">Make your argument clearer</div>
-        <div style="font-size:13px;margin-top:12px;line-height:1.5">Paste full research — AI fixes grammar + finds missing angles.</div>
-        <textarea placeholder="Paste your draft here..." style="margin-top:16px;width:100%;background:rgba(255,255,255,0.7);border-radius:10px;padding:12px;font-size:12px;border:none;height:64px"></textarea>
-      </div>
-    </div>
-  </div>
-
-  <!-- Keep question in view -->
-  <div style="border-top:1px solid #ecebe8;padding:48px 0;display:grid;grid-template-columns:200px 1fr;gap:32px">
-    <h3 style="font-size:18px;line-height:1.1">Keep the question in view.</h3>
-    <div style="background:#fff;border:1px solid #ecebe8;border-radius:14px;padding:20px">
-      <div style="display:flex;justify-content:space-between"><span style="font-size:12px;font-weight:500">Urban tree diversity and heat exposure</span><span class="pill" style="font-size:10px">Define your sampling strategy</span></div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px">
-        <div style="border:1px solid #ecebe8;border-radius:10px;padding:16px;text-align:center"><div style="font-size:18px;font-weight:500">02</div><div style="font-size:11px;color:#6b6b6b;margin-top:4px">Context cards</div></div>
-        <div style="border:1px solid #ecebe8;border-radius:10px;padding:16px;text-align:center"><div style="font-size:18px;font-weight:500">04</div><div style="font-size:11px;color:#6b6b6b;margin-top:4px">Drafting notes</div></div>
-        <div style="border:1px solid #ecebe8;border-radius:10px;padding:16px;text-align:center"><div style="font-size:18px;font-weight:500">12</div><div style="font-size:11px;color:#6b6b6b;margin-top:4px">Sources viewed</div></div>
-      </div>
-    </div>
+<!-- P2 -->
+<div id="p2" class="page" style="padding:40px 0">
+  <h2 style="font-size:20px">Question → Impact</h2>
+  <div style="margin-top:24px;max-width:620px;border-left:1px solid #ecebe8;padding-left:20px;display:flex;flex-direction:column;gap:28px">
+    <div><b style="font-size:13px">1 Question</b><div class="mini">Define curiosity into testable question</div></div>
+    <div><b style="font-size:13px">2 Explore</b><div class="mini">Find 4 papers with keyword — Page 1</div></div>
+    <div><b style="font-size:13px">3 Design</b><div class="mini">Pick field + level + method — Page 3</div></div>
+    <div><b style="font-size:13px">4 Conduct</b><div class="mini">Templates even without lab</div></div>
+    <div><b style="font-size:13px">5 Write</b><div class="mini">AI fixes grammar + missing angle — Page 4</div></div>
+    <div><b style="font-size:13px">6 Review</b><div class="mini">Find right journal — Page 4</div></div>
+    <div><b style="font-size:13px">7 Share</b><div class="mini">Track sources, notes, tasks</div></div>
   </div>
 </div>
 
+<!-- P3 -->
+<div id="p3" class="page" style="padding:40px 0">
+  <h2 style="font-size:20px">Choose field</h2>
+  <div id="fieldGrid" style="margin-top:16px;display:grid;grid-template-columns:repeat(4,1fr);gap:10px"></div>
+  <div id="fieldOpts" style="display:none;margin-top:20px" class="card"></div>
+</div>
+
+<!-- P4 — NEW — Research is a practice, not a maze — YOUR OWN VERSION -->
+<div id="p4" class="page" style="padding:40px 0">
+  <div style="display:flex;justify-content:space-between;align-items:end">
+    <h2 style="font-size:22px;max-width:300px;line-height:1.1;letter-spacing:-.02em">Research is a practice, not a maze.</h2>
+    <div style="font-size:11px;color:#8a8885">Minimal • aesthetic • not video copy</div>
+  </div>
+
+  <div style="margin-top:20px;display:grid;grid-template-columns:1.2fr.8fr;gap:12px">
+
+    <!-- Box 1 — Turn idea into project — roadmap -->
+    <div class="card" style="background:#f6f5ff">
+      <div class="tag">01 — Turn an idea into a project</div>
+      <div style="margin-top:10px;font-size:16px;font-weight:500;letter-spacing:-.01em">Break question into hypothesis, methods, timeline</div>
+      <div class="mini">Your own roadmap generator — not from video. What you have to do + what you want.</div>
+      <div style="margin-top:14px;display:flex;gap:8px">
+        <input id="roadQ" class="input" placeholder="Paste your curiosity — e.g. How do trees become woodwind?">
+      </div>
+      <button onclick="genRoadmap()" class="btn">Generate roadmap → hypothesis + methods + timeline</button>
+      <div id="roadOut" style="margin-top:12px;white-space:pre-wrap;font-size:12px;line-height:1.6;background:#fff;border:1px solid #ecebe8;border-radius:10px;padding:12px;display:none"></div>
+    </div>
+
+    <!-- Box 2 — Find right audience -->
+    <div class="card" style="background:#fffaf0">
+      <div class="tag">02 — Find the right audience</div>
+      <div style="margin-top:10px;font-size:16px;font-weight:500">What it's based on → best journal</div>
+      <div class="mini">Answer 4 — AI suggests where to publish.</div>
+      <input id="based" class="input" style="margin-top:12px" placeholder="What is your paper based upon?">
+      <input id="rQuestion" class="input" style="margin-top:8px" placeholder="What question are you answering?">
+      <input id="refs" class="input" style="margin-top:8px" placeholder="Key references (paste 2-3)">
+      <input id="target" class="input" style="margin-top:8px" placeholder="Target — conference / journal / school?">
+      <button onclick="findAudience()" class="btn btn-ghost">Find audience</button>
+      <div id="audOut" style="margin-top:12px;white-space:pre-wrap;font-size:12px;line-height:1.6;display:none" class="card"></div>
+    </div>
+
+  </div>
+
+  <!-- Box 3 — Full width — AI fixer — grammar + weakness -->
+  <div class="card" style="margin-top:12px;background:#121212;color:#fff">
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px">
+      <div>
+        <div class="tag" style="color:#8a8a8a">03 — AI fixer — after you answer all</div>
+        <div style="margin-top:10px;font-size:18px;font-weight:500;line-height:1.2">Paste your research — AI corrects grammar, wording, freezing + shows weakness.</div>
+        <div style="margin-top:8px;font-size:12px;color:#9a9a9a;line-height:1.5">Copy paste draft → AI fixes phrasing, finds what is wrong, area of weakness, missing angle.</div>
+        <div style="margin-top:16px;display:flex;gap:8px">
+          <button onclick="fixGrammar()" class="btn" style="background:#fff;color:#121212;border-color:#fff">Fix grammar + clarity</button>
+          <button onclick="findWeakness()" class="btn" style="background:transparent;color:#fff;border-color:#3a3a3a">Show weakness</button>
+        </div>
+      </div>
+      <div>
+        <textarea id="draft" placeholder="Paste your full research here..." style="width:100%;height:160px;background:#1e1e1e;border:1px solid #2a2a2a;border-radius:12px;padding:14px;color:#fff;font-size:12px;outline:none"></textarea>
+        <div id="fixOut" style="margin-top:12px;white-space:pre-wrap;font-size:12px;line-height:1.6;background:#1e1e1e;border-radius:10px;padding:12px;display:none;color:#e8e8e8"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</div>
+
 <script>
-async function ask(){
-  const q = document.getElementById('q').value || 'Sample: urban tree diversity';
-  const field = document.getElementById('field').value;
-  const method = document.getElementById('method').value;
-  const diff = document.getElementById('diff').value;
-  const prompt = `Roadmap for: ${q} in ${field} using ${method} at ${diff} level`;
-  const res = await fetch('/api/ai', {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({q: prompt})});
-  const data = await res.json();
-  alert(data.answer || data.error);
+function show(n){[1,2,3,4].forEach(i=>{document.getElementById('p'+i).classList.remove('active');document.getElementById('b'+i).classList.remove('active')});document.getElementById('p'+n).classList.add('active');document.getElementById('b'+n).classList.add('active')}
+
+const fields=["STEM","Biology","Physics","Chemistry","AI / CS","Aerospace","Environmental Science","Psychology","Education","Economics","Medicine","Engineering","Social Science","History","Art & Design"];
+const fg=document.getElementById('fieldGrid'); let chosen="";
+fields.forEach(f=>{const b=document.createElement('button');b.className='card';b.style.cursor='pointer';b.style.textAlign='left';b.style.fontSize='13px';b.innerText=f;b.onclick=()=>{chosen=f;document.getElementById('fieldOpts').style.display='block';document.getElementById('fieldOpts').innerHTML=`<b>Field:</b> ${f} fixed — <span style="font-size:12px;color:#6b6b6b">Now go to Page 4 for roadmap</span>`};fg.appendChild(b)});
+
+async function callAI(prompt, outId){
+  const el=document.getElementById(outId); el.style.display='block'; el.innerText='AI thinking...';
+  const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:prompt})});
+  const j=await r.json(); el.innerText=j.answer||j.error||'Error — add API key in Vercel and Redeploy';
 }
-document.getElementById('q').addEventListener('keydown', e=>{ if(e.key==='Enter') ask(); });
+function searchPapers(){
+  const kw=document.getElementById('kw').value; if(!kw) return alert('Type keyword');
+  callAI(`Find at least 4 research papers with keyword: ${kw}. Give title, year, 1-line finding.`, 'results');
+  document.getElementById('results').style.display='grid';
+}
+function genRoadmap(){
+  const q=document.getElementById('roadQ').value||document.getElementById('kw').value||'sample research';
+  callAI(`Turn idea into project: ${q}. Break into: Hypothesis, Methods, Timeline. Generate clear roadmap of what to do and what I want. Minimal bullet format.`, 'roadOut');
+}
+function findAudience(){
+  const b=document.getElementById('based').value, rq=document.getElementById('rQuestion').value, ref=document.getElementById('refs').value, tar=document.getElementById('target').value;
+  callAI(`Find right audience for research. Based on: ${b}. Question: ${rq}. References: ${ref}. Target: ${tar}. Suggest best journals / conferences + why.`, 'audOut');
+}
+function fixGrammar(){
+  const d=document.getElementById('draft').value; if(!d) return alert('Paste research');
+  callAI(`Correct grammar, wording, phrasing, freezing for this research. Keep meaning same but make academic clear. Show corrected version:\n\n${d}`, 'fixOut');
+}
+function findWeakness(){
+  const d=document.getElementById('draft').value; if(!d) return alert('Paste research');
+  callAI(`Analyze this research draft. Show area of weakness, what is wrong, missing logic, missing angle B. Be specific and constructive:\n\n${d}`, 'fixOut');
+}
 </script>
 </body>
 </html>
