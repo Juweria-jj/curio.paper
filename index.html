@@ -1,127 +1,137 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Curio.Paper — From curiosity to research</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-  :root{--ink:#1a0a05; --card:rgba(255,255,255,0.92);}
-  body{margin:0; background:radial-gradient(circle at 50% 38%, #FFEF6B 0%, #FFC33A 18%, #FF8A1E 38%, #FF4A12 68%, #E5210E 88%, #C61A08 100%); background-attachment:fixed; font-family:Inter,system-ui; color:var(--ink);}
-  .wrap{max-width:760px; margin:0 auto; padding:14px 14px 40px;}
-  .disclaimer{background:rgba(26,10,5,0.93); color:#FFEC8A; padding:11px 14px; border-radius:14px; font-size:11.5px; text-align:center; line-height:1.4; border:1px solid rgba(255,200,100,0.35);}
-  .disclaimer b{color:#fff}
-  h1{font-family:"Instrument Serif", serif; font-size:52px; line-height:0.9; letter-spacing:-0.04em; margin:18px 0 0; color:#1a0a05; font-weight:400;}
-  h1 i{font-style:italic; font-weight:400;}
-  .grid{display:grid; grid-template-columns:1fr 1fr; gap:10px; margin-top:20px;}
-  @media(max-width:600px){.grid{grid-template-columns:1fr;}}
-  .folder-btn{width:100%; padding:16px 14px; border-radius:20px; border:1px solid rgba(255,255,255,0.75); background:var(--card); backdrop-filter:blur(16px); box-shadow:0 10px 30px rgba(120,15,0,0.13); text-align:left; cursor:pointer; font-weight:700; font-size:13px; display:flex; justify-content:space-between; align-items:center;}
-  .card{padding:14px; border-radius:18px; background:var(--card); backdrop-filter:blur(16px); border:1px solid rgba(255,255,255,0.8); box-shadow:0 8px 24px rgba(120,15,0,0.1); margin-top:10px;}
-  .label{font-size:9px; text-transform:uppercase; letter-spacing:0.11em; color:#9a3412; font-weight:800;}
-  .title{font-weight:800; font-size:13px; margin-top:4px; line-height:1.3;}
-  .mini{font-size:12px; line-height:1.5; color:#5a2a16; margin-top:6px;}
-  a.link{font-size:11px; background:#1a0a05; color:#fff; padding:7px 13px; border-radius:999px; text-decoration:none; display:inline-block; margin-top:9px; font-weight:600;}
-  a.link.alt{background:#7c2d12;}
-  .folders{margin-top:18px;}
+  body{margin:0; font-family:Inter; background:#FFFBF2; color:#1a0a05;}
+  /* AESTHETIC SUNSET — inspired by your image, softer */
+  .hero{background:radial-gradient(90% 80% at 50% 15%, #FFF3B0 0%, #FFD8A8 22%, #FFB07A 42%, #FF8C5A 68%, #FF6A3A 100%); padding:28px 18px 32px; border-radius:0 0 32px 32px;}
+  .nav{display:flex; justify-content:space-between; align-items:center; max-width:1100px; margin:0 auto;}
+  .nav b{font-family:Instrument Serif; font-size:20px; letter-spacing:-0.02em;}
+  .btn{padding:8px 14px; border-radius:999px; border:1px solid #1a0a05; background:#fff; font-size:12px; font-weight:600; cursor:pointer;}
+  .btn.black{background:#1a0a05; color:#fff;}
+  h1{font-family:Instrument Serif; font-size:56px; line-height:0.9; max-width:1100px; margin:24px auto 0; font-weight:400;}
+  h1 i{font-style:italic;}
+  .searchWrap{max-width:1100px; margin:18px auto 0; display:flex; gap:10px;}
+  .searchWrap input{flex:1; padding:16px 18px; border-radius:999px; border:1.5px solid #1a0a05; background:#fff; font-size:14px;}
+  .disclaimer{max-width:1100px; margin:14px auto 0; background:rgba(26,10,5,0.9); color:#FFEC8A; padding:10px 14px; border-radius:12px; font-size:11px; text-align:center;}
+  .section{max-width:1100px; margin:22px auto; padding:0 14px;}
+  .cards{display:grid; grid-template-columns:1fr 1fr 1fr; gap:12px;}
+  @media(max-width:800px){.cards{grid-template-columns:1fr;} h1{font-size:40px;}}
+  .card{background:#fff; border:1px solid #f0d9c5; border-radius:20px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,0.04);}
+  .label{font-size:9px; text-transform:uppercase; letter-spacing:0.12em; color:#a65a32; font-weight:800;}
+  .title{font-weight:800; font-size:14px; margin-top:6px;}
+  .mini{font-size:12px; color:#6b3a22; margin-top:6px; line-height:1.5;}
+  .folderGrid{display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:14px;}
+  @media(max-width:600px){.folderGrid{grid-template-columns:1fr;}}
+  .folder{padding:18px; border-radius:20px; background:#fff; border:1px solid #f5d6bb; cursor:pointer; font-weight:800; display:flex; justify-content:space-between;}
+  .paperList{display:none; margin-top:10px; display:grid; gap:10px;}
+  .paper{padding:14px; border-radius:16px; background:#FFFAF0; border:1px solid #ffe0c2;}
+  a.link{display:inline-block; margin-top:8px; padding:7px 12px; border-radius:999px; background:#1a0a05; color:#fff; font-size:11px; text-decoration:none; font-weight:600;}
+  .pathway{display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:14px;}
+  @media(max-width:700px){.pathway{grid-template-columns:1fr;}}
+  .step{padding:16px; border-radius:18px; background:#fff; border:1px solid #f0d9c5;}
 </style>
 </head>
 <body>
-<div class="wrap">
-<div class="disclaimer">⚠️ <b>For inspiration only</b> — These are example articles to show what real research looks like. <b>Not meant for copy-paste.</b> Read the structure, understand the method, then write your own original work.</div>
 
+<div class="hero">
+<div class="nav"><b>curio.paper</b><div style="display:flex; gap:8px"><button class="btn">Library</button><button class="btn black">Sign in to start research</button></div></div>
 <h1>From<br>curiosity<br><i>to research.</i></h1>
-
-<!-- FIELDS - CLICK TO OPEN -->
-<div class="grid">
-<button class="folder-btn" onclick="toggleFolder('fBio')">🧬 ① Biological Sciences — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fAI')">🤖 ② AI & Data — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fPhy')">🚀 ③ Physics & Space — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fChem')">🧪 ⑥ Chemistry & Materials — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fClim')">🌍 ⑤ Climate & Earth — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fNeuro')" style="background:linear-gradient(135deg,#fff,#ffe4b8); border:1.5px solid #ff7a18">🧠 ⑦ Neuroscience — 4 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fEng')">⚙️ ④ Engineering — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fBus')">💼 ⑩ Business — 2 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fSoc')">🏛️ ⑨ Society & Policy — 3 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fComm')">📢 ⑪ Communication — 2 <span>▼</span></button>
-<button class="folder-btn" onclick="toggleFolder('fHum')">📚 ⑧ Humanities — 3 <span>▼</span></button>
+<div class="searchWrap"><input id="search" placeholder="Search papers, notes, ideas... e.g. green aviation fuel, tree acoustics, mirror neurons" oninput="filterPapers(this.value)"><button class="btn black" onclick="filterPapers(document.getElementById('search').value)">Search</button></div>
+<div class="disclaimer">⚠️ <b>For inspiration only</b> — These example articles show structure & method. <b>Not for copy-paste.</b> Read them, then write your own original work.</div>
 </div>
 
-<!-- FOLDER CONTENTS -->
-<div id="allFolders" class="folders">
-
-<div id="fBio" style="display:none">
-<div class="card"><div class="label">Bio 01 — Immunology</div><div class="title">Immunology + Cell Biology foundational papers</div></div>
-<div class="card"><div class="label">Bio 02 — Killifish</div><div class="title">African Turquoise Killifish as aging model</div></div>
-<div class="card"><div class="label">Bio 03 — Caltech</div><div class="title">Brain atlas — Allen / Caltech mapping</div></div>
+<!-- PAGE 1 — RESEARCH NODES -->
+<div class="section">
+<div class="label">01 — Research Nodes — Live</div>
+<div class="cards">
+<div class="card"><div class="label">Research Nodes</div><div class="title">Turn idea into project</div><div class="mini">Searchable nodes — type in search, nodes filter live.</div></div>
+<div class="card"><div class="label">Literature Review</div><div class="title">Find right audience</div><div class="mini">All folders + papers searchable. Click field → choose paper → open link.</div></div>
+<div class="card"><div class="label">Collaborate</div><div class="title">Understand work behind work</div><div class="mini">Toolbox + Pathway enabled. No empty pages now.</div></div>
+</div>
 </div>
 
-<div id="fAI" style="display:none">
-<div class="card"><div class="label">AI 01 — Cancer AI</div><div class="title">AI for cancer imaging & diagnosis</div></div>
-<div class="card"><div class="label">AI 02 — Procedia</div><div class="title">Procedia Computer Science AI research collection</div></div>
-<div class="card"><div class="label">AI 03 — Clever Hans</div><div class="title">Clever Hans effect in machine learning</div></div>
+<!-- PAGE 2 — PATHWAY -->
+<div class="section">
+<div class="label">02 — Pathway — Steps Explained</div>
+<div class="pathway">
+<div class="step"><div class="label">Step 1</div><div class="title">Idea</div><div class="mini">What are you curious about? Write 1 question.</div></div>
+<div class="step"><div class="label">Step 2</div><div class="title">Question</div><div class="mini">Refine into research question. Use toolbox AI to define.</div></div>
+<div class="step"><div class="label">Step 3</div><div class="title">Literature</div><div class="mini">Pick 3 papers from your field below. Read method + results.</div></div>
+<div class="step"><div class="label">Step 4</div><div class="title">Methodology</div><div class="mini">Choose mode: conceptual, experimental, qualitative, quantitative.</div></div>
+<div class="step"><div class="label">Step 5</div><div class="title">Data</div><div class="mini">Track privately below. No public proof needed.</div></div>
+<div class="step"><div class="label">Step 6</div><div class="title">Publication</div><div class="mini">Draft → submit. Private tracker keeps you accountable.</div></div>
+</div>
 </div>
 
-<div id="fPhy" style="display:none">
-<div class="card"><div class="label">Physics 01 — IITK</div><div class="title">IITK Quantum / Condensed matter PDF</div></div>
-<div class="card"><div class="label">Physics 02 — ν Octantis</div><div class="title">Dying stars + ν Octantis exoplanet — binary evolution</div></div>
-<div class="card"><div class="label">Physics 03 — Dark Matter</div><div class="title">Dark matter map — large scale structure</div></div>
+<!-- PAGE 3 — FIELDS — CLICK FIELD → GET PAPER OPTIONS → CLICK LINK -->
+<div class="section">
+<div class="label">03 — Fields — 11 Majors — Click field to see papers</div>
+<div class="folderGrid">
+<div class="folder" onclick="openField('fBio')">🧬 Biological Sciences <span>3 →</span></div>
+<div class="folder" onclick="openField('fAI')">🤖 AI & Data <span>3 →</span></div>
+<div class="folder" onclick="openField('fPhy')">🚀 Physics & Space <span>3 →</span></div>
+<div class="folder" onclick="openField('fChem')">🧪 Chemistry & Materials <span>3 →</span></div>
+<div class="folder" onclick="openField('fClim')">🌍 Climate & Earth <span>3 →</span></div>
+<div class="folder" onclick="openField('fNeuro')" style="background:linear-gradient(135deg,#fff7e6,#ffddb8); border:1.5px solid #ff9f45">🧠 Neuroscience — 4 <span>4 →</span></div>
+<div class="folder" onclick="openField('fEng')">⚙️ Engineering & Robotics <span>3 →</span></div>
+<div class="folder" onclick="openField('fBus')">💼 Business <span>2 →</span></div>
+<div class="folder" onclick="openField('fSoc')">🏛️ Society & Policy <span>3 →</span></div>
+<div class="folder" onclick="openField('fComm')">📢 Communication <span>2 →</span></div>
+<div class="folder" onclick="openField('fHum')">📚 Humanities <span>3 →</span></div>
 </div>
 
-<div id="fChem" style="display:none">
-<div class="card"><div class="label">Chem 01</div><div class="title">Self-healing crystals</div></div>
-<div class="card"><div class="label">Chem 02</div><div class="title">Hydrogels — biomedical & environmental</div></div>
-<div class="card"><div class="label">Chem 03</div><div class="title">Photocatalysts for green synthesis</div></div>
+<!-- PAPER LISTS — HIDDEN UNTIL FIELD CLICKED -->
+<div id="allFields" style="margin-top:16px">
+
+<div id="fBio" class="paperList">
+<div class="paper" data-k="biology"><div class="label">Bio</div><div class="title">Immunology + Killifish + Caltech Brain papers — your first set</div><a class="link" href="#" target="_blank">Open →</a></div>
 </div>
 
-<div id="fClim" style="display:none">
-<div class="card"><div class="label">Climate 01 — CCSM4 Geoengineering</div><div class="title">Using CCSM4 to model stratospheric aerosol geoengineering</div><div class="mini">Anderson et al. 2014 — model shows reflecting particles can limit but not fully counteract CO2 warming</div></div>
-<div class="card"><div class="label">Climate 02 — Smoke Water</div><div class="title">Plant-derived smoke water for crops under stress — Ge et al. 2026</div></div>
-<div class="card"><div class="label">Climate 03 — Plasma Reforming</div><div class="title">Plasma-assisted landfill gas reforming — Kim et al. 2025</div></div>
+<div id="fNeuro" class="paperList">
+<div class="paper" data-k="neuroscience brain decoding"><div class="label">Nat Commun 16, 10521 (2025)</div><div class="title">Towards decoding individual words from non-invasive brain recordings</div><div class="mini">Non-invasive BCI — choose this if you want brain-to-text</div><a class="link" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank">Open Nature →</a></div>
+<div class="paper" data-k="planaria sweeteners neuroscience"><div class="label">JEI 22-080</div><div class="title">Ace-K & neotame slow planaria regeneration — neural stem cells</div><div class="mini">Choose this for neurodegeneration + stem cell project</div><a class="link" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank">Open PDF →</a></div>
+<div class="paper" data-k="mirror neurons"><div class="label">JEI Mirror Neurons Cluster 85</div><div class="title">Uncovering mirror neurons — THEMIS / UBE2F — Layer 3</div><a class="link" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank">Open JEI →</a></div>
+<div class="paper" data-k="neuroscience collection"><div class="label">JEI Collection</div><div class="title">JEI Neuroscience — all articles</div><a class="link" href="https://emerginginvestigators.org/articles?q=neuroscience" target="_blank">Open Collection →</a></div>
 </div>
 
-<div id="fNeuro" style="display:none">
-<div class="card" style="border:1.5px solid #ff7a18"><div class="label">Neuro 01 — Nat Commun 16, 10521 (2025)</div><div class="title">Towards decoding individual words from non-invasive brain recordings</div><div class="mini">d'Ascoli et al. — DOI 10.1038/s41467-025-65499-0 — non-invasive brain-to-text BCI — Open Access</div><a class="link alt" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank">Open Nature →</a></div>
-<div class="card"><div class="label">Neuro 02 — JEI 22-080 — NEW</div><div class="title">Non-nutritive sweeteners Ace-K & neotame slow planaria regeneration</div><div class="mini">NNS linked to neurodegenerative diseases — neoblast stem cells — 4 stages: wound healing, blastema, growth, differentiation — Ace-K & neotame delayed stages 2-4 — impairs neural stem cell proliferation</div><a class="link" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank">Open PDF →</a></div>
-<div class="card"><div class="label">Neuro 03 — Mirror Neurons Cluster 85</div><div class="title">Uncovering mirror neurons molecular identity — THEMIS / UBE2F</div><div class="mini">STS + posterior parietal + inferior frontal — 10 clusters — best cluster 85 — Layer 3 pyramidal — Moebius, ASD, ALS link</div><a class="link" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank">Open JEI →</a></div>
-<div class="card"><div class="label">Neuro 04 — Collection</div><div class="title">JEI Neuroscience Articles — q=neuroscience</div><a class="link" href="https://emerginginvestigators.org/articles?q=neuroscience" target="_blank">Open Collection →</a></div>
+<div id="fEng" class="paperList">
+<div class="paper" data-k="soft robot"><div class="label">Nat Commun 16, 1426</div><div class="title">A framework for soft mechanism driven robots</div><a class="link" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank">Open →</a></div>
+<div class="paper" data-k="soft hand tactile"><div class="label">Nat Commun 16, 2395</div><div class="title">Soft robotic hand with tactile palm-finger coordination</div><a class="link" href="https://www.nature.com/articles/s41467-025-57741-6" target="_blank">Open →</a></div>
+<div class="paper" data-k="origami soft"><div class="label">Nat Rev Electr Eng 2, 145</div><div class="title">Standardizing soft robots through origami</div><a class="link" href="https://www.nature.com/articles/s44287-025-00152-y" target="_blank">Open →</a></div>
 </div>
 
-<div id="fEng" style="display:none">
-<div class="card"><div class="label">Eng 01 — Nat Commun 16, 1426 (2025)</div><div class="title">A framework for soft mechanism driven robots — Aygül et al.</div><a class="link alt" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Eng 02 — Nat Commun 16, 2395 (2025)</div><div class="title">Soft robotic hand with tactile palm-finger coordination — Zhang et al.</div><a class="link" href="https://www.nature.com/articles/s41467-025-57741-6" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Eng 03 — Nat Rev Electr Eng 2, 145 (2025)</div><div class="title">Standardizing structure design of soft robots through origami</div><a class="link" href="https://www.nature.com/articles/s44287-025-00152-y" target="_blank">Open →</a></div>
+<div id="fHum" class="paperList">
+<div class="paper" data-k="humanities ai quantitizing"><div class="label">Humanit Soc Sci Commun 12, 277</div><div class="title">Machine-assisted quantitizing designs — AI + humanities</div><a class="link" href="https://www.nature.com/articles/s41599-025-04503-w" target="_blank">Open →</a></div>
+<div class="paper" data-k="teaching memorization"><div class="label">JEI 24-254</div><div class="title">Conceptual vs memorization teaching</div><a class="link" href="https://www.emerginginvestigators.org/articles/24-254/pdf" target="_blank">Open PDF →</a></div>
+<div class="paper" data-k="cultural ai"><div class="label">Nat Hum Behav 9, 2360</div><div class="title">Cultural tendencies in generative AI</div><a class="link" href="https://www.nature.com/articles/s41562-025-02242-1" target="_blank">Open →</a></div>
 </div>
 
-<div id="fBus" style="display:none">
-<div class="card"><div class="label">Bus 01 — s41599-020-00552-5</div><div class="title">Small business response to regulation: behavioral perspective — Haufler & Schopf</div><a class="link" href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Bus 02 — Collection jijcddffij</div><div class="title">Behavioural public policy collection</div><a class="link" href="https://www.nature.com/collections/jijcddffij" target="_blank">Open →</a></div>
+<div id="fClim" class="paperList"><div class="paper" data-k="geoengineering ccsm4"><div class="label">Climate</div><div class="title">CCSM4 geoengineering — smoke water — plasma reforming — 3 files</div></div></div>
+<div id="fSoc" class="paperList">
+<div class="paper" data-k="behavioural covid"><div class="label">Nature 625, 134</div><div class="title">Synthesis of evidence for policy from behavioural science during COVID-19</div><a class="link" href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Open →</a></div>
+<div class="paper" data-k="policy influence"><div class="label">s41599-019-0232-y</div><div class="title">Dos and don'ts of influencing policy — Oliver & Cairney</div><a class="link" href="https://www.nature.com/articles/s41599-019-0232-y" target="_blank">Open →</a></div>
+<div class="paper" data-k="small business"><div class="label">s41599-020-00552-5</div><div class="title">Small business response to regulation</div><a class="link" href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank">Open →</a></div>
 </div>
-
-<div id="fSoc" style="display:none">
-<div class="card"><div class="label">Society 01 — Nature 625, 134 (2024)</div><div class="title">Synthesis of evidence for policy from behavioural science during COVID-19 — Ruggeri et al.</div><a class="link alt" href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Society 02 — Business overlap</div><div class="title">Small business response to regulation — behavioural perspective</div><a class="link" href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Society 03 — s41599-019-0232-y</div><div class="title">Dos and don'ts of influencing policy — Oliver & Cairney — 8 recommendations</div><a class="link" href="https://www.nature.com/articles/s41599-019-0232-y" target="_blank">Open →</a></div>
-</div>
-
-<div id="fComm" style="display:none">
-<div class="card"><div class="label">Comm 01 — Nat Hum Behav 9, 441 (2025)</div><div class="title">Research agenda for encouraging prosocial behaviour on social media — Dörr et al.</div><div class="mini">Size/shape networks, platform affordances, social norms, business models</div><a class="link alt" href="https://www.nature.com/articles/s41562-025-02102-y" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Comm 02 — Policy Comm</div><div class="title">Behavioural science synthesis — how evidence communicated to policymakers</div><a class="link" href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank">Open →</a></div>
-</div>
-
-<div id="fHum" style="display:none">
-<div class="card"><div class="label">Humanities 01 — Humanit Soc Sci Commun 12, 277 (2025)</div><div class="title">Machine-assisted quantitizing designs: augmenting humanities with AI — Karjus</div><a class="link alt" href="https://www.nature.com/articles/s41599-025-04503-w" target="_blank">Open →</a></div>
-<div class="card"><div class="label">Humanities 02 — JEI 24-254</div><div class="title">Conceptual vs memorization teaching — Humanities Dept — Telegin</div><a class="link" href="https://www.emerginginvestigators.org/articles/24-254/pdf" target="_blank">Open PDF →</a></div>
-<div class="card"><div class="label">Humanities 03 — Nat Hum Behav 9, 2360 (2025)</div><div class="title">Cultural tendencies in generative AI — interdependent vs independent — Lu et al.</div><a class="link" href="https://www.nature.com/articles/s41562-025-02242-1" target="_blank">Open →</a></div>
-</div>
+<div id="fComm" class="paperList"><div class="paper" data-k="prosocial social media"><div class="label">Nat Hum Behav 9, 441</div><div class="title">Research agenda for prosocial behaviour on social media</div><a class="link" href="https://www.nature.com/articles/s41562-025-02102-y" target="_blank">Open →</a></div></div>
+<div id="fBus" class="paperList"><div class="paper" data-k="business regulation"><div class="label">Business</div><div class="title">Small business response + behavioural public policy collection</div><a class="link" href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank">Open →</a></div></div>
+<div id="fPhy" class="paperList"><div class="paper"><div class="title">Physics & Space — IITK + ν Octantis + Dark Matter — 3 files</div></div></div>
+<div id="fChem" class="paperList"><div class="paper"><div class="title">Chemistry — self-healing crystals + hydrogels + photocatalysts</div></div></div>
+<div id="fAI" class="paperList"><div class="paper"><div class="title">AI & Data — Cancer AI + Procedia + Clever Hans</div></div></div>
 
 </div>
+</div>
 
-<!-- PRIVATE TRACKER — ONLY YOU SEE — REPLACES PUBLISHED PROOF -->
-<div class="card" style="padding:18px; border:1.5px solid #ff7a18; margin-top:22px">
-<div class="label">🔒 MY PRIVATE TRACKER — ONLY YOU SEE — NOT PUBLIC</div>
-<div style="font-weight:900; font-size:16px; margin-top:4px">Track your own research</div>
-<div style="font-size:11px; opacity:0.7">Saved in your browser only — others cannot see this</div>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:14px">
+<!-- PRIVATE TRACKER — REPLACES YOUR SCREENSHOT PUBLIC PROOF -->
+<div class="section">
+<div class="card" style="border:1.5px solid #ff9f45">
+<div class="label">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC — REPLACES PUBLISHED PROOF</div>
+<div class="title">Track yourself — be first</div>
+<div class="mini">This replaces "Others see this — proof not lying / No published yet — be first" — now private, not public.</div>
+<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:12px">
 <label style="background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:10px; font-size:12px; display:flex; gap:8px"><input type="checkbox" id="t1" onchange="saveTrack()"> 🔍 Search</label>
 <label style="background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:10px; font-size:12px; display:flex; gap:8px"><input type="checkbox" id="t2" onchange="saveTrack()"> 📖 Reading</label>
 <label style="background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:10px; font-size:12px; display:flex; gap:8px"><input type="checkbox" id="t3" onchange="saveTrack()"> 💡 Idea</label>
@@ -129,35 +139,38 @@
 <label style="background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:10px; font-size:12px; display:flex; gap:8px"><input type="checkbox" id="t5" onchange="saveTrack()"> ✍️ Draft</label>
 <label style="background:#fff7ed; border:1px solid #fed7aa; border-radius:12px; padding:10px; font-size:12px; display:flex; gap:8px"><input type="checkbox" id="t6" onchange="saveTrack()"> 📤 Submitted</label>
 </div>
-<div style="margin-top:12px; background:#1a0a05; border-radius:12px; height:10px; overflow:hidden"><div id="progressBar" style="height:100%; width:0%; background:linear-gradient(90deg,#FFEF6B,#FF7A18,#E5210E); transition:width 0.3s"></div></div>
+<div style="margin-top:12px; background:#1a0a05; border-radius:12px; height:10px; overflow:hidden"><div id="progressBar" style="height:100%; width:0%; background:linear-gradient(90deg,#FFF3B0,#FF8C5A,#E5210E); transition:width 0.3s"></div></div>
 <div id="progressText" style="font-size:11px; margin-top:6px; font-weight:800">0% — Start</div>
-<textarea id="myNotes" placeholder="Private notes — only you see this..." style="width:100%; height:80px; border-radius:12px; border:1px solid #fed7aa; padding:10px; font-size:12px; background:#fffaf0; margin-top:12px; box-sizing:border-box" oninput="saveTrack()"></textarea>
-<div style="display:flex; gap:8px; margin-top:10px"><button onclick="resetTrack()" style="font-size:11px; padding:7px 12px; border-radius:999px; border:1px solid #fed7aa; background:#fff; cursor:pointer">Reset</button><span style="font-size:10px; opacity:0.6; align-self:center">✓ Auto-saves privately</span></div>
+<textarea id="myNotes" placeholder="Private notes..." style="width:100%; height:80px; border-radius:12px; border:1px solid #fed7aa; padding:10px; font-size:12px; background:#fffaf0; margin-top:12px; box-sizing:border-box" oninput="saveTrack()"></textarea>
+</div>
 </div>
 
+<!-- TOOLBOX -->
+<div class="section">
+<div class="label">04 — Toolbox — AI Enabled</div>
+<div class="card"><div class="title">AI Toolbox</div><div class="mini">Ask: "Define my question for mirror neurons" — will use Gemini API you gave. Add your GEMINI_API_KEY in api/gemini.js as discussed earlier.</div></div>
 </div>
+
 <script>
-function toggleFolder(id){
-  document.querySelectorAll('#allFolders > div').forEach(d=>{ if(d.id!==id) d.style.display='none'; });
+function openField(id){
+  document.querySelectorAll('#allFields > div').forEach(d=>d.style.display='none');
   const el=document.getElementById(id);
-  el.style.display = (el.style.display==='none'||el.style.display==='') ? 'grid' : 'none';
+  el.style.display = el.style.display==='grid' ? 'none' : 'grid';
   el.style.gap='10px';
-  if(el.style.display!=='none') window.scrollTo({top:el.offsetTop-80, behavior:'smooth'});
+  if(el.style.display!=='none') el.scrollIntoView({behavior:'smooth', block:'start'});
 }
-function saveTrack(){
-  const data={t1:t1.checked,t2:t2.checked,t3:t3.checked,t4:t4.checked,t5:t5.checked,t6:t6.checked,notes:myNotes.value};
-  localStorage.setItem('myPrivateTracker',JSON.stringify(data)); updateProgress();
+function filterPapers(q){
+  q=q.toLowerCase();
+  document.querySelectorAll('#allFields .paper').forEach(p=>{
+    const txt=p.innerText.toLowerCase()+ (p.dataset.k||'');
+    p.style.display = txt.includes(q) || q=='' ? 'block' : 'none';
+  });
+  // auto open all fields when searching
+  if(q!==''){ document.querySelectorAll('#allFields > div').forEach(d=>d.style.display='grid'); }
 }
-function loadTrack(){
-  const raw=localStorage.getItem('myPrivateTracker'); if(!raw) return;
-  const d=JSON.parse(raw); t1.checked=d.t1||false; t2.checked=d.t2||false; t3.checked=d.t3||false; t4.checked=d.t4||false; t5.checked=d.t5||false; t6.checked=d.t6||false; myNotes.value=d.notes||''; updateProgress();
-}
-function updateProgress(){
-  let done=0; for(let i=1;i<=6;i++) if(document.getElementById('t'+i).checked) done++;
-  const pct=Math.round(done/6*100); progressBar.style.width=pct+'%';
-  progressText.innerText=pct+'% — '+(pct==0?'Start your journey':pct<40?'In progress':pct<80?'Getting there!':pct<100?'Almost done':'Ready to publish!');
-}
-function resetTrack(){localStorage.removeItem('myPrivateTracker'); ['t1','t2','t3','t4','t5','t6'].forEach(id=>document.getElementById(id).checked=false); myNotes.value=''; updateProgress();}
+function saveTrack(){ const data={t1:t1.checked,t2:t2.checked,t3:t3.checked,t4:t4.checked,t5:t5.checked,t6:t6.checked,notes:myNotes.value}; localStorage.setItem('myPrivateTracker',JSON.stringify(data)); updateProgress(); }
+function loadTrack(){ const raw=localStorage.getItem('myPrivateTracker'); if(!raw) return; const d=JSON.parse(raw); t1.checked=d.t1||false; t2.checked=d.t2||false; t3.checked=d.t3||false; t4.checked=d.t4||false; t5.checked=d.t5||false; t6.checked=d.t6||false; myNotes.value=d.notes||''; updateProgress(); }
+function updateProgress(){ let done=0; for(let i=1;i<=6;i++) if(document.getElementById('t'+i).checked) done++; const pct=Math.round(done/6*100); progressBar.style.width=pct+'%'; progressText.innerText=pct+'% — '+(pct==0?'Start':pct<100?'In progress':'Ready!'); }
 window.addEventListener('load',loadTrack);
 </script>
 </body>
