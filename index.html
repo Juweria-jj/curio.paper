@@ -22,204 +22,185 @@ body{background:var(--paper);color:var(--ink);font-family:Inter,sans-serif;-webk
 .pill.on{background:var(--ink);color:#fff;border-color:var(--ink)}
 .rule{border-top:1px solid var(--line);padding:38px 0}
 .grid2{display:grid;grid-template-columns:1.15fr.85fr;gap:16px}
-.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-@media(max-width:900px){.grid2,.grid4{grid-template-columns:1fr}}
-.vid{border-radius:14px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:10px}
+.grid4{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:900px){.grid2,.grid4{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.grid4{grid-template-columns:1fr}}
+.vid{border-radius:12px;overflow:hidden;background:#000;aspect-ratio:16/9;margin-top:8px}
+.folder-btn{width:100%;text-align:left;border:1px solid var(--line);border-radius:12px;padding:12px 14px;cursor:pointer;display:flex;justify-content:space-between;align-items:center;font-family:Inter,sans-serif}
 </style>
 </head>
 <body>
-
-<div class="nav">
-  <div style="display:flex;gap:10px;align-items:baseline"><span style="font-size:14px;letter-spacing:.14em;font-weight:600">CURIO.PAPER</span><span class="label" style="text-transform:none;letter-spacing:0">one continuous form</span></div>
-  <div class="label">EST 2026 • SCROLL 01→05 • NO PAGES</div>
-</div>
-
+<div class="nav"><div style="display:flex;gap:10px;align-items:baseline"><span style="font-size:14px;letter-spacing:.14em;font-weight:600">CURIO.PAPER</span><span class="label" style="text-transform:none;letter-spacing:0">your majors • continuous</span></div><div class="label">11 FIELDS • FOLDERS</div></div>
 <div class="wrap">
 
-<!-- HERO -->
 <div style="padding:56px 0 32px" class="grid2">
-  <div>
-    <div class="label">Edition 01 — minimal paper aesthetic — not video copy</div>
-    <h1 class="serif" style="font-size:72px;line-height:.86;margin-top:12px">From<br><i style="font-weight:400">curiosity</i><br>to research.</h1>
-    <p class="mini" style="font-size:14px;max-width:400px;margin-top:18px;color:#5e5952">One sheet top to bottom. No tabs. No confusion. Search → Roadmap → Fields → Practice (4 tools) → Published proof.</p>
-    <div style="margin-top:18px;display:flex;gap:8px;align-items:center"><div style="width:44px;height:1px;background:var(--ink)"></div><div class="label">My own aesthetic — paper #fcf8f1 + ink + sage</div></div>
-  </div>
-  <div style="display:flex;flex-direction:column;gap:12px">
-    <div class="card" style="background:var(--char);color:#f5efe6;border-color:var(--char)">
-      <div class="label" style="color:#8c8579">Trending now — current question</div>
-      <div id="trend" class="serif" style="font-size:22px;line-height:1.15;margin-top:10px">How do trees become woodwind? Material acoustics & instrument making.</div>
-      <div class="mini" style="color:#a8a29a;margin-top:10px">Rotates from most searched — what people are curious about.</div>
-      <div style="margin-top:12px;display:flex;gap:6px"><span style="background:#222;border-radius:999px;padding:4px 10px;font-size:10px;color:#aaa">PAPER</span><span style="background:#222;border-radius:999px;padding:4px 10px;font-size:10px;color:#aaa">ACOUSTICS</span></div>
-    </div>
-    <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px">
-      <div class="card" style="background:var(--sage);padding:14px"><div class="label">Tool</div><div style="font-size:12px;font-weight:500;margin-top:6px">Research Note</div><div class="mini">Capture, don't lose.</div></div>
-      <div class="card" style="background:var(--sand);padding:14px"><div class="label">Tool</div><div style="font-size:12px;font-weight:500;margin-top:6px">Literature</div><div class="mini">4 papers per keyword.</div></div>
-    </div>
-  </div>
+<div><div class="label">Edition 01 — fields from your paper</div><h1 class="serif" style="font-size:72px;line-height:.86;margin-top:12px">From<br><i>curiosity</i><br>to research.</h1><p class="mini" style="font-size:14px;max-width:400px;margin-top:18px">One sheet. No pages. Fields updated from your handwritten list + Business & Communication. Folder type videos.</p></div>
+<div class="card" style="background:var(--char);color:#f5efe6;border-color:var(--char)"><div class="label" style="color:#8c8579">Trending now</div><div id="trend" class="serif" style="font-size:22px;margin-top:10px">How do trees become woodwind? Material acoustics & instrument making.</div><div class="mini" style="color:#a8a29a;margin-top:10px">Rotates — most searched question.</div></div>
 </div>
 
-<!-- 01 SEARCH -->
 <div class="rule">
-  <div style="display:flex;justify-content:space-between"><div class="label">01 — Research Questions — Search Engine</div><div class="label">Type keyword → AI finds at least 4 papers</div></div>
-  <h2 class="serif" style="font-size:32px;margin-top:12px">What are you curious about?</h2>
-  <div style="max-width:720px;display:flex;gap:10px;margin-top:18px">
-    <input id="kw" class="input" style="border-radius:999px;flex:1;margin-top:0" placeholder="e.g. green aviation fuel, tree acoustics, AI detection">
-    <button onclick="searchPapers()" class="btn" style="margin-top:0">Search — 4 examples</button>
-  </div>
-  <div id="results" style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
+<div style="display:flex;justify-content:space-between"><div class="label">01 — Research Questions — Search Engine</div><div class="label">keyword → 4 papers</div></div>
+<h2 class="serif" style="font-size:32px;margin-top:12px">What are you curious about?</h2>
+<div style="max-width:720px;display:flex;gap:10px;margin-top:18px">
+<input id="kw" class="input" style="border-radius:999px;flex:1;margin-top:0" placeholder="e.g. green aviation fuel, tree acoustics">
+<button onclick="searchPapers()" class="btn" style="margin-top:0">Search</button>
+</div>
+<div id="results" style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px"></div>
 </div>
 
-<!-- 02 ROADMAP -->
 <div class="rule" style="background:#fbf6ee;margin:0 -28px;padding:38px 28px;border-radius:20px">
-  <div class="label">02 — Roadmap — Question → Impact — what you do in each step</div>
-  <div style="margin-top:16px;display:grid;grid-template-columns:repeat(7,1fr);gap:0;overflow:auto">
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">01</div><b style="font-size:11px">Question</b><div class="mini">Turn curiosity into testable line.</div></div>
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">02</div><b style="font-size:11px">Explore</b><div class="mini">4 papers — 01 above.</div></div>
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">03</div><b style="font-size:11px">Design</b><div class="mini">Field+level+method — 03.</div></div>
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">04</div><b style="font-size:11px">Conduct</b><div class="mini">Templates, no lab.</div></div>
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">05</div><b style="font-size:11px">Write</b><div class="mini">Fix grammar+angle — 04C.</div></div>
-    <div style="border-right:1px solid var(--line);padding:12px"><div style="font-size:10px;color:#9a958d">06</div><b style="font-size:11px">Review</b><div class="mini">Find audience — 04D.</div></div>
-    <div style="padding:12px"><div style="font-size:10px;color:#9a958d">07</div><b style="font-size:11px">Share</b><div class="mini">Publish as proof — 05.</div></div>
-  </div>
+<div class="label">02 — Roadmap — Question → Impact</div>
+<div style="margin-top:14px;display:grid;grid-template-columns:repeat(7,1fr);gap:0;overflow:auto">
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">1 Q</b><div class="mini">Testable question</div></div>
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">2 Explore</b><div class="mini">4 papers — 01</div></div>
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">3 Design</b><div class="mini">Field+level+method</div></div>
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">4 Conduct</b><div class="mini">No lab</div></div>
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">5 Write</b><div class="mini">Fix — 04C</div></div>
+<div style="border-right:1px solid var(--line);padding:12px"><b style="font-size:11px">6 Review</b><div class="mini">Audience — 04D</div></div>
+<div style="padding:12px"><b style="font-size:11px">7 Share</b><div class="mini">Proof — 05</div></div>
+</div>
 </div>
 
-<!-- 03 FIELDS -->
 <div class="rule">
-  <div class="label">03 — Fields — choose one — then level + method — field fixed once chosen</div>
-  <h2 class="serif" style="font-size:28px;margin-top:10px">Where does your curiosity live?</h2>
-  <div id="fieldGrid" class="grid4" style="margin-top:18px"></div>
-  <div id="fieldOpts" class="card" style="display:none;margin-top:14px;background:var(--sand)"></div>
-  <div style="margin-top:18px;display:flex;gap:28px;flex-wrap:wrap">
-    <div><div class="label">Level</div><div style="margin-top:8px;display:flex;gap:6px"><button onclick="pick(this,'level')" class="pill">Beginner</button><button onclick="pick(this,'level')" class="pill on">Intermediate</button><button onclick="pick(this,'level')" class="pill">Advanced</button></div></div>
-    <div><div class="label">Method</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><button onclick="pick(this,'method')" class="pill">Experimental</button><button onclick="pick(this,'method')" class="pill">Quantitative</button><button onclick="pick(this,'method')" class="pill">Qualitative</button><button onclick="pick(this,'method')" class="pill on">Computational</button><button onclick="pick(this,'method')" class="pill">Biological (no lab)</button><button onclick="pick(this,'method')" class="pill">Survey</button><button onclick="pick(this,'method')" class="pill">Case Study</button></div></div>
-  </div>
+<div class="label">03 — Fields — from your paper — 11 fields — field fixed once chosen</div>
+<h2 class="serif" style="font-size:28px;margin-top:10px">Your majors — where does curiosity live?</h2>
+<div id="fieldGrid" class="grid4" style="margin-top:18px"></div>
+<div id="fieldOpts" class="card" style="display:none;margin-top:14px;background:var(--sand)"></div>
+<div style="margin-top:18px;display:flex;gap:28px;flex-wrap:wrap">
+<div><div class="label">Level</div><div style="margin-top:8px;display:flex;gap:6px"><button onclick="pick(this,'level')" class="pill">Beginner</button><button onclick="pick(this,'level')" class="pill on">Intermediate</button><button onclick="pick(this,'level')" class="pill">Advanced</button></div></div>
+<div><div class="label">Method</div><div style="margin-top:8px;display:flex;gap:6px;flex-wrap:wrap"><button onclick="pick(this,'method')" class="pill">Experimental</button><button onclick="pick(this,'method')" class="pill">Quantitative</button><button onclick="pick(this,'method')" class="pill">Qualitative</button><button onclick="pick(this,'method')" class="pill on">Computational</button><button onclick="pick(this,'method')" class="pill">Biological (no lab)</button><button onclick="pick(this,'method')" class="pill">Survey</button><button onclick="pick(this,'method')" class="pill">Case Study</button></div></div>
+</div>
 </div>
 
-<!-- 04 PRACTICE — A B C D — ALL VIDEOS -->
 <div class="rule">
-  <div class="label">04 — Research is a practice, not a maze — 4 tools — continuous</div>
-  <h2 class="serif" style="font-size:28px;margin-top:10px;max-width:520px">Four quiet tools — my own design — no shine — just work.</h2>
+<div class="label">04 — Practice, not maze — 4 tools — folder videos</div>
+<h2 class="serif" style="font-size:28px;margin-top:10px;max-width:520px">Four quiet tools — folder for videos.</h2>
 
-  <div class="grid2" style="margin-top:20px">
-    <!-- A -->
-    <div class="card" style="background:#f6f3ee">
-      <div class="label">A — Turn idea into project</div>
-      <div class="serif" style="font-size:22px;margin-top:8px">Roadmap + example template to copy</div>
-      <div class="mini">Put idea/field → AI gives hypothesis, methods, timeline + example Abstract/Intro/Methods/Results/Discussion format — not exact research — format they can copy.</div>
-      <input id="b1Idea" class="input" placeholder="Idea — e.g. How do trees become woodwind?">
-      <button onclick="box1()" class="btn">Generate roadmap + template</button>
-      <div id="b1Out" class="card" style="display:none;margin-top:12px;white-space:pre-wrap;font-size:12px;line-height:1.7;background:#fff"></div>
-    </div>
-
-    <!-- B — ALL 5 VIDEOS -->
-    <div class="card" style="background:#fffaf0">
-      <div class="label">B — Understand work behind research — 5 guides you sent</div>
-      <div class="serif" style="font-size:20px;margin-top:8px">Watch — then build — captions included.</div>
-
-      <!-- 1 -->
-      <div style="margin-top:16px">
-        <div style="font-size:13px;font-weight:600"><span style="background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;margin-right:6px">1</span> How to Write a Paper in a Weekend — Prof. Pete Carr</div>
-        <div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/UY7sVKJPTMA" title="Write Paper Weekend" frameborder="0" allowfullscreen></iframe></div>
-        <div class="card" style="padding:10px;margin-top:8px;background:#fff"><div class="mini"><b>Caption:</b> Don't procrastinate. Outline big picture first. Start with Methods (easiest) → Results/Discussion logical sequence → Conclusion numbered → Abstract + Acknowledgements → Intro LAST (hardest) → Edit English + science → References last.</div></div>
-      </div>
-
-      <!-- 2 -->
-      <div style="margin-top:16px;border-top:1px dashed var(--line);padding-top:14px">
-        <div style="font-size:13px;font-weight:600"><span style="background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;margin-right:6px">2</span> Peer-Reviewed Paper — Full Roadmap</div>
-        <div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/yRxFwMHS_A8" title="Peer Reviewed" frameborder="0" allowfullscreen></iframe></div>
-        <div class="card" style="padding:10px;margin-top:8px;background:#fff"><div class="mini"><b>Caption:</b> Title = clickbait — power words, tell exactly what done, no acronyms. Intro = broad→narrow→why study needed. Abstract ~300 words with key results. Conclusion 2-3 points. Send early draft to supervisor — don't wait perfection.</div></div>
-      </div>
-
-      <!-- 3 -->
-      <div style="margin-top:16px;border-top:1px dashed var(--line);padding-top:14px">
-        <div style="font-size:13px;font-weight:600"><span style="background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;margin-right:6px">3</span> Research Methods vs Methodology — Tools vs Reasoning</div>
-        <div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" title="Methods" frameborder="0" allowfullscreen></iframe></div>
-        <div class="card" style="padding:10px;margin-top:8px;background:#fff"><div class="mini"><b>Caption:</b> Methods = tools (survey, interview, experiment, simulation). Methodology = system + reasoning why chosen. Covers quantitative/qualitative, sampling, bias checklist, design→data→analysis→ethics→peer review. Biology no lab options included.</div></div>
-      </div>
-
-      <!-- 4 -->
-      <div style="margin-top:16px;border-top:1px dashed var(--line);padding-top:14px">
-        <div style="font-size:13px;font-weight:600"><span style="background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;margin-right:6px">4</span> How to Read Research Papers — Bird's eye → Swoop → Street</div>
-        <div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/WVv2jWXW0K4" title="Read Papers" frameborder="0" allowfullscreen></iframe></div>
-        <div class="card" style="padding:10px;margin-top:8px;background:#fff"><div class="mini"><b>Caption:</b> Don't read linear. 1 Bird's-eye 5-10min (title, abstract, headings, conclusion) 2 Swoop (figures, tables, core findings) 3 Street view (critical deep read). Rubber duck method if stuck. Saves 80% time.</div></div>
-      </div>
-
-      <!-- 5 -->
-      <div style="margin-top:16px;border-top:1px dashed var(--line);padding-top:14px">
-        <div style="font-size:13px;font-weight:600"><span style="background:var(--ink);color:#fff;border-radius:999px;padding:2px 8px;font-size:10px;margin-right:6px">5</span> Research Workflow — Idea to Publication</div>
-        <div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/7gGi1-g2Hek" title="Workflow" frameborder="0" allowfullscreen></iframe></div>
-        <div class="card" style="padding:10px;margin-top:8px;background:#fff"><div class="mini"><b>Caption:</b> Practical workflow — idea validation → gap finding → hypothesis → methods → execution → writing → revision → journal selection. Complements 1-4 — shows how to track progress.</div></div>
-      </div>
-
-    </div>
-  </div>
-
-  <div class="grid2" style="margin-top:14px">
-    <!-- C -->
-    <div class="card" style="background:var(--char);color:#ece6da;border-color:var(--char)">
-      <div class="label" style="color:#8c8579">C — Make argument clearer — AI fixer</div>
-      <div class="serif" style="font-size:22px;margin-top:8px;color:#f5efe6">Paste research — fix grammar + find weakness</div>
-      <textarea id="draft" placeholder="Paste your full research here..." style="margin-top:12px;width:100%;height:140px;background:#1c1c1c;border:1px solid #2a2a2a;border-radius:14px;padding:14px;color:#fff;font-size:12px;outline:none"></textarea>
-      <div style="display:flex;gap:8px;margin-top:10px"><button onclick="fixGrammar()" class="btn" style="background:#fff;color:#111">Fix wording + new words</button><button onclick="findWeak()" class="btn" style="background:transparent;border-color:#333;color:#ccc">Show what is wrong / weakness</button></div>
-      <div id="b3Out" style="display:none;margin-top:12px;background:#1c1c1c;border-radius:12px;padding:14px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ddd"></div>
-    </div>
-
-    <!-- D -->
-    <div class="card" style="background:var(--sage)">
-      <div class="label">D — Find right audience + proof + track + review email</div>
-      <div class="serif" style="font-size:20px;margin-top:8px">Where should this live?</div>
-      <input id="based" class="input" placeholder="What is it based upon?">
-      <input id="rQ" class="input" placeholder="What question are you answering?">
-      <input id="refs" class="input" placeholder="References / proof">
-      <input id="target" class="input" placeholder="Target — journal / conference / school">
-      <textarea id="pubDraft" class="input" style="height:76px" placeholder="Paste final research to publish as proof on curio.paper"></textarea>
-      <div style="display:flex;gap:8px"><button onclick="findAudience()" class="btn btn-light">Find audience + posting links</button><button onclick="publish()" class="btn">Publish as proof</button></div>
-      <div id="b4Out" class="card" style="display:none;margin-top:10px;white-space:pre-wrap;font-size:12px;line-height:1.6"></div>
-
-      <div style="margin-top:16px;border-top:1px dashed #b7c7ba;padding-top:14px">
-        <div class="label">Track — sign in — shows on paper</div>
-        <input id="uname" class="input" placeholder="Username">
-        <div class="mini">Shows username, field, level, what doing</div>
-        <button onclick="saveTrack()" class="btn btn-light">Save track</button>
-        <div id="trackOut" class="mini"></div>
-      </div>
-
-      <div style="margin-top:14px;border-top:1px dashed #b7c7ba;padding-top:14px">
-        <div class="label">Review → your email</div>
-        <input id="reviewText" class="input" placeholder="Leave review — goes to your email">
-        <button onclick="sendReview()" class="btn btn-light">Send review</button>
-      </div>
-    </div>
-  </div>
+<div class="grid2" style="margin-top:20px">
+<div class="card" style="background:#f6f3ee">
+<div class="label">A — Turn idea into project</div>
+<div class="serif" style="font-size:22px;margin-top:8px">Roadmap + template to copy</div>
+<div class="mini">Put idea/field → AI gives hypothesis, methods, timeline + example Abstract/Intro/Methods/Results/Discussion format — not exact research — format they can copy.</div>
+<input id="b1Idea" class="input" placeholder="Idea — e.g. How do trees become woodwind?">
+<button onclick="box1()" class="btn">Generate roadmap + template</button>
+<div id="b1Out" class="card" style="display:none;margin-top:12px;white-space:pre-wrap;font-size:12px;line-height:1.7;background:#fff"></div>
 </div>
 
-<!-- 05 PUBLISHED -->
+<!-- B FOLDER TYPE -->
+<div class="card" style="background:#fffaf0">
+<div class="label">B — Understand work behind — folder type — 5 videos</div>
+<div class="serif" style="font-size:20px;margin-top:8px">Video library — click folder to open</div>
+
+<div style="margin-top:16px">
+<button onclick="toggleFolder('f1')" class="folder-btn" style="background:#efe8dc"><span style="font-size:13px;font-weight:600">📁 01 — How to Write a Paper</span><span id="f1-icon" style="font-size:10px">▼ 2 FILES</span></button>
+<div id="f1" style="margin-top:8px;display:grid;gap:10px">
+<div class="card" style="padding:14px"><div class="label">File — 01</div><div style="font-size:12px;font-weight:600;margin-top:4px">How to Write a Paper in a Weekend — Prof. Pete Carr</div><div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/UY7sVKJPTMA" frameborder="0" allowfullscreen></iframe></div><div class="card" style="padding:10px;margin-top:8px;background:#f6f3ee"><div class="mini"><b>Caption:</b> Outline first → Methods easiest → Results/Discussion → Conclusion numbered → Abstract+Ack → Intro LAST → Edit → References last.</div></div></div>
+<div class="card" style="padding:14px"><div class="label">File — 02</div><div style="font-size:12px;font-weight:600;margin-top:4px">Peer-Reviewed Paper — Full Roadmap</div><div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/yRxFwMHS_A8" frameborder="0" allowfullscreen></iframe></div><div class="card" style="padding:10px;margin-top:8px;background:#f6f3ee"><div class="mini"><b>Caption:</b> Title = clickbait power words. Intro broad→narrow. Abstract 300w. Conclusion 2-3 points. Send early draft.</div></div></div>
+</div>
+</div>
+
+<div style="margin-top:14px">
+<button onclick="toggleFolder('f2')" class="folder-btn" style="background:var(--sage)"><span style="font-size:13px;font-weight:600">📁 02 — Methods & Reading</span><span id="f2-icon" style="font-size:10px">▼ 3 FILES</span></button>
+<div id="f2" style="margin-top:8px;display:grid;gap:10px">
+<div class="card" style="padding:14px"><div class="label">File — 03</div><div style="font-size:12px;font-weight:600;margin-top:4px">Research Methods vs Methodology</div><div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" frameborder="0" allowfullscreen></iframe></div><div class="card" style="padding:10px;margin-top:8px;background:#f6f3ee"><div class="mini"><b>Caption:</b> Methods = tools. Methodology = reasoning why. Sampling, bias, design→ethics.</div></div></div>
+<div class="card" style="padding:14px"><div class="label">File — 04</div><div style="font-size:12px;font-weight:600;margin-top:4px">How to Read Papers — Bird's eye → Swoop → Street</div><div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/WVv2jWXW0K4" frameborder="0" allowfullscreen></iframe></div><div class="card" style="padding:10px;margin-top:8px;background:#f6f3ee"><div class="mini"><b>Caption:</b> Don't read linear. Bird's-eye 5-10min → Swoop figures → Street view deep. Rubber duck.</div></div></div>
+<div class="card" style="padding:14px"><div class="label">File — 05</div><div style="font-size:12px;font-weight:600;margin-top:4px">Research Workflow — Idea to Publication</div><div class="vid"><iframe width="100%" height="100%" src="https://www.youtube.com/embed/7gGi1-g2Hek" frameborder="0" allowfullscreen></iframe></div><div class="card" style="padding:10px;margin-top:8px;background:#f6f3ee"><div class="mini"><b>Caption:</b> Idea validation → gap → hypothesis → execution → writing → revision → journal.</div></div></div>
+</div>
+</div>
+
+</div>
+</div>
+
+<div class="grid2" style="margin-top:14px">
+<div class="card" style="background:var(--char);color:#ece6da;border-color:var(--char)">
+<div class="label" style="color:#8c8579">C — Make argument clearer</div>
+<div class="serif" style="font-size:22px;margin-top:8px;color:#f5efe6">Paste research — fix + weakness</div>
+<textarea id="draft" placeholder="Paste your full research here..." style="margin-top:12px;width:100%;height:140px;background:#1c1c1c;border:1px solid #2a2a2a;border-radius:14px;padding:14px;color:#fff;font-size:12px;outline:none"></textarea>
+<div style="display:flex;gap:8px;margin-top:10px"><button onclick="fixGrammar()" class="btn" style="background:#fff;color:#111">Fix wording + new words</button><button onclick="findWeak()" class="btn" style="background:transparent;border-color:#333;color:#ccc">Show weakness</button></div>
+<div id="b3Out" style="display:none;margin-top:12px;background:#1c1c1c;border-radius:12px;padding:14px;font-size:12px;line-height:1.7;white-space:pre-wrap;color:#ddd"></div>
+</div>
+
+<div class="card" style="background:var(--sage)">
+<div class="label">D — Find right audience + proof + track + review email</div>
+<div class="serif" style="font-size:20px;margin-top:8px">Where should this live?</div>
+<input id="based" class="input" placeholder="What is it based upon?">
+<input id="rQ" class="input" placeholder="What question are you answering?">
+<input id="refs" class="input" placeholder="References / proof">
+<input id="target" class="input" placeholder="Target — journal / conference / school">
+<textarea id="pubDraft" class="input" style="height:76px" placeholder="Paste final research to publish as proof"></textarea>
+<div style="display:flex;gap:8px"><button onclick="findAudience()" class="btn btn-light">Find audience + links</button><button onclick="publish()" class="btn">Publish proof</button></div>
+<div id="b4Out" class="card" style="display:none;margin-top:10px;white-space:pre-wrap;font-size:12px"></div>
+<div style="margin-top:16px;border-top:1px dashed #b7c7ba;padding-top:14px">
+<div class="label">Track — sign in</div>
+<input id="uname" class="input" placeholder="Username">
+<div class="mini">Shows username, field, level, what doing</div>
+<button onclick="saveTrack()" class="btn btn-light">Save</button>
+<div id="trackOut" class="mini"></div>
+</div>
+<div style="margin-top:14px;border-top:1px dashed #b7c7ba;padding-top:14px">
+<div class="label">Review → your email</div>
+<input id="reviewText" class="input" placeholder="Leave review">
+<button onclick="sendReview()" class="btn btn-light">Send review to email</button>
+</div>
+</div>
+</div>
+</div>
+
 <div class="rule" style="padding-bottom:80px">
-  <div class="label">05 — Published — proof we have real research — stays here for others</div>
-  <h2 class="serif" style="font-size:28px;margin-top:10px">Others see this — proof not lying.</h2>
-  <div id="publishedList" style="margin-top:18px;display:grid;gap:12px"></div>
+<div class="label">05 — Published — proof we have real research — stays here</div>
+<h2 class="serif" style="font-size:28px;margin-top:10px">Others see this — proof not lying.</h2>
+<div id="publishedList" style="margin-top:18px;display:grid;gap:12px"></div>
 </div>
 
 </div>
 
 <script>
-const REVIEW_EMAIL="your-email@gmail.com"; // CHANGE TO YOUR EMAIL
+const REVIEW_EMAIL="your-email@gmail.com";
 let chosen="",level="Intermediate",method="Computational";
-function pick(el,t){el.parentElement.querySelectorAll('.pill').forEach(b=>b.classList.remove('on'));el.classList.add('on'); if(t==='level') level=el.innerText; else method=el.innerText; localStorage.setItem(t,el.innerText)}
-const fields=["STEM","Biology","Physics","Chemistry","AI / CS","Aerospace","Environmental Science","Psychology","Education","Economics","Medicine","Engineering","Social Science","History","Art & Design"];
+function toggleFolder(id){
+  const el=document.getElementById(id);
+  const ic=document.getElementById(id+'-icon');
+  if(el.style.display==='none'){el.style.display='grid'; ic.innerText=ic.innerText.replace('▶','▼');}
+  else{el.style.display='none'; ic.innerText=ic.innerText.replace('▼','▶');}
+}
+function pick(el,t){el.parentElement.querySelectorAll('.pill').forEach(b=>b.classList.remove('on'));el.classList.add('on'); if(t==='level') level=el.innerText; else method=el.innerText; localStorage.setItem(t,el.innerText);}
+
+// YOUR 11 FIELDS FROM PAPER + 2 YOU SAID
+const fields=[
+"① Biological Sciences",
+"② AI & Data Sciences",
+"③ Physics & Space",
+"④ Engineering and Robotics",
+"⑤ Climate, Environment + Earth Sciences",
+"⑥ Chemistry & Material Sciences",
+"⑦ Neuroscience + Physiology",
+"⑧ Humanities, Lit & Culture",
+"⑨ Society, Economics + Public Policy",
+"⑩ Business & Management",
+"⑪ Communication & Media"
+];
 const fg=document.getElementById('fieldGrid');
-fields.forEach(f=>{const b=document.createElement('button');b.className='card';b.style.cursor='pointer';b.style.textAlign='left';b.style.fontSize='13px';b.innerText=f;b.onclick=()=>{chosen=f;localStorage.setItem('field',f);const o=document.getElementById('fieldOpts');o.style.display='block';o.innerHTML=`<span class=label>Field fixed</span><div class=serif style=font-size:22px;margin-top:6px>${f}</div><div class=mini>Level: ${level} • Method: ${method} — now scroll to 04-A for roadmap.</div>`; [...fg.children].forEach(c=>c.style.borderColor='#e9e2d6');b.style.borderColor='#111'};fg.appendChild(b)});
-async function callAI(p,o){const el=document.getElementById(o);el.style.display='block';el.innerText='Thinking — AI working...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:p})});const j=await r.json();el.innerText=j.answer||j.error||'Error — Add OPENAI_API_KEY in Vercel > Settings > Env > Redeploy';}
-function searchPapers(){const kw=document.getElementById('kw').value; if(!kw) return alert('Type keyword'); callAI(`Find at least 4 real research papers that have keyword: ${kw}. Give title, authors, year, 1-line finding. Format short.`, 'results');}
-function box1(){const idea=document.getElementById('b1Idea').value||document.getElementById('kw').value||'sample'; callAI(`Turn idea into project: ${idea}. Field: ${chosen||localStorage.getItem('field')||'general'} Level: ${level} Method: ${method}. Give 1) Roadmap hypothesis/methods/timeline what to do 2) Example template Abstract/Intro/Methods/Results/Discussion format they can copy — NOT exact research. Minimal.`, 'b1Out');}
-function fixGrammar(){const d=document.getElementById('draft').value; if(!d) return alert('Paste research'); callAI(`Fix grammar, wording, freezing, develop new academic words, make clearer, keep meaning:\n${d}`, 'b3Out');}
-function findWeak(){const d=document.getElementById('draft').value; if(!d) return alert('Paste research'); callAI(`Analyze area of weakness, what is wrong, errors, missing logic, missing angle B. Constructive:\n${d}`, 'b3Out');}
-function findAudience(){const b=document.getElementById('based').value,q=document.getElementById('rQ').value,refs=document.getElementById('refs').value,tar=document.getElementById('target').value; callAI(`Find right audience. Based on: ${b}. Question: ${q}. References: ${refs}. Target: ${tar}. Suggest best journals/conferences/websites to post with links + why.`, 'b4Out');}
-function publish(){const text=document.getElementById('pubDraft').value; if(!text) return alert('Paste final research'); const list=JSON.parse(localStorage.getItem('pubs')||'[]'); list.unshift({text,field:chosen||localStorage.getItem('field')||'General',user:localStorage.getItem('username')||'Anon',level,method,date:new Date().toLocaleDateString()}); localStorage.setItem('pubs',JSON.stringify(list)); alert('Published as proof — scroll to 05 to see'); document.getElementById('pubDraft').value=''; loadPub();}
-function saveTrack(){const u=document.getElementById('uname').value; if(u) localStorage.setItem('username',u); document.getElementById('trackOut').innerText=`Saved: ${u||''} • field: ${chosen||localStorage.getItem('field')||'-'} • level: ${level} • method: ${method} • doing: ${document.getElementById('kw').value||'-'}`;}
-function sendReview(){const t=document.getElementById('reviewText').value; if(!t) return alert('Write review'); window.location.href=`mailto:${REVIEW_EMAIL}?subject=curio.paper Review&body=${encodeURIComponent(t+'\n\nUser: '+(localStorage.getItem('username')||'')+' Field: '+(chosen||'')+' Level: '+level+' Method: '+method)}`;}
-function loadPub(){const list=JSON.parse(localStorage.getItem('pubs')||'[]'); const div=document.getElementById('publishedList'); div.innerHTML=''; if(!list.length) div.innerHTML='<div class=mini>No published yet — be first.</div>'; list.forEach(p=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class=label>${p.field} • ${p.user} • ${p.level} • ${p.method} • ${p.date}</div><div class=serif style=font-size:16px;margin-top:8px;white-space:pre-wrap;line-height:1.5>${p.text.slice(0,900)}</div>`;div.appendChild(c)});}
-const trends=["How do trees become woodwind? Material acoustics & instrument making.","Can green aviation fuel cut emissions 30% in India?","How to detect AI essays without false positives?","Why does urban heat reduce tree diversity in cities?"]; let ti=0; setInterval(()=>{const el=document.getElementById('trend'); if(el){el.innerText=trends[ti%trends.length]; ti++}},4000);
+fields.forEach(f=>{
+  const b=document.createElement('button');b.className='card';b.style.cursor='pointer';b.style.textAlign='left';b.style.fontSize='13px';b.style.padding='16px';b.innerText=f;
+  b.onclick=()=>{
+    chosen=f;localStorage.setItem('field',f);
+    const o=document.getElementById('fieldOpts');o.style.display='block';
+    o.innerHTML=`<span class=label>Field fixed — from your paper</span><div class=serif style=font-size:22px;margin-top:6px>${f}</div><div class=mini>Level: ${level} • Method: ${method} — scroll to 04-A for roadmap.</div>`;
+    [...fg.children].forEach(c=>c.style.borderColor='#e9e2d6');b.style.borderColor='#111';b.style.background='#efe8dc';
+  };
+  fg.appendChild(b);
+});
+async function callAI(p,o){const el=document.getElementById(o);el.style.display='block';el.innerText='Thinking...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({q:p})});const j=await r.json();el.innerText=j.answer||j.error||'Add OPENAI_API_KEY in Vercel Env > Redeploy';}
+function searchPapers(){const kw=document.getElementById('kw').value; if(!kw) return alert('Type keyword'); callAI(`Find at least 4 real research papers with keyword: ${kw}. Title, year, 1-line finding.`, 'results');}
+function box1(){const idea=document.getElementById('b1Idea').value||document.getElementById('kw').value||'sample'; callAI(`Turn idea into project: ${idea}. Field ${chosen||localStorage.getItem('field')||'general'} Level ${level} Method ${method}. Roadmap hypothesis/methods/timeline + example template Abstract/Intro/Methods/Results/Discussion format to copy — NOT exact research.`, 'b1Out');}
+function fixGrammar(){const d=document.getElementById('draft').value; if(!d) return alert('Paste'); callAI(`Fix grammar wording freezing new academic words keep meaning:\n${d}`, 'b3Out');}
+function findWeak(){const d=document.getElementById('draft').value; if(!d) return alert('Paste'); callAI(`Find weakness what is wrong errors missing angle:\n${d}`, 'b3Out');}
+function findAudience(){const b=document.getElementById('based').value,q=document.getElementById('rQ').value,refs=document.getElementById('refs').value,tar=document.getElementById('target').value; callAI(`Based on: ${b}. Question: ${q}. References: ${refs}. Target: ${tar}. Suggest journals/sites with links + why.`, 'b4Out');}
+function publish(){const text=document.getElementById('pubDraft').value; if(!text) return alert('Paste'); const list=JSON.parse(localStorage.getItem('pubs')||'[]'); list.unshift({text,field:chosen||localStorage.getItem('field')||'General',user:localStorage.getItem('username')||'Anon',level,method,date:new Date().toLocaleDateString()}); localStorage.setItem('pubs',JSON.stringify(list)); alert('Published as proof! Scroll to 05'); document.getElementById('pubDraft').value=''; loadPub();}
+function saveTrack(){const u=document.getElementById('uname').value; if(u) localStorage.setItem('username',u); document.getElementById('trackOut').innerText=`Saved: ${u||''} • field: ${chosen||'-'} • level: ${level} • method: ${method} • doing: ${document.getElementById('kw').value||'-'}`;}
+function sendReview(){const t=document.getElementById('reviewText').value; if(!t) return alert('Write review'); window.location.href=`mailto:${REVIEW_EMAIL}?subject=curio.paper Review&body=${encodeURIComponent(t+'\n\nUser: '+(localStorage.getItem('username')||'')+' Field: '+(chosen||'')+' Level: '+level)}`;}
+function loadPub(){const list=JSON.parse(localStorage.getItem('pubs')||'[]'); const div=document.getElementById('publishedList'); div.innerHTML=''; if(!list.length) div.innerHTML='<div class=mini>No published yet — be first.</div>'; list.forEach(p=>{const c=document.createElement('div');c.className='card';c.innerHTML=`<div class=label>${p.field} • ${p.user} • ${p.level} • ${p.method} • ${p.date}</div><div class=serif style=font-size:16px;margin-top:8px;white-space:pre-wrap>${p.text.slice(0,900)}</div>`;div.appendChild(c);});}
+const trends=["How do trees become woodwind? Material acoustics","Can green aviation fuel cut emissions 30%?","How to detect AI essays without false positives?","Why does urban heat reduce tree diversity?"]; let ti=0; setInterval(()=>{const el=document.getElementById('trend'); if(el){el.innerText=trends[ti%trends.length]; ti++;}},4000);
 loadPub();
 </script>
 </body>
