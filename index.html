@@ -1,261 +1,161 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curio.Paper</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>curio.paper</title>
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 <style>
-body{margin:0;font-family:Inter;background:#FFFBF2;color:#1a0a05;}
-.hero{background:radial-gradient(90% 70% at 50% 10%,#FFF3B0 0%,#FFD8A8 25%,#FFB07A 50%,#FF8C5A 80%);padding:20px 16px;border-radius:0 0 28px 28px;}
-.wrap{max-width:1150px;margin:0 auto;padding:14px;}
-.card{background:#fff;border:1px solid #f0d9c5;border-radius:22px;padding:16px;box-shadow:0 8px 24px rgba(0,0,0,0.04);margin-top:14px;}
-.label{font-size:9px;letter-spacing:0.14em;text-transform:uppercase;color:#a65a32;font-weight:800;}
-.title{font-weight:800;font-size:15px;margin-top:6px;}
-.mini{font-size:12px;color:#6b3a22;line-height:1.5;margin-top:4px;}
-.fieldGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:14px;}
-@media(max-width:900px){.fieldGrid{grid-template-columns:1fr 1fr;}}
-.folder{padding:14px;border-radius:18px;background:#fff;border:1px solid #f5d6bb;cursor:pointer;font-weight:700;font-size:12px;text-align:center;}
-.folder.active{background:#1a0a05;color:#fff;border-color:#1a0a05;}
-.paperBox{display:none;margin-top:14px;grid-template-columns:1fr 1fr 1fr;gap:14px;}
-@media(max-width:900px){.paperBox{grid-template-columns:1fr 1fr;}}
-@media(max-width:600px){.paperBox{grid-template-columns:1fr;}}
-.pCard{border-radius:20px;overflow:hidden;background:#fff;border:2px solid #ffe0c2;cursor:pointer;position:relative;}
-.pCard:hover{transform:translateY(-3px);border-color:#ff8c5a;}
-.pCard.selected{border-color:#1a0a05;box-shadow:0 0 0 4px #FFF3B0;}
-.pCard.selected:after{content:'✓ SELECTED';position:absolute;top:10px;right:10px;background:#1a0a05;color:#fff;font-size:9px;font-weight:800;padding:5px 8px;border-radius:999px;}
-.vid{aspect-ratio:16/9;background:#000;}
-.vid iframe{width:100%;height:100%;border:0;display:block;}
-.pBody{padding:12px;}
-.btn{padding:10px 16px;border-radius:999px;background:#1a0a05;color:#fff;font-size:12px;border:1px solid #1a0a05;cursor:pointer;margin-top:8px;display:inline-block;text-decoration:none;font-weight:700;margin-right:5px;}
-.btn.red{background:#ff2a0e;border-color:#ff2a0e;}
-.toolGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
-@media(max-width:800px){.toolGrid{grid-template-columns:1fr;}}
-.toolA{background:linear-gradient(135deg,#e9e6d8,#d9e2c9);border:1.5px solid #c8d5a8;border-radius:22px;padding:18px;}
-.toolB{background:linear-gradient(135deg,#e7f0e3,#d7e8d8);border:1.5px solid #b7d0b5;border-radius:22px;padding:18px;}
-.toolC{background:#111;color:#fff;border-radius:22px;padding:18px;}
-.toolD{background:linear-gradient(135deg,#dce8dc,#cfe0cf);border:1.5px solid #b0c9a8;border-radius:22px;padding:18px;}
-.folderVideo{background:#f6f3e2;border:1px solid #e0dcc2;border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:13px;margin-top:10px;}
-.folderVideo.green{background:#cfe3d1;}
-.folderContent{display:none;margin-top:10px;grid-template-columns:1fr 1fr;gap:10px;}
-.folderContent.open{display:grid;}
-.smallVid{border-radius:14px;overflow:hidden;background:#fff;border:1px solid #e0dcc2;}
-input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px solid #d6c4b0;background:#fff;font-size:13px;box-sizing:border-box;margin-top:8px;font-family:Inter;}
-.genBtn{background:#1a0a05;color:#fff;padding:10px 18px;border-radius:999px;border:0;font-weight:800;font-size:12px;cursor:pointer;margin-top:10px;}
-.darkInput{background:#1e1e1e!important;color:#fff!important;border-color:#333!important;}
-.trackerBox{background:#fff;border:1.5px solid #f0d9c5;border-radius:22px;padding:18px;margin-top:24px;}
-.trackerHeader{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:800;opacity:0.7;}
-.trackerTitle{font-weight:800;font-size:18px;margin-top:4px;}
-.trackerDesc{font-size:12px;opacity:0.7;margin-top:6px;line-height:1.4;}
-.trackGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
-@media(max-width:600px){.trackGrid{grid-template-columns:1fr;}}
-.trackItem{background:#fff7ed;border:1px solid #f5d6bb;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer;transition:0.2s;}
-.trackItem.checked{background:#1a0a05;color:#fff;border-color:#1a0a05;}
-.trackBarWrap{margin-top:14px;background:#1a0a05;height:10px;border-radius:999px;overflow:hidden;}
-.trackBar{height:100%;width:0%;background:linear-gradient(90deg,#FFF3B0,#FF8C5A);transition:0.4s;}
-.trackPercent{font-weight:800;font-size:13px;margin-top:8px;}
-.privateNotes{margin-top:12px;background:#FFFBF2;border:1.5px dashed #f0d9c5;border-radius:14px;padding:0;}
-.privateNotes textarea{border:0;background:transparent;margin:0;height:90px;resize:vertical;}
-.reviewBox{background:linear-gradient(135deg,#fff,#fff8e6);border:1.5px solid #ffddb8;border-radius:22px;padding:18px;margin-top:16px;}
+body{margin:0;font-family:Inter,sans-serif;background:#FFFBF2;color:#1a0a05}
+.hero{background:radial-gradient(90% 70% at 50% 10%,#FFF3B0 0%,#FFD8A8 25%,#FFB07A 50%,#FF8C5A 80%);padding:18px 16px;border-radius:0 0 24px 24px}
+.wrap{max-width:1150px;margin:0 auto;padding:14px}
+.card{background:#fff;border:1px solid #f0d9c5;border-radius:20px;padding:16px;margin-top:14px;box-shadow:0 6px 18px rgba(0,0,0,.04)}
+.label{font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#a65a32;font-weight:800}
+.title{font-weight:800;font-size:15px;margin-top:6px}
+.mini{font-size:12px;color:#6b3a22;line-height:1.5;margin-top:4px}
+.fieldGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:12px}
+@media(max-width:800px){.fieldGrid{grid-template-columns:1fr 1fr}}
+.folder{padding:12px;border-radius:16px;background:#fff;border:1px solid #f5d6bb;cursor:pointer;font-weight:700;font-size:12px;text-align:center}
+.folder.active{background:#1a0a05;color:#fff}
+.paperBox{display:none;margin-top:14px;grid-template-columns:1fr 1fr 1fr;gap:12px}
+.paperBox.show{display:grid}
+@media(max-width:900px){.paperBox{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.paperBox{grid-template-columns:1fr}}
+.pCard{border-radius:18px;overflow:hidden;background:#fff;border:2px solid #ffe0c2;cursor:pointer;position:relative}
+.pCard.selected{border-color:#1a0a05;box-shadow:0 0 0 4px #FFF3B0}
+.pCard.selected:after{content:'✓ SELECTED';position:absolute;top:8px;right:8px;background:#1a0a05;color:#fff;font-size:9px;font-weight:800;padding:4px 7px;border-radius:999px}
+.vid{aspect-ratio:16/9;background:#000}
+.vid iframe{width:100%;height:100%;border:0}
+.pBody{padding:10px}
+.btn{padding:9px 14px;border-radius:999px;background:#1a0a05;color:#fff;font-size:11px;border:0;cursor:pointer;font-weight:700;margin-top:8px;display:inline-block;text-decoration:none}
+.btn.red{background:#ff2a0e}
+.toolGrid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:16px}
+@media(max-width:800px){.toolGrid{grid-template-columns:1fr}}
+.toolA{background:linear-gradient(135deg,#e9e6d8,#d9e2c9);border:1.5px solid #c8d5a8;border-radius:20px;padding:16px}
+.toolB{background:linear-gradient(135deg,#e7f0e3,#d7e8d8);border:1.5px solid #b7d0b5;border-radius:20px;padding:16px}
+.toolC{background:#111;color:#fff;border-radius:20px;padding:16px}
+.toolD{background:linear-gradient(135deg,#dce8dc,#cfe0cf);border:1.5px solid #b0c9a8;border-radius:20px;padding:16px}
+.folderVideo{background:#f6f3e2;border:1px solid #e0dcc2;border-radius:12px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:13px;margin-top:8px}
+.folderContent{display:none;margin-top:8px;grid-template-columns:1fr 1fr;gap:8px}
+.folderContent.open{display:grid}
+.smallVid{border-radius:12px;overflow:hidden;background:#fff;border:1px solid #e0dcc2}
+input,textarea,select{width:100%;padding:11px;border-radius:12px;border:1.5px solid #d6c4b0;background:#fff;font-size:13px;box-sizing:border-box;margin-top:8px;font-family:Inter}
+.trackBox{background:#fff;border:1.5px solid #f0d9c5;border-radius:20px;padding:16px;margin-top:18px}
+.trackItem{display:inline-block;background:#fff7ed;border:1px solid #f5d6bb;border-radius:10px;padding:9px 12px;margin:4px;cursor:pointer;font-size:12px;font-weight:600}
+.trackItem.checked{background:#1a0a05;color:#fff}
+.bar{height:10px;background:#1a0a05;border-radius:999px;overflow:hidden;margin-top:10px}
+.fill{height:100%;width:0%;background:linear-gradient(90deg,#FFF3B0,#FF8C5A);transition:.3s}
+.reviewBox{background:#fff;border:1.5px solid #ffddb8;border-radius:20px;padding:16px;margin-top:14px}
 </style>
 </head>
 <body>
 <div class="hero">
-<div style="max-width:1150px;margin:0 auto;display:flex;justify-content:space-between"><b style="font-family:Instrument Serif;font-size:22px">curio.paper</b><span style="font-size:11px;background:#1a0a05;color:#fff;padding:8px 12px;border-radius:999px">Sign in to start research</span></div>
-<h1 style="font-family:Instrument Serif;font-size:44px;line-height:0.9;max-width:1150px;margin:16px auto 0">From<br>curiosity<br><i>to research.</i></h1>
+<div style="max-width:1150px;margin:0 auto;display:flex;justify-content:space-between"><b style="font-family:Instrument Serif;font-size:22px">curio.paper</b><span style="font-size:11px;background:#1a0a05;color:#fff;padding:7px 11px;border-radius:999px">Sign in</span></div>
+<h1 style="font-family:Instrument Serif;font-size:42px;line-height:.9;max-width:1150px;margin:14px auto 0">From<br>curiosity<br><i>to research.</i></h1>
 </div>
 <div class="wrap">
-<div class="label" style="margin-top:18px">YOUR MAJORS — 11 FIELDS — CLICK TO FILTER (ONLY 3 SHOW)</div>
+<div class="label" style="margin-top:12px">YOUR MAJORS — 11 FIELDS — CLICK TO FILTER (ONLY 3 SHOW - FIXED)</div>
 <div class="fieldGrid">
-<div class="folder" data-id="bio" onclick="showField('bio')">🧬 Biological Sciences — 3</div>
-<div class="folder" data-id="ai" onclick="showField('ai')">🤖 AI & Data Sciences — 3</div>
-<div class="folder" data-id="phy" onclick="showField('phy')">🚀 Physics & Space — 3</div>
-<div class="folder" data-id="chem" onclick="showField('chem')">🧪 Chemistry & Materials — 3</div>
-<div class="folder" data-id="clim" onclick="showField('clim')">🌍 Climate, Environment + Earth — 3</div>
-<div class="folder" data-id="neuro" onclick="showField('neuro')" style="background:linear-gradient(135deg,#fff7e6,#ffddb8);">🧠 Neuroscience + Physiology — 4</div>
-<div class="folder" data-id="eng" onclick="showField('eng')">⚙️ Engineering & Robotics — 3</div>
-<div class="folder" data-id="bus" onclick="showField('bus')">💼 Business & Management — 2</div>
-<div class="folder" data-id="soc" onclick="showField('soc')">🏛️ Society, Economics + Public Policy — 3</div>
-<div class="folder" data-id="comm" onclick="showField('comm')">📢 Communication & Media — 2</div>
-<div class="folder" data-id="hum" onclick="showField('hum')">📚 Humanities, Lit & Culture — 3</div>
+<div class="folder" onclick="sh('bio')">🧬 Biological Sciences — 3</div>
+<div class="folder" onclick="sh('ai')">🤖 AI & Data Sciences — 3</div>
+<div class="folder" onclick="sh('phy')">🚀 Physics & Space — 3</div>
+<div class="folder" onclick="sh('chem')">🧪 Chemistry & Materials — 3</div>
+<div class="folder" onclick="sh('clim')">🌍 Climate, Environment + Earth — 3</div>
+<div class="folder" onclick="sh('neuro')">🧠 Neuroscience + Physiology — 4</div>
+<div class="folder" onclick="sh('eng')">⚙️ Engineering & Robotics — 3</div>
+<div class="folder" onclick="sh('bus')">💼 Business & Management — 2</div>
+<div class="folder" onclick="sh('soc')">🏛️ Society, Economics + Public Policy — 3</div>
+<div class="folder" onclick="sh('comm')">📢 Communication & Media — 2</div>
+<div class="folder" onclick="sh('hum')">📚 Humanities, Lit & Culture — 3</div>
 </div>
 <div id="allPages">
-<div id="page-bio" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 01 — Immunology</div><div class="title">Human immunology atlas — single cell</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41590-021-01071-1" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/5z8a2Wg0Q2M?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 02 — Killifish Aging</div><div class="title">African Turquoise Killifish as aging model</div><a class="btn" href="https://www.nature.com/articles/s41586-020-03045-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 03 — Brain Atlas</div><div class="title">Allen Brain Atlas</div><a class="btn" href="https://www.nature.com/articles/s41586-023-06818-7" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-ai" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 01 — Clever Hans</div><div class="title">Clever Hans effect in ML</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://arxiv.org/abs/2004.00546" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 02 — Cancer AI</div><div class="title">AI for cancer imaging</div><a class="btn" href="https://www.nature.com/articles/s41591-019-0447-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 03 — Procedia</div><div class="title">Procedia CS — AI collection</div><a class="btn" href="https://www.sciencedirect.com/journal/procedia-computer-science" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-phy" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 01</div><div class="title">Dark matter — NASA</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-022-04496-6" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/libKVRaBBAs?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 02</div><div class="title">Dying stars + exoplanet survival</div><a class="btn" href="https://arxiv.org/abs/2107.09283" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BV0Y1F4T__k?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 03</div><div class="title">Quantum materials</div><a class="btn" href="https://arxiv.org/abs/quant-ph/0702225" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-chem" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/C0DPdy98e4c?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 01</div><div class="title">Self-healing molecular crystals</div><a class="btn" href="https://www.nature.com/articles/s41557-021-00760-9" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 02</div><div class="title">Hydrogels for delivery</div><a class="btn" href="https://www.nature.com/articles/s41578-020-00246-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 03</div><div class="title">Green aviation fuel</div><a class="btn" href="https://www.nature.com/articles/s41557-022-01082-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-clim" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 01</div><div class="title">Geoengineering</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 02</div><div class="title">Smoke water</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 03</div><div class="title">Plasma reforming</div></div></div></div>
-<div id="page-neuro" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 01</div><div class="title">Decoding words from non-invasive brain</div><a class="btn" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 02</div><div class="title">Ace-K & neotame slow planaria</div><a class="btn" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 03</div><div class="title">THEMIS / UBE2F — Mirror Neurons</div><a class="btn" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-eng" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng — Soft Robots</div><div class="title">Soft mechanism driven robots</div><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 02</div><div class="title">Robotics Control</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 03</div><div class="title">Smart Materials</div></div></div></div>
-<div id="page-bus" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 01</div><div class="title">Small business regulation</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 02</div><div class="title">Startup finance</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 03</div><div class="title">Management innovation</div></div></div></div>
-<div id="page-soc" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 01</div><div class="title">Society, Economics + Public Policy</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 02</div><div class="title">Behavioral economics</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 03</div><div class="title">Urban economics</div></div></div></div>
-<div id="page-comm" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 01</div><div class="title">Communication & Media — prosocial behaviour</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 02</div><div class="title">Digital comms</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 03</div><div class="title">Social media effect</div></div></div></div>
-<div id="page-hum" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 01</div><div class="title">Humanities, Lit & Culture</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 02</div><div class="title">Literature & Society</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 03</div><div class="title">Philosophy of Mind</div></div></div></div>
+<div id="bio" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 01 — Immunology</div><div class="title">Human immunology atlas — single cell</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch YouTube →</a><a class="btn" href="https://www.nature.com/articles/s41590-021-01071-1" target="_blank" onclick="event.stopPropagation()">Open Nature →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/5z8a2Wg0Q2M?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 02 — Killifish Aging</div><div class="title">African Turquoise Killifish as aging model</div><a class="btn" href="https://www.nature.com/articles/s41586-020-03045-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 03 — Brain Atlas</div><div class="title">Allen Brain Atlas — mouse/human mapping</div><a class="btn" href="https://www.nature.com/articles/s41586-023-06818-7" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="ai" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 01 — Clever Hans</div><div class="title">Clever Hans effect in ML — 3Blue1Brown</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://arxiv.org/abs/2004.00546" target="_blank" onclick="event.stopPropagation()">Open arXiv →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 02 — Cancer AI</div><div class="title">AI for cancer imaging</div><a class="btn" href="https://www.nature.com/articles/s41591-019-0447-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 03 — Procedia</div><div class="title">Procedia CS — AI collection</div><a class="btn" href="https://www.sciencedirect.com/journal/procedia-computer-science" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="phy" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 01 — Dark Matter</div><div class="title">Dark matter mapping — NASA explains</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-022-04496-6" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/libKVRaBBAs?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 02 — Exoplanet</div><div class="title">Dying stars + exoplanet survival</div><a class="btn" href="https://arxiv.org/abs/2107.09283" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BV0Y1F4T__k?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 03 — Quantum</div><div class="title">Quantum materials intro</div><a class="btn" href="https://arxiv.org/abs/quant-ph/0702225" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="chem" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/C0DPdy98e4c?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 01 — Self-healing crystals</div><div class="title">Self-healing molecular crystals</div><a class="btn" href="https://www.nature.com/articles/s41557-021-00760-9" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 02 — Hydrogels</div><div class="title">Hydrogels for delivery</div><a class="btn" href="https://www.nature.com/articles/s41578-020-00246-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 03 — Green Chem</div><div class="title">Green aviation fuel</div><a class="btn" href="https://www.nature.com/articles/s41557-022-01082-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="clim" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 01</div><div class="title">Climate geoengineering</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 02</div><div class="title">Smoke water</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 03</div><div class="title">Plasma reforming</div></div></div></div>
+<div id="neuro" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Nat Commun 16, 10521</div><div class="title">Decoding words from non-invasive brain recordings</div><a class="btn" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">JEI 22-080</div><div class="title">Ace-K & neotame slow planaria regeneration</div><a class="btn" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank" onclick="event.stopPropagation()">Open PDF →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Mirror Neurons</div><div class="title">THEMIS / UBE2F — Layer 3</div><a class="btn" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank" onclick="event.stopPropagation()">Open JEI →</a></div></div></div>
+<div id="eng" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng — Soft Robots</div><div class="title">Soft mechanism driven robots</div><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 02</div><div class="title">Robotics Control</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 03</div><div class="title">Smart Materials</div></div></div></div>
+<div id="bus" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 01</div><div class="title">Small business regulation</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 02</div><div class="title">Startup finance</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 03</div><div class="title">Management innovation</div></div></div></div>
+<div id="soc" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 01</div><div class="title">Society, Economics + Public Policy</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 02</div><div class="title">Behavioral economics</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 03</div><div class="title">Urban economics</div></div></div></div>
+<div id="comm" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 01</div><div class="title">Communication & Media — prosocial behaviour</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 02</div><div class="title">Digital comms</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 03</div><div class="title">Social media effect</div></div></div></div>
+<div id="hum" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 01</div><div class="title">Humanities, Lit & Culture</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 02</div><div class="title">Literature & Society</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 03</div><div class="title">Philosophy of Mind</div></div></div></div>
 </div>
-<div style="margin-top:24px"><div class="label">04 — TOOLBOX — AI ENABLED</div></div>
+<div class="label" style="margin-top:22px">04 — PRACTICE, NOT MAZE — 4 TOOLS — FOLDER VIDEOS</div>
+<div style="font-family:Instrument Serif;font-size:28px;font-weight:800;margin-top:4px">Four quiet tools — folder for videos.</div>
 <div class="toolGrid">
 <div class="toolA">
 <div class="label">A — TURN IDEA INTO PROJECT</div>
 <div class="title">Roadmap + template to copy</div>
 <div class="mini">Put idea/field → AI gives hypothesis, methods, timeline + example Abstract/Intro/Methods/Results/Discussion format — not exact research — format they can copy.</div>
 <input id="ideaInput" placeholder="Idea — e.g. How do trees become woodwind?">
-<button class="genBtn" onclick="generateRoadmap()">Generate roadmap + template</button>
-<div id="roadmapOut" style="display:none;margin-top:12px;background:#fff;border:1px dashed #a8b98a;border-radius:14px;padding:12px;font-size:12px;line-height:1.5;"></div>
+<button class="btn" style="width:100%;margin-top:10px" onclick="genRoadmap()">Generate roadmap + template</button>
+<div id="roadmapOut" style="display:none;margin-top:10px;background:#fff;border:1px dashed #a8b98a;border-radius:12px;padding:10px;font-size:12px;line-height:1.5"></div>
 </div>
 <div class="toolB">
 <div class="label">B — UNDERSTAND WORK BEHIND — FOLDER TYPE — 5 VIDEOS</div>
 <div class="title">Video library — click folder to open</div>
-<div class="folderVideo" onclick="toggleFolder('f1')"><span>📁 01 — How to Write a Paper</span><span>▶ 2 FILES</span></div>
-<div id="f1" class="folderContent">
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How Neural Networks Learn</b><br><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">What is Dark Matter? — NASA</b><br><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div>
-</div>
-<div class="folderVideo green" onclick="toggleFolder('f2')"><span>📁 02 — Methods & Reading</span><span>▶ 3 FILES</span></div>
-<div id="f2" class="folderContent">
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Mirror Neurons — Ramachandran TED</b><br><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How to Read a Paper</b><br><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Soft Robots — Nature</b><br><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank">Watch →</a></div></div>
-</div>
+<div class="folderVideo" onclick="tog('f1')"><span>📁 01 — How to Write a Paper</span><span>▶ 2 FILES</span></div>
+<div id="f1" class="folderContent"><div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How Neural Networks Learn</b><br><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div><div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">What is Dark Matter? — NASA</b><br><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div></div>
+<div class="folderVideo" onclick="tog('f2')"><span>📁 02 — Methods & Reading</span><span>▶ 3 FILES</span></div>
+<div id="f2" class="folderContent"><div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Mirror Neurons — Ramachandran TED</b></div></div><div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How to Read a Paper</b></div></div><div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Soft Robots</b></div></div></div>
 </div>
 <div class="toolC">
-<div class="label" style="color:#ffddb8;">C — MAKE ARGUMENT CLEARER</div>
-<div class="title" style="color:#fff;">Paste research — fix + weakness</div>
-<textarea id="researchInput" class="darkInput" placeholder="Paste your full research here..." style="height:200px;margin-top:12px;"></textarea>
-<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
-<button class="btn" style="background:#fff;color:#000" onclick="fixResearch('grammar')">Fix grammar</button>
-<button class="btn" style="background:#fff;color:#000" onclick="fixResearch('weak')">Find weakness</button>
-<button class="btn" style="background:#fff;color:#000" onclick="fixResearch('rephrase')">Rephrase</button>
-<button class="btn red" onclick="fixResearch('ai')">AI Detect</button>
-</div>
-<div id="fixOut" style="display:none;margin-top:12px;background:#1e1e1e;border-radius:12px;padding:12px;font-size:12px;"></div>
+<div class="label" style="color:#ffddb8">C — MAKE ARGUMENT CLEARER</div>
+<div class="title" style="color:#fff">Paste research — fix + weakness</div>
+<textarea id="researchInput" placeholder="Paste your full research here..." style="background:#1e1e1e;color:#fff;border-color:#333;height:160px;margin-top:10px"></textarea>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px"><button class="btn" style="background:#fff;color:#000" onclick="fix('grammar')">Fix grammar</button><button class="btn" style="background:#fff;color:#000" onclick="fix('weak')">Weakness</button><button class="btn" style="background:#fff;color:#000" onclick="fix('rephrase')">Rephrase</button><button class="btn red" onclick="fix('ai')">AI Detect</button></div>
+<div id="fixOut" style="display:none;margin-top:10px;background:#1e1e1e;padding:10px;border-radius:12px;font-size:12px"></div>
 </div>
 <div class="toolD">
-<div class="label">D — FIND RIGHT AUDIENCE + PROOF + TRACK</div>
-<div class="title">Where should this live?</div>
+<div class="label">D — FIND RIGHT AUDIENCE + PROOF + TRACK + REVIEW</div>
+<div class="title" style="font-size:22px">Where should this live?</div>
 <input id="q1" placeholder="What is it based upon?">
 <input id="q2" placeholder="What question are you answering?">
 <input id="q3" placeholder="References / proof">
-<textarea id="q4" placeholder="Target audience? e.g. JEI, Curiosity Journal..." style="height:70px;"></textarea>
-<button class="btn" onclick="publishResearch()">Publish + Track</button>
-<div id="pubLinks" style="display:none;margin-top:10px;background:#fff;padding:10px;border-radius:12px;font-size:11px;"><b>Publish at:</b><br>• <a href="https://emerginginvestigators.org/submit" target="_blank">JEI Submit →</a><br>• <a href="https://www.curiosity-journal.org/" target="_blank">Curiosity Journal →</a></div>
-<div id="publishFeed" style="margin-top:10px;display:grid;gap:8px;"></div>
+<textarea id="q4" placeholder="Target audience? JEI, Curiosity Journal..." style="height:60px"></textarea>
+<button class="btn" onclick="pub()">Publish + Track</button>
+<div id="pubFeed" style="margin-top:8px;display:grid;gap:6px"></div>
 </div>
 </div>
-<div class="trackerBox">
-<div class="trackerHeader">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC — REPLACES PUBLISHED PROOF</div>
-<div class="trackerTitle">Track yourself — be first</div>
-<div class="trackerDesc">This replaces "Others see this — proof not lying / No published yet — be first" — now private, not public.</div>
-<div class="trackGrid">
-<div class="trackItem" id="track-search" onclick="toggleTrack('search')"><input type="checkbox" id="cb-search" onchange="updateProgress()"> <span>🔍 Search</span></div>
-<div class="trackItem" id="track-reading" onclick="toggleTrack('reading')"><input type="checkbox" id="cb-reading" onchange="updateProgress()"> <span>📖 Reading</span></div>
-<div class="trackItem" id="track-idea" onclick="toggleTrack('idea')"><input type="checkbox" id="cb-idea" onchange="updateProgress()"> <span>💡 Idea</span></div>
-<div class="trackItem" id="track-data" onclick="toggleTrack('data')"><input type="checkbox" id="cb-data" onchange="updateProgress()"> <span>🧪 Data</span></div>
-<div class="trackItem" id="track-draft" onclick="toggleTrack('draft')"><input type="checkbox" id="cb-draft" onchange="updateProgress()"> <span>✍️ Draft</span></div>
-<div class="trackItem" id="track-submitted" onclick="toggleTrack('submitted')"><input type="checkbox" id="cb-submitted" onchange="updateProgress()"> <span>📤 Submitted</span></div>
-</div>
-<div class="trackBarWrap"><div class="trackBar" id="trackBar"></div></div>
-<div class="trackPercent" id="trackPercent">0% — Start</div>
-<div class="privateNotes"><textarea id="privateNotes" placeholder="Private notes... (only you see this, saved locally)" oninput="saveNotes()"></textarea></div>
+<div class="trackBox">
+<div class="label">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC — REPLACES PUBLISHED PROOF</div>
+<div class="title" style="font-size:18px">Track yourself — be first</div>
+<div class="mini">This replaces "Others see this — proof not lying / No published yet — be first" — now private, not public.</div>
+<div style="margin-top:10px"><span class="trackItem" id="ti-search" onclick="tt('search')"><input type="checkbox" id="ci-search"> 🔍 Search</span><span class="trackItem" id="ti-reading" onclick="tt('reading')"><input type="checkbox" id="ci-reading"> 📖 Reading</span><span class="trackItem" id="ti-idea" onclick="tt('idea')"><input type="checkbox" id="ci-idea"> 💡 Idea</span><span class="trackItem" id="ti-data" onclick="tt('data')"><input type="checkbox" id="ci-data"> 🧪 Data</span><span class="trackItem" id="ti-draft" onclick="tt('draft')"><input type="checkbox" id="ci-draft"> ✍️ Draft</span><span class="trackItem" id="ti-sub" onclick="tt('sub')"><input type="checkbox" id="ci-sub"> 📤 Submitted</span></div>
+<div class="bar"><div class="fill" id="fill"></div></div><b id="pct" style="font-size:13px;margin-top:6px;display:block">0% — Start</b>
+<textarea placeholder="Private notes... only you see" style="margin-top:8px;height:70px"></textarea>
 </div>
 <div class="reviewBox">
-<div class="label">REVIEW & FEEDBACK — SENDS TO YOUR MAIL</div>
-<div class="title">Leave a review / ask for review — goes to jamaljuweria21@gmail.com</div>
-<div class="mini" style="margin-bottom:8px;">User's review will open their mail app and send to you. No backend needed — works instantly.</div>
-<input id="reviewName" placeholder="Your name">
-<input id="reviewEmail" placeholder="Your email (for reply)">
-<select id="reviewType"><option>⭐ Review / Feedback</option><option>❓ Question about paper</option><option>🤝 Request for collaboration</option><option>🐛 Bug report</option></select>
-<textarea id="reviewText" placeholder="Write your review / feedback here... Be honest, be first." style="height:100px;"></textarea>
-<button class="btn red" style="width:100%; padding:12px; font-size:13px; margin-top:12px;" onclick="sendReview()">📧 Send Review to jamaljuweria21@gmail.com</button>
-<div id="reviewStatus" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px; font-size:12px; color:#2e7d32;"></div>
+<div class="label">REVIEW & FEEDBACK</div>
+<div class="title">Leave a review — helps others</div>
+<div class="mini">Your feedback is private — reviewed by team</div>
+<input id="rn" placeholder="Your name">
+<select id="rt"><option>⭐ Review / Feedback</option><option>❓ Question</option><option>🤝 Collaboration</option><option>🐛 Bug report</option></select>
+<textarea id="rv" placeholder="Write your honest review here..." style="height:90px"></textarea>
+<button class="btn red" style="width:100%;padding:12px;margin-top:10px" onclick="sendReview()">📧 Submit Review</button>
+<div id="rs" style="display:none;margin-top:10px;padding:10px;background:#e8f5e9;border-radius:12px;font-size:12px;color:#2e7d32"></div>
 </div>
 </div>
 <script>
-function showField(id){
-  document.querySelectorAll('.paperBox').forEach(p=>p.style.display='none');
-  document.querySelectorAll('.folder').forEach(f=>f.classList.remove('active'));
-  const el=document.getElementById('page-'+id);
-  if(el){ el.style.display='grid'; }
-  const fld=document.querySelector(`.folder[data-id="${id}"]`);
-  if(fld) fld.classList.add('active');
-  el.scrollIntoView({behavior:'smooth',block:'start'});
-}
-function selectCard(card){ card.classList.toggle('selected'); }
-function toggleFolder(id){ document.getElementById(id).classList.toggle('open'); }
-function generateRoadmap(){
-  const idea=document.getElementById('ideaInput').value||'How do trees become woodwind?';
-  const out=document.getElementById('roadmapOut');
-  out.style.display='block';
-  out.innerHTML='<b>Roadmap for: '+idea+'</b><br><br><b>Hypothesis:</b> '+idea+' can be tested.<br><br><b>Template:</b><br>Abstract: This paper explores '+idea+'...<br>Intro: Background...<br>Methods: We used...<br>Results: Found...<br>Discussion: Implications...<br><br><span style="color:#a65a32;font-size:10px;">⚠️ Not exact research — format they can copy.</span>';
-}
-function fixResearch(type){
-  const t=document.getElementById('researchInput').value||'Paste first';
-  const o=document.getElementById('fixOut');
-  o.style.display='block';
-  if(type==='grammar') o.innerHTML='<b>Fixed grammar:</b><br>'+t.replace(/\bi\b/g,'I').slice(0,600);
-  if(type==='weak') o.innerHTML='<b>Weakness:</b><br>• Needs citations<br>• Control missing<br>• Conclusion vague';
-  if(type==='rephrase') o.innerHTML='<b>Rephrased:</b><br>'+t.slice(0,200);
-  if(type==='ai') o.innerHTML='<b>AI Detection:</b> ~14% AI-like';
-}
-function publishResearch(){
-  const q1=document.getElementById('q1').value;
-  const q2=document.getElementById('q2').value;
-  if(!q1||!q2){ alert('Fill What is it based upon? and What question?'); return; }
-  const feed=document.getElementById('publishFeed');
-  const div=document.createElement('div');
-  div.style.cssText='background:#fff;padding:10px;border-radius:12px;border:1px solid #a8c9a0;font-size:12px;';
-  div.innerHTML='<b>Published:</b> '+q1+'<br><i>Question:</i> '+q2;
-  feed.prepend(div);
-  document.getElementById('pubLinks').style.display='block';
-  updateProgress();
-}
-function toggleTrack(name){
-  const cb=document.getElementById('cb-'+name);
-  cb.checked=!cb.checked;
-  updateProgress();
-}
-function updateProgress(){
-  const names=['search','reading','idea','data','draft','submitted'];
-  let count=0;
-  names.forEach(n=>{
-    const cb=document.getElementById('cb-'+n);
-    const item=document.getElementById('track-'+n);
-    if(cb.checked){ count++; item.classList.add('checked'); } else { item.classList.remove('checked'); }
-  });
-  const pct=Math.round(count/6*100);
-  document.getElementById('trackBar').style.width=pct+'%';
-  let txt='0% — Start';
-  if(pct>0 && pct<20) txt=pct+'% — Just started';
-  else if(pct<40) txt=pct+'% — Searching';
-  else if(pct<60) txt=pct+'% — Idea forming';
-  else if(pct<80) txt=pct+'% — Drafting';
-  else if(pct<100) txt=pct+'% — Almost there';
-  else txt='100% — Submitted! Be first!';
-  document.getElementById('trackPercent').innerText=txt;
-  try{ localStorage.setItem('curio_progress', JSON.stringify(names.map(n=>document.getElementById('cb-'+n).checked))); localStorage.setItem('curio_notes', document.getElementById('privateNotes').value); }catch(e){}
-}
-function saveNotes(){
-  try{ localStorage.setItem('curio_notes', document.getElementById('privateNotes').value); }catch(e){}
-}
-try{
-  const saved=JSON.parse(localStorage.getItem('curio_progress')||'[]');
-  const names=['search','reading','idea','data','draft','submitted'];
-  saved.forEach((v,i)=>{ if(v && names[i]) document.getElementById('cb-'+names[i]).checked=true; });
-  document.getElementById('privateNotes').value=localStorage.getItem('curio_notes')||'';
-  updateProgress();
-}catch(e){}
+function sh(id){document.querySelectorAll('.paperBox').forEach(p=>p.style.display='none');document.querySelectorAll('.folder').forEach(f=>f.classList.remove('active'));let el=document.getElementById(id);if(el){el.style.display='grid';el.classList.add('show')}event.currentTarget.classList.add('active');el.scrollIntoView({behavior:'smooth'})}
+function tog(id){document.getElementById(id).classList.toggle('open')}
+function genRoadmap(){let idea=document.getElementById('ideaInput').value||'How do trees become woodwind?';let out=document.getElementById('roadmapOut');out.style.display='block';out.innerHTML='<b>Roadmap for: '+idea+'</b><br><br><b>Hypothesis:</b> '+idea+' can be tested via comparative analysis.<br><br><b>Methods:</b> 1. Literature review 2. Sample collection 3. Analysis 4. Discussion<br><br><b>Timeline:</b> W1 Idea, W2 Reading, W3 Data, W4 Draft<br><br><b>Template to copy:</b><br><i>Abstract:</i> This paper explores '+idea+'...<br><i>Intro:</i> Background on '+idea+'...<br><i>Methods:</i> We used...<br><i>Results:</i> Found that...<br><i>Discussion:</i> Implications...<br><br><span style="font-size:10px;color:#a65a32">⚠️ Not exact research — format they can copy.</span>'}
+function fix(t){let txt=document.getElementById('researchInput').value||'Paste first';let o=document.getElementById('fixOut');o.style.display='block';if(t=='grammar')o.innerHTML='<b>Fixed:</b> '+txt.replace(/\bi\b/g,'I').slice(0,500);if(t=='weak')o.innerHTML='<b>Weakness:</b><br>• Needs 3-5 citations<br>• Control missing<br>• Conclusion vague';if(t=='rephrase')o.innerHTML='<b>Rephrased:</b> '+txt.slice(0,200);if(t=='ai')o.innerHTML='<b>AI:</b> ~14% AI-like — add personal notes'}
+function pub(){let q1=document.getElementById('q1').value;let q2=document.getElementById('q2').value;if(!q1||!q2){alert('Fill What is it based upon? and Question');return}let f=document.getElementById('pubFeed');let d=document.createElement('div');d.style.cssText='background:#fff;padding:8px;border-radius:10px;border:1px solid #a8c9a0;font-size:12px';d.innerHTML='<b>'+q1+'</b><br>'+q2.slice(0,80);f.prepend(d);tt('idea')}
+function tt(n){let id=n=='sub'?'sub':n;let cb=document.getElementById('ci-'+id);cb.checked=!cb.checked;upd()}
+function upd(){let ns=['search','reading','idea','data','draft','sub'],c=0;ns.forEach(n=>{let cb=document.getElementById('ci-'+n);let el=document.getElementById('ti-'+(n=='sub'?'sub':n));if(!el) el=document.getElementById('ti-'+n);if(cb.checked){c++;el.classList.add('checked')}else el.classList.remove('checked')});let pct=Math.round(c/6*100);document.getElementById('fill').style.width=pct+'%';document.getElementById('pct').innerText=pct+'% — '+(pct==0?'Start':pct<100?'Progress':'Submitted! Be first!')}
 function sendReview(){
-  const name=document.getElementById('reviewName').value||'Anonymous';
-  const email=document.getElementById('reviewEmail').value||'no email';
-  const type=document.getElementById('reviewType').value;
-  const text=document.getElementById('reviewText').value;
-  if(!text){ alert('Write your review first!'); return; }
-  const subject=encodeURIComponent('[Curio.Paper Review] '+type+' from '+name);
-  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nType: '+type+'\n\nReview:\n'+text+'\n\n---\nSent from curio.paper');
-  const mailto='mailto:jamaljuweria21@gmail.com?subject='+subject+'&body='+body;
-  window.location.href=mailto;
-  const status=document.getElementById('reviewStatus');
-  status.style.display='block';
-  status.innerHTML='✅ Opening your mail app to send review to <b>jamaljuweria21@gmail.com</b><br>If mail app does not open, copy this:<br><br><b>To:</b> jamaljuweria21@gmail.com<br><b>Subject:</b> '+decodeURIComponent(subject)+'<br><b>Body:</b> '+text.slice(0,200)+'...';
-  try{ const reviews=JSON.parse(localStorage.getItem('curio_reviews')||'[]'); reviews.push({name,email,type,text,date:new Date().toISOString()}); localStorage.setItem('curio_reviews', JSON.stringify(reviews)); }catch(e){}
+  let name=document.getElementById('rn').value||'Anonymous';
+  let type=document.getElementById('rt').value;
+  let text=document.getElementById('rv').value;
+  if(!text){alert('Write review first');return}
+  let subject=encodeURIComponent('[Curio Review] '+type+' from '+name);
+  let body=encodeURIComponent('Name: '+name+'\nType: '+type+'\n\nReview:\n'+text);
+  let email='jamaljuweria21@gmail.com';
+  window.location.href='mailto:'+email+'?subject='+subject+'&body='+body;
+  let rs=document.getElementById('rs');
+  rs.style.display='block';
+  rs.innerHTML='✅ Review submitted! Thanks '+name+' — our team will review it privately.';
 }
 </script>
 </body>
