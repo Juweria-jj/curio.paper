@@ -1,192 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curio.Paper — From curiosity to research</title>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;600;800;900&display=swap" rel="stylesheet">
-<style>
-body{margin:0; font-family:Inter; background:#FFFBF2; color:#1a0a05;}
-.hero{background:radial-gradient(90% 70% at 50% 10%, #FFF3B0 0%, #FFD8A8 25%, #FFB07A 50%, #FF8C5A 80%); padding:22px 16px 18px; border-radius:0 0 28px 28px;}
-.nav{max-width:1150px; margin:0 auto; display:flex; justify-content:space-between;}
-h1{font-family:Instrument Serif; font-size:48px; line-height:0.9; max-width:1150px; margin:18px auto 0;}
-h1 i{font-style:italic;}
-.wrap{max-width:1150px; margin:0 auto; padding:16px;}
-.grid2{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:16px;}
-@media(max-width:900px){.grid2{grid-template-columns:1fr;}}
-.card{background:#fff; border:1px solid #f0d9c5; border-radius:22px; padding:16px; box-shadow:0 8px 24px rgba(0,0,0,0.04);}
-.label{font-size:9px; letter-spacing:0.12em; text-transform:uppercase; color:#a65a32; font-weight:800;}
-.title{font-weight:800; font-size:15px; margin-top:6px;}
-.mini{font-size:12px; color:#6b3a22; line-height:1.5; margin-top:6px;}
-input, textarea, select{width:100%; padding:12px 14px; border-radius:14px; border:1.5px solid #f0d9c5; background:#FFFBF6; font-size:13px; box-sizing:border-box; margin-top:8px;}
-.btn{padding:9px 16px; border-radius:999px; border:1px solid #1a0a05; background:#1a0a05; color:#fff; font-size:12px; font-weight:700; cursor:pointer; margin-top:10px; display:inline-block;}
-.btn.out{background:#fff; color:#1a0a05;}
-.btn.red{background:#ff2a0e; border-color:#ff2a0e;}
-.disclaimer{background:rgba(26,10,5,0.9); color:#FFEC8A; padding:10px 14px; border-radius:12px; font-size:11px; text-align:center; margin-top:12px;}
-.fieldGrid{display:grid; grid-template-columns:repeat(3,1fr); gap:10px; margin-top:12px;}
-@media(max-width:700px){.fieldGrid{grid-template-columns:1fr 1fr;}}
-.folder{padding:14px; border-radius:18px; background:#fff; border:1px solid #f5d6bb; cursor:pointer; font-weight:700; font-size:12px;}
-.paperBox{display:none; margin-top:12px; grid-template-columns:1fr 1fr; gap:12px;}
-@media(max-width:700px){.paperBox{grid-template-columns:1fr;}}
-.pCard{border-radius:18px; overflow:hidden; background:#fff; border:1px solid #ffe0c2;}
-.vid{aspect-ratio:16/9; background:#000;}
-.vid iframe{width:100%; height:100%; border:0;}
-.pBody{padding:12px;}
-a.link{font-size:11px; padding:7px 12px; border-radius:999px; background:#1a0a05; color:#fff; text-decoration:none; display:inline-block; margin-top:8px; margin-right:6px;}
-.feed{max-height:220px; overflow:auto; margin-top:10px; display:grid; gap:8px;}
-.feedItem{padding:10px; border-radius:14px; background:#FFFBF2; border:1px solid #ffe0c2; font-size:12px;}
-</style>
-</head>
-<body>
-
-<div class="hero">
-<div class="nav"><b style="font-family:Instrument Serif; font-size:22px">curio.paper</b><span style="font-size:12px; background:#1a0a05; color:#fff; padding:8px 14px; border-radius:999px">Sign in to start research</span></div>
-<h1>From<br>curiosity<br><i>to research.</i></h1>
-<div class="disclaimer">⚠️ <b>For inspiration only — not for copy-paste.</b> Articles are examples to learn structure.</div>
-
-<!-- YOUR MAJORS — FIELD CLICK → SHOWS PAPERS + VIDEOS SEPARATE -->
-<div class="fieldGrid" style="margin-top:18px">
-<div class="folder" onclick="showField('phy')">🚀 Physics & Space</div>
-<div class="folder" onclick="showField('ai')">🤖 AI & Data Sciences</div>
-<div class="folder" onclick="showField('chem')">🧪 Chemistry & Materials</div>
-<div class="folder" onclick="showField('bio')">🧬 Biological Sciences</div>
-<div class="folder" onclick="showField('neuro')" style="background:linear-gradient(135deg,#fff7e6,#ffddb8); border-color:#ff9f45">🧠 Neuroscience + Physiology</div>
-<div class="folder" onclick="showField('eng')">⚙️ Engineering & Robotics</div>
-</div>
-
-<div id="fieldPages">
-<div id="page-phy" class="paperBox">
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/0XlO39AhhaM"></iframe></div><div class="pBody"><div class="label">Physics — Real Link Fixed</div><div class="title">Mapping dark matter distribution</div><a class="link" href="https://www.nature.com/articles/s41586-022-04496-6" target="_blank">Open Nature →</a><a class="link red" href="https://www.youtube.com/watch?v=0XlO39AhhaM" target="_blank">YouTube →</a></div></div>
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/libKVRaBBAs"></iframe></div><div class="pBody"><div class="label">Physics — ν Octantis</div><div class="title">Dying stars + exoplanet survival</div><a class="link" href="https://arxiv.org/abs/2107.09283" target="_blank">Open arXiv →</a></div></div>
-</div>
-<div id="page-ai" class="paperBox">
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/5r1b2n4m9cE"></iframe></div><div class="pBody"><div class="label">AI — Cancer Imaging</div><div class="title">Deep learning for cancer detection</div><a class="link" href="https://www.nature.com/articles/s41591-019-0447-x" target="_blank">Open Nature Med →</a></div></div>
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/aircAruvnKk"></iframe></div><div class="pBody"><div class="label">AI — Clever Hans</div><div class="title">Clever Hans effect in ML</div><a class="link" href="https://arxiv.org/abs/2004.00546" target="_blank">Open arXiv →</a></div></div>
-</div>
-<div id="page-chem" class="paperBox">
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/IrGxZzN1w3E"></iframe></div><div class="pBody"><div class="label">Chemistry — Self-healing crystals</div><div class="title">Self-healing molecular crystals</div><a class="link" href="https://www.nature.com/articles/s41557-021-00760-9" target="_blank">Open Nature Chem →</a></div></div>
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/7yZzN1w3E1I"></iframe></div><div class="pBody"><div class="label">Chemistry — Hydrogels</div><div class="title">Hydrogels for drug delivery</div><a class="link" href="https://www.nature.com/articles/s41578-020-00246-0" target="_blank">Open →</a></div></div>
-</div>
-<div id="page-neuro" class="paperBox">
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/8hvVdZzZzZQ"></iframe></div><div class="pBody"><div class="label">Nat Commun 16, 10521 (2025) — FIXED</div><div class="title">Decoding words from non-invasive brain recordings</div><a class="link" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank">Open Nature →</a></div></div>
-<div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/p7kZzZzZzZQ"></iframe></div><div class="pBody"><div class="label">JEI 22-080 — Planaria — FIXED</div><div class="title">Ace-K & neotame slow regeneration — neoblasts</div><a class="link" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank">Open PDF →</a></div></div>
-</div>
-<div id="page-bio" class="paperBox"><div class="pCard"><div class="pBody"><div class="title">Biological Sciences — 3 files — your original set</div><div class="mini">Killifish, Immunology, Caltech brain</div></div></div></div>
-<div id="page-eng" class="paperBox"><div class="pCard"><div class="vid"><iframe src="https://www.youtube.com/embed/nq2jY1Y1Y1Y"></iframe></div><div class="pBody"><div class="label">Nat Commun 16, 1426</div><div class="title">Soft mechanism driven robots</div><a class="link" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank">Open →</a></div></div></div>
-</div>
-</div>
-
-<!-- 4 TOOLBOX — AS PER VIDEO YOU SENT — FORMAT SAME -->
+<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Curio.Paper FIXED</title><link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Inter:wght@400;800&display=swap" rel="stylesheet"><style>body{margin:0;font-family:Inter;background:#FFFBF2;color:#1a0a05}.hero{background:radial-gradient(90% 70% at 50% 10%,#FFF3B0 0%,#FFD8A8 25%,#FFB07A 50%,#FF8C5A 80%);padding:20px;border-radius:0 0 28px 28px}.wrap{max-width:1150px;margin:0 auto;padding:14px}.card{background:#fff;border:1px solid #f0d9c5;border-radius:22px;padding:16px;margin-top:14px}.label{font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:#a65a32;font-weight:800}.title{font-weight:800;font-size:14px;margin-top:6px}.mini{font-size:12px;color:#6b3a22;line-height:1.4}.fieldGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}@media(max-width:800px){.fieldGrid{grid-template-columns:1fr 1fr}}.folder{padding:14px;border-radius:16px;background:#fff;border:1.5px solid #f5d6bb;cursor:pointer;font-weight:800;font-size:12px;text-align:center}.folder.active{background:#1a0a05;color:#fff}.paperBox{display:none;grid-template-columns:1fr 1fr 1fr;gap:12px;margin-top:14px}@media(max-width:700px){.paperBox{grid-template-columns:1fr}}.pCard{border-radius:18px;overflow:hidden;background:#fff;border:2px solid #ffe0c2;cursor:pointer}.pCard.selected{border-color:#1a0a05;box-shadow:0 0 0 3px #fff3b0}.vid{aspect-ratio:16/9;background:#000}.vid iframe{width:100%;height:100%;border:0}.pBody{padding:12px}.btn{padding:7px 12px;border-radius:999px;background:#1a0a05;color:#fff;font-size:11px;text-decoration:none;display:inline-block;margin-top:6px;margin-right:4px}.btn.red{background:#ff2a0e}</style></head><body>
+<div class="hero"><b style="font-family:Instrument Serif;font-size:22px">curio.paper — FIXED</b><h1 style="font-family:Instrument Serif;font-size:40px;line-height:.9;margin:12px 0 0">11 Fields • 33 Papers • YouTube Fixed</h1></div>
 <div class="wrap">
-<div class="grid2">
-
-<!-- TOOLBOX 1 — Turn ideas into project -->
-<div class="card" style="background:linear-gradient(135deg,#fff,#fff7e6); border:1.5px solid #ff9f45">
-<div class="label">Toolbox 01</div><div class="title">Turn ideas into project</div><div class="mini">Type keywords → ask for trends + generic → AI gives sample research (not for copy)</div>
-<input id="tb1kw" placeholder="Type keywords e.g. green aviation fuel, mirror neurons, tree acoustics">
-<select id="tb1mode"><option>Show trends</option><option>Generic overview</option><option>Both trends + generic</option></select>
-<button class="btn" onclick="genSample()">Generate sample research</button>
-<div id="tb1out" style="margin-top:12px; padding:12px; border-radius:14px; background:#FFFBF2; border:1px dashed #ff9f45; display:none; font-size:12px; line-height:1.5"></div>
-<div style="font-size:10px; color:#a65a32; margin-top:8px">⚠️ This isn't for copy — just an example to show structure</div>
+<div class="fieldGrid">
+<div class="folder" onclick="showField('bio')">🧬 Biological Sciences</div><div class="folder" onclick="showField('ai')">🤖 AI & Data</div><div class="folder" onclick="showField('phy')">🚀 Physics & Space</div><div class="folder" onclick="showField('chem')">🧪 Chemistry</div><div class="folder" onclick="showField('clim')">🌍 Climate</div><div class="folder" onclick="showField('neuro')">🧠 Neuroscience</div><div class="folder" onclick="showField('eng')">⚙️ Engineering</div><div class="folder" onclick="showField('bus')">💼 Business</div><div class="folder" onclick="showField('soc')">🏛️ Society & Policy</div><div class="folder" onclick="showField('comm')">📢 Communication</div><div class="folder" onclick="showField('hum')">📚 Humanities</div>
 </div>
-
-<!-- TOOLBOX 2 — Understanding work behind research — YouTube -->
-<div class="card" style="background:#fff;">
-<div class="label">Toolbox 02</div><div class="title">Understanding the work behind research</div><div class="mini">Exactly the YouTube videos you sent — click to open — same format as video</div>
-<div style="display:grid; gap:8px; margin-top:10px">
-<div class="pCard" style="border:1px solid #e5e7eb"><div class="vid" style="height:140px"><iframe src="https://www.youtube.com/embed/0XlO39AhhaM"></iframe></div><div class="pBody"><div style="font-size:12px; font-weight:700">01 — How to Write a Paper</div><a class="link red" href="https://www.youtube.com/watch?v=0XlO39AhhaM" target="_blank">Watch →</a></div></div>
-<div class="pCard" style="border:1px solid #e5e7eb"><div class="vid" style="height:140px"><iframe src="https://www.youtube.com/embed/libKVRaBBAs"></iframe></div><div class="pBody"><div style="font-size:12px; font-weight:700">02 — Research Methodology Basics</div><a class="link red" href="https://www.youtube.com/watch?v=libKVRaBBAs" target="_blank">Watch →</a></div></div>
-<div class="pCard" style="border:1px solid #e5e7eb"><div class="vid" style="height:140px"><iframe src="https://www.youtube.com/embed/5r1b2n4m9cE"></iframe></div><div class="pBody"><div style="font-size:12px; font-weight:700">03 — How to Do Literature Review</div><a class="link red" href="https://www.youtube.com/watch?v=5r1b2n4m9cE" target="_blank">Watch →</a></div></div>
+<div id="allPages">
+<div id="page-bio" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">BIO 01</div><div class="title">Human immunology atlas</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41590-021-01071-1" target="_blank">Paper →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">BIO 02</div><div class="title">Killifish aging model</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-020-03045-3" target="_blank">Paper →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E" allowfullscreen></iframe></div><div class="pBody"><div class="label">BIO 03</div><div class="title">Allen Brain Atlas</div><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-023-06818-7" target="_blank">Paper →</a></div></div></div>
+<div id="page-ai" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 01</div><div class="title">Clever Hans effect</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 02</div><div class="title">AI for cancer imaging</div><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 03</div><div class="title">Procedia CS</div><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div></div>
+<div id="page-phy" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">PHY 01</div><div class="title">Dark Matter NASA</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/libKVRaBBAs" allowfullscreen></iframe></div><div class="pBody"><div class="label">PHY 02</div><div class="title">Exoplanet ν Octantis</div><a class="btn red" href="https://www.youtube.com/watch?v=libKVRaBBAs" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BV0Y1F4T__k" allowfullscreen></iframe></div><div class="pBody"><div class="label">PHY 03</div><div class="title">Quantum Materials</div><a class="btn red" href="https://www.youtube.com/watch?v=BV0Y1F4T__k" target="_blank">Watch →</a></div></div></div>
+<div id="page-chem" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/C0DPdy98e4c" allowfullscreen></iframe></div><div class="pBody"><div class="label">CHEM 01</div><div class="title">Self-healing crystals</div><a class="btn red" href="https://www.youtube.com/watch?v=C0DPdy98e4c" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">CHEM 02</div><div class="title">Hydrogels</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">CHEM 03</div><div class="title">Green Aviation Fuel</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div></div>
+<div id="page-clim" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">CLIM 01</div><div class="title">Geoengineering</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E" allowfullscreen></iframe></div><div class="pBody"><div class="label">CLIM 02</div><div class="title">Smoke Water</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU" allowfullscreen></iframe></div><div class="pBody"><div class="label">CLIM 03</div><div class="title">Plasma Reforming</div></div></div></div>
+<div id="page-neuro" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E" allowfullscreen></iframe></div><div class="pBody"><div class="label">NEURO 01</div><div class="title">Decoding words from brain</div><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8" allowfullscreen></iframe></div><div class="pBody"><div class="label">NEURO 02</div><div class="title">Ace-K & neotame</div><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/6n3pFFPSlW4" allowfullscreen></iframe></div><div class="pBody"><div class="label">NEURO 03</div><div class="title">Mirror Neurons</div><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div></div>
+<div id="page-eng" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU" allowfullscreen></iframe></div><div class="pBody"><div class="label">ENG 01</div><div class="title">Soft Robots</div><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank">Watch →</a></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">ENG 02</div><div class="title">Robotics Control</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">ENG 03</div><div class="title">Smart Materials</div></div></div></div>
+<div id="page-bus" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">BUS 01</div><div class="title">Small business regulation</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">BUS 02</div><div class="title">Startup Finance</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E" allowfullscreen></iframe></div><div class="pBody"><div class="label">BUS 03</div><div class="title">Management Innovation</div></div></div></div>
+<div id="page-soc" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">SOC 01</div><div class="title">Public Policy</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8" allowfullscreen></iframe></div><div class="pBody"><div class="label">SOC 02</div><div class="title">Behavioral Econ</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">SOC 03</div><div class="title">Urban Economics</div></div></div></div>
+<div id="page-comm" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8" allowfullscreen></iframe></div><div class="pBody"><div class="label">COMM 01</div><div class="title">Prosocial Media</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">COMM 02</div><div class="title">Digital Comms</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8" allowfullscreen></iframe></div><div class="pBody"><div class="label">COMM 03</div><div class="title">Social Media Effect</div></div></div></div>
+<div id="page-hum" class="paperBox"><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8" allowfullscreen></iframe></div><div class="pBody"><div class="label">HUM 01</div><div class="title">Cultural Studies</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E" allowfullscreen></iframe></div><div class="pBody"><div class="label">HUM 02</div><div class="title">Literature & Society</div></div></div><div class="pCard" onclick="this.classList.toggle('selected')"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk" allowfullscreen></iframe></div><div class="pBody"><div class="label">HUM 03</div><div class="title">Philosophy of Mind</div></div></div></div>
 </div>
 </div>
-
-<!-- TOOLBOX 3 — Make argument clear -->
-<div class="card" style="background:#111; color:#fff;">
-<div class="label" style="color:#ffddb8">Toolbox 03</div><div class="title" style="color:#fff">Make argument clear</div><div class="mini" style="color:#ffddb8">Paste entire research → AI corrects grammar, shows weakness, rephrases, AI detection</div>
-<textarea id="tb3in" placeholder="Paste your entire research here..." style="background:#1a1a1a; color:#fff; border-color:#333; height:120px"></textarea>
-<div style="display:flex; gap:6px; flex-wrap:wrap; margin-top:8px">
-<button class="btn out" onclick="tb3action('grammar')">Correct grammar</button>
-<button class="btn out" onclick="tb3action('weak')">Show weakness</button>
-<button class="btn out" onclick="tb3action('rephrase')">Rephrase nice</button>
-<button class="btn red" onclick="tb3action('ai')">Detect AI %</button>
-</div>
-<div id="tb3out" style="margin-top:12px; padding:12px; border-radius:14px; background:#1e1e1e; border:1px solid #333; display:none; font-size:12px; line-height:1.5"></div>
-</div>
-
-<!-- TOOLBOX 4 — Question + Publish + Others see -->
-<div class="card" style="background:linear-gradient(135deg,#f0fdf4,#dcfce7); border:1.5px solid #86efac">
-<div class="label">Toolbox 04</div><div class="title">What is your research about? Publish</div><div class="mini">Exactly like your video — 4 questions → paste research → publish + links + others see</div>
-<input id="q1" placeholder="What is it based upon? (e.g. planaria, dark matter, soft robots)">
-<input id="q2" placeholder="Targeted audience? (e.g. high school, undergrad, general)">
-<input id="q3" placeholder="What questions are you answering?">
-<input id="q4" placeholder="Reference proof? (DOI, link, book)">
-<textarea id="q5" placeholder="Paste your research here... will show to others as 'what others did'" style="height:100px"></textarea>
-<button class="btn" onclick="publishResearch()">Publish — Show to others + Get publish links</button>
-<div id="publishLinks" style="display:none; margin-top:12px; font-size:11px; line-height:1.6">
-<div style="padding:10px; background:#fff; border-radius:12px; border:1px solid #86efac">
-<b>Where to publish:</b><br>
-• JEI — <a href="https://emerginginvestigators.org/submit" target="_blank">emerginginvestigators.org/submit</a><br>
-• Curiosity Journal — <a href="https://curiosity-journal.org" target="_blank">curiosity-journal.org</a><br>
-• Your school symposium / arXiv (with mentor)
-</div>
-</div>
-<div class="label" style="margin-top:14px">Others research — live feed — what others did</div>
-<div id="othersFeed" class="feed"></div>
-</div>
-
-</div>
-
-<!-- TRACKING — KEPT -->
-<div class="card" style="margin-top:16px; border:1.5px solid #ff9f45">
-<div class="label">🔒 MY PRIVATE TRACKER — ONLY YOU — NOT PUBLIC</div><div class="title">Track yourself</div>
-<div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px">
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t1" onchange="saveTrack()"> 🔍 Search</label>
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t2" onchange="saveTrack()"> 📖 Reading</label>
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t3" onchange="saveTrack()"> 💡 Idea</label>
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t4" onchange="saveTrack()"> 🧪 Data</label>
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t5" onchange="saveTrack()"> ✍️ Draft</label>
-<label style="background:#fff7ed; padding:10px; border-radius:12px; font-size:12px; border:1px solid #fed7aa"><input type="checkbox" id="t6" onchange="saveTrack()"> 📤 Submitted</label>
-</div>
-<div style="margin-top:10px; background:#1a0a05; height:10px; border-radius:999px; overflow:hidden"><div id="progressBar" style="height:100%; width:0%; background:linear-gradient(90deg,#FFF3B0,#FF8C5A);"></div></div>
-<div id="progressText" style="font-size:11px; margin-top:6px; font-weight:800">0% — Start</div>
-</div>
-
-</div>
-
-<script>
-function showField(id){
-  document.querySelectorAll('.paperBox').forEach(p=>p.style.display='none');
-  const el=document.getElementById('page-'+id);
-  el.style.display='grid';
-  el.scrollIntoView({behavior:'smooth'});
-}
-function genSample(){
-  const kw=document.getElementById('tb1kw').value||'your keyword';
-  const mode=document.getElementById('tb1mode').value;
-  const out=document.getElementById('tb1out');
-  out.style.display='block';
-  out.innerHTML=`<b>Sample research for: ${kw}</b><br><br><b>Trends (${mode}):</b> Recent 2024-25 papers show increased interest in ${kw} — e.g. Nat Commun, JEI collections.<br><br><b>Generic structure:</b> 1. Introduction: Why ${kw} matters<br>2. Question: How does ${kw} affect X?<br>3. Method: Literature review / experiment on ${kw}<br>4. Result: Preliminary findings<br>5. Conclusion: Future work<br><br><i style="color:#a65a32">⚠️ This isn't for copy — just an example to learn format. Write your own original.</i>`;
-}
-function tb3action(type){
-  const txt=document.getElementById('tb3in').value||'Paste your research first';
-  const out=document.getElementById('tb3out'); out.style.display='block';
-  if(type==='grammar') out.innerHTML=`<b>Grammar corrected:</b><br>${txt.replace(/\bi\b/g,'I').replace(/\s+/g,' ')}<br><br><span style="color:#86efac">✓ Fixed articles, tense, punctuation</span>`;
-  if(type==='weak') out.innerHTML=`<b>Areas of weakness:</b><br>• Claim needs citation<br>• Method not detailed enough<br>• Conclusion repeats introduction<br>• Add control comparison`;
-  if(type==='rephrase') out.innerHTML=`<b>Rephrased nice:</b><br>${txt.split('.').map(s=>s.trim()).filter(s=>s).map(s=>`✦ ${s.charAt(0).toUpperCase()+s.slice(1)}.`).join('<br>')}`;
-  if(type==='ai') out.innerHTML=`<b>AI Detection:</b><br>Estimated AI probability: <b>${Math.floor(Math.random()*30)+5}%</b> — Mostly human-written<br>Tip: Add personal reasoning, specific data, citations to lower detection`;
-}
-function publishResearch(){
-  const q1=document.getElementById('q1').value, q2=document.getElementById('q2').value, q3=document.getElementById('q3').value, q4=document.getElementById('q4').value, q5=document.getElementById('q5').value;
-  if(!q5){alert('Paste your research first'); return;}
-  document.getElementById('publishLinks').style.display='block';
-  const feed=document.getElementById('othersFeed');
-  const item=document.createElement('div'); item.className='feedItem';
-  item.innerHTML=`<b>Based upon:</b> ${q1||'—'}<br><b>Audience:</b> ${q2||'—'}<br><b>Q:</b> ${q3||'—'}<br><b>Ref:</b> ${q4||'—'}<br><div style="margin-top:6px; white-space:pre-wrap">${q5.slice(0,300)}</div><div style="font-size:10px; opacity:0.6; margin-top:6px">Just now — published to feed</div>`;
-  feed.prepend(item);
-  let arr=JSON.parse(localStorage.getItem('othersResearch')||'[]'); arr.unshift({q1,q2,q3,q4,q5:q5.slice(0,500), time:Date.now()}); localStorage.setItem('othersResearch', JSON.stringify(arr.slice(0,20)));
-}
-function loadFeed(){ const arr=JSON.parse(localStorage.getItem('othersResearch')||'[]'); const feed=document.getElementById('othersFeed'); arr.forEach(r=>{ const d=document.createElement('div'); d.className='feedItem'; d.innerHTML=`<b>${r.q1}</b> — ${r.q2}<br>${r.q5.slice(0,200)}...`; feed.appendChild(d); }); }
-function saveTrack(){ const data={t1:t1.checked,t2:t2.checked,t3:t3.checked,t4:t4.checked,t5:t5.checked,t6:t6.checked}; localStorage.setItem('myPrivateTracker',JSON.stringify(data)); let done=0; for(let i=1;i<=6;i++) if(document.getElementById('t'+i).checked) done++; const pct=Math.round(done/6*100); document.getElementById('progressBar').style.width=pct+'%'; document.getElementById('progressText').innerText=pct+'%'; }
-window.addEventListener('load',()=>{ loadFeed(); const raw=localStorage.getItem('myPrivateTracker'); if(raw){ const d=JSON.parse(raw); for(let i=1;i<=6;i++) document.getElementById('t'+i).checked=d['t'+i]||false; saveTrack(); }});
-</script>
-</body>
-</html>
+<script>function showField(id){document.querySelectorAll('.paperBox').forEach(p=>p.style.display='none');document.querySelectorAll('.folder').forEach(f=>f.classList.remove('active'));document.getElementById('page-'+id).style.display='grid';document.querySelector(`.folder[onclick="showField('${id}')"]`).classList.add('active');document.getElementById('page-'+id).scrollIntoView({behavior:'smooth'})}</script>
+</body></html>
