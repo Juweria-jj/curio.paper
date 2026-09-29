@@ -26,31 +26,36 @@ body{margin:0;font-family:Inter;background:#FFFBF2;color:#1a0a05;}
 .vid{aspect-ratio:16/9;background:#000;}
 .vid iframe{width:100%;height:100%;border:0;display:block;}
 .pBody{padding:12px;}
-.btn{padding:8px 14px;border-radius:999px;background:#1a0a05;color:#fff;font-size:11px;border:1px solid #1a0a05;cursor:pointer;margin-top:8px;display:inline-block;text-decoration:none;font-weight:700;margin-right:5px;}
+.btn{padding:10px 16px;border-radius:999px;background:#1a0a05;color:#fff;font-size:12px;border:1px solid #1a0a05;cursor:pointer;margin-top:8px;display:inline-block;text-decoration:none;font-weight:700;margin-right:5px;}
 .btn.red{background:#ff2a0e;border-color:#ff2a0e;}
-.pathway{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:12px;}
-@media(max-width:700px){.pathway{grid-template-columns:1fr;}}
-.step{padding:14px;border-radius:16px;background:#fff;border:1px solid #f0d9c5;}
-input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px solid #d6c4b0;background:#fff;font-size:13px;box-sizing:border-box;margin-top:8px;font-family:Inter;}
-.toolsTitle{font-family:Instrument Serif;font-size:34px;font-weight:800;margin-top:28px;line-height:1;}
-.toolsSub{font-size:11px;letter-spacing:0.16em;text-transform:uppercase;opacity:0.6;margin-top:6px;font-weight:800;}
 .toolGrid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px;}
 @media(max-width:800px){.toolGrid{grid-template-columns:1fr;}}
 .toolA{background:linear-gradient(135deg,#e9e6d8,#d9e2c9);border:1.5px solid #c8d5a8;border-radius:22px;padding:18px;}
 .toolB{background:linear-gradient(135deg,#e7f0e3,#d7e8d8);border:1.5px solid #b7d0b5;border-radius:22px;padding:18px;}
 .toolC{background:#111;color:#fff;border-radius:22px;padding:18px;}
 .toolD{background:linear-gradient(135deg,#dce8dc,#cfe0cf);border:1.5px solid #b0c9a8;border-radius:22px;padding:18px;}
-.toolHead{font-size:9px;letter-spacing:0.16em;text-transform:uppercase;font-weight:800;opacity:0.7;margin-bottom:8px;}
-.toolMain{font-family:Instrument Serif;font-size:26px;line-height:1.1;font-weight:800;margin-bottom:8px;}
-.toolDesc{font-size:12px;opacity:0.8;line-height:1.5;margin-bottom:12px;}
 .folderVideo{background:#f6f3e2;border:1px solid #e0dcc2;border-radius:14px;padding:12px 14px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;font-weight:700;font-size:13px;margin-top:10px;}
 .folderVideo.green{background:#cfe3d1;}
 .folderContent{display:none;margin-top:10px;grid-template-columns:1fr 1fr;gap:10px;}
 .folderContent.open{display:grid;}
 .smallVid{border-radius:14px;overflow:hidden;background:#fff;border:1px solid #e0dcc2;}
-.smallVid .vid{height:140px;}
+input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px solid #d6c4b0;background:#fff;font-size:13px;box-sizing:border-box;margin-top:8px;font-family:Inter;}
 .genBtn{background:#1a0a05;color:#fff;padding:10px 18px;border-radius:999px;border:0;font-weight:800;font-size:12px;cursor:pointer;margin-top:10px;}
 .darkInput{background:#1e1e1e!important;color:#fff!important;border-color:#333!important;}
+.trackerBox{background:#fff;border:1.5px solid #f0d9c5;border-radius:22px;padding:18px;margin-top:24px;}
+.trackerHeader{font-size:10px;letter-spacing:0.14em;text-transform:uppercase;font-weight:800;opacity:0.7;}
+.trackerTitle{font-weight:800;font-size:18px;margin-top:4px;}
+.trackerDesc{font-size:12px;opacity:0.7;margin-top:6px;line-height:1.4;}
+.trackGrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+@media(max-width:600px){.trackGrid{grid-template-columns:1fr;}}
+.trackItem{background:#fff7ed;border:1px solid #f5d6bb;border-radius:12px;padding:12px 14px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;cursor:pointer;transition:0.2s;}
+.trackItem.checked{background:#1a0a05;color:#fff;border-color:#1a0a05;}
+.trackBarWrap{margin-top:14px;background:#1a0a05;height:10px;border-radius:999px;overflow:hidden;}
+.trackBar{height:100%;width:0%;background:linear-gradient(90deg,#FFF3B0,#FF8C5A);transition:0.4s;}
+.trackPercent{font-weight:800;font-size:13px;margin-top:8px;}
+.privateNotes{margin-top:12px;background:#FFFBF2;border:1.5px dashed #f0d9c5;border-radius:14px;padding:0;}
+.privateNotes textarea{border:0;background:transparent;margin:0;height:90px;resize:vertical;}
+.reviewBox{background:linear-gradient(135deg,#fff,#fff8e6);border:1.5px solid #ffddb8;border-radius:22px;padding:18px;margin-top:16px;}
 </style>
 </head>
 <body>
@@ -59,18 +64,7 @@ input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px so
 <h1 style="font-family:Instrument Serif;font-size:44px;line-height:0.9;max-width:1150px;margin:16px auto 0">From<br>curiosity<br><i>to research.</i></h1>
 </div>
 <div class="wrap">
-<div class="card" style="background:#fffef6">
-<div class="label">02 — PATHWAY — Steps Explained (back)</div>
-<div class="pathway">
-<div class="step"><div class="label">Step 1</div><div class="title">Idea</div><div class="mini">What are you curious about?</div></div>
-<div class="step"><div class="label">Step 2</div><div class="title">Question</div><div class="mini">Refine into research question</div></div>
-<div class="step"><div class="label">Step 3</div><div class="title">Literature</div><div class="mini">Pick 3 papers from field below</div></div>
-<div class="step"><div class="label">Step 4</div><div class="title">Methodology</div><div class="mini">Conceptual / Experimental / Qualitative</div></div>
-<div class="step"><div class="label">Step 5</div><div class="title">Data</div><div class="mini">Private tracker keeps you on track</div></div>
-<div class="step"><div class="label">Step 6</div><div class="title">Publication</div><div class="mini">Publish via JEI / Curiosity Journal</div></div>
-</div>
-</div>
-<div class="label" style="margin-top:18px">YOUR MAJORS — 11 FIELDS — CLICK TO FILTER (FIXED - ONLY 3 SHOW)</div>
+<div class="label" style="margin-top:18px">YOUR MAJORS — 11 FIELDS — CLICK TO FILTER (ONLY 3 SHOW)</div>
 <div class="fieldGrid">
 <div class="folder" data-id="bio" onclick="showField('bio')">🧬 Biological Sciences — 3</div>
 <div class="folder" data-id="ai" onclick="showField('ai')">🤖 AI & Data Sciences — 3</div>
@@ -85,48 +79,47 @@ input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px so
 <div class="folder" data-id="hum" onclick="showField('hum')">📚 Humanities, Lit & Culture — 3</div>
 </div>
 <div id="allPages">
-<div id="page-bio" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 01 — Immunology</div><div class="title">Human immunology atlas — single cell</div><div class="mini">Your link: nature.com/articles/s41590-021-01071-1 — Click to select</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch YouTube →</a><a class="btn" href="https://www.nature.com/articles/s41590-021-01071-1" target="_blank" onclick="event.stopPropagation()">Open Nature →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/5z8a2Wg0Q2M?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 02 — Killifish Aging</div><div class="title">African Turquoise Killifish as aging model</div><a class="btn red" href="https://www.youtube.com/watch?v=5z8a2Wg0Q2M" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-020-03045-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 03 — Brain Atlas</div><div class="title">Allen Brain Atlas — mouse/human mapping</div><a class="btn" href="https://www.nature.com/articles/s41586-023-06818-7" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-ai" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 01 — Clever Hans</div><div class="title">Clever Hans effect in ML — 3Blue1Brown</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://arxiv.org/abs/2004.00546" target="_blank" onclick="event.stopPropagation()">Open arXiv →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 02 — Cancer AI</div><div class="title">AI for cancer imaging</div><a class="btn" href="https://www.nature.com/articles/s41591-019-0447-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 03 — Procedia</div><div class="title">Procedia CS — AI collection</div><a class="btn" href="https://www.sciencedirect.com/journal/procedia-computer-science" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-phy" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 01 — Dark Matter</div><div class="title">Dark matter mapping — NASA explains</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-022-04496-6" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/libKVRaBBAs?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 02 — Exoplanet</div><div class="title">Dying stars + exoplanet survival</div><a class="btn" href="https://arxiv.org/abs/2107.09283" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BV0Y1F4T__k?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 03 — Quantum</div><div class="title">Quantum materials intro</div><a class="btn" href="https://arxiv.org/abs/quant-ph/0702225" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-chem" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/C0DPdy98e4c?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 01 — Self-healing crystals</div><div class="title">Self-healing molecular crystals</div><a class="btn" href="https://www.nature.com/articles/s41557-021-00760-9" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 02 — Hydrogels</div><div class="title">Hydrogels for delivery</div><a class="btn" href="https://www.nature.com/articles/s41578-020-00246-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 03 — Green Chem</div><div class="title">Green aviation fuel</div><a class="btn" href="https://www.nature.com/articles/s41557-022-01082-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
-<div id="page-clim" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 01</div><div class="title">Climate geoengineering</div><a class="btn" href="https://www.nature.com/search?q=climate+geoengineering" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 02</div><div class="title">Smoke water</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 03</div><div class="title">Plasma reforming</div></div></div></div>
-<div id="page-neuro" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Nat Commun 16, 10521</div><div class="title">Decoding words from non-invasive brain recordings</div><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">JEI 22-080</div><div class="title">Ace-K & neotame slow planaria regeneration</div><a class="btn" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank" onclick="event.stopPropagation()">Open PDF →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Mirror Neurons</div><div class="title">THEMIS / UBE2F — Layer 3</div><a class="btn" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank" onclick="event.stopPropagation()">Open JEI →</a></div></div></div>
+<div id="page-bio" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 01 — Immunology</div><div class="title">Human immunology atlas — single cell</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41590-021-01071-1" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/5z8a2Wg0Q2M?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 02 — Killifish Aging</div><div class="title">African Turquoise Killifish as aging model</div><a class="btn" href="https://www.nature.com/articles/s41586-020-03045-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bio 03 — Brain Atlas</div><div class="title">Allen Brain Atlas</div><a class="btn" href="https://www.nature.com/articles/s41586-023-06818-7" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="page-ai" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 01 — Clever Hans</div><div class="title">Clever Hans effect in ML</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://arxiv.org/abs/2004.00546" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 02 — Cancer AI</div><div class="title">AI for cancer imaging</div><a class="btn" href="https://www.nature.com/articles/s41591-019-0447-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">AI 03 — Procedia</div><div class="title">Procedia CS — AI collection</div><a class="btn" href="https://www.sciencedirect.com/journal/procedia-computer-science" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="page-phy" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 01</div><div class="title">Dark matter — NASA</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41586-022-04496-6" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/libKVRaBBAs?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 02</div><div class="title">Dying stars + exoplanet survival</div><a class="btn" href="https://arxiv.org/abs/2107.09283" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/BV0Y1F4T__k?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Physics 03</div><div class="title">Quantum materials</div><a class="btn" href="https://arxiv.org/abs/quant-ph/0702225" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="page-chem" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/C0DPdy98e4c?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 01</div><div class="title">Self-healing molecular crystals</div><a class="btn" href="https://www.nature.com/articles/s41557-021-00760-9" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 02</div><div class="title">Hydrogels for delivery</div><a class="btn" href="https://www.nature.com/articles/s41578-020-00246-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Chem 03</div><div class="title">Green aviation fuel</div><a class="btn" href="https://www.nature.com/articles/s41557-022-01082-x" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
+<div id="page-clim" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 01</div><div class="title">Geoengineering</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 02</div><div class="title">Smoke water</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Climate 03</div><div class="title">Plasma reforming</div></div></div></div>
+<div id="page-neuro" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 01</div><div class="title">Decoding words from non-invasive brain</div><a class="btn" href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 02</div><div class="title">Ace-K & neotame slow planaria</div><a class="btn" href="https://www.emerginginvestigators.org/articles/22-080/pdf" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Neuro 03</div><div class="title">THEMIS / UBE2F — Mirror Neurons</div><a class="btn" href="https://www.emerginginvestigators.org/featured-scientists/editor-s-choice-pick-uncovering-mirror-neurons-molecular-identity-by-single-cell-transcriptomics-and-microarray-analysis" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div></div>
 <div id="page-eng" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng — Soft Robots</div><div class="title">Soft mechanism driven robots</div><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank" onclick="event.stopPropagation()">Watch →</a><a class="btn" href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" onclick="event.stopPropagation()">Open →</a></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 02</div><div class="title">Robotics Control</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Eng 03</div><div class="title">Smart Materials</div></div></div></div>
-<div id="page-bus" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 01</div><div class="title">Business & Management — Small business regulation</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 02</div><div class="title">Startup finance</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 03</div><div class="title">Management innovation</div></div></div></div>
+<div id="page-bus" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 01</div><div class="title">Small business regulation</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 02</div><div class="title">Startup finance</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Bus 03</div><div class="title">Management innovation</div></div></div></div>
 <div id="page-soc" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 01</div><div class="title">Society, Economics + Public Policy</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 02</div><div class="title">Behavioral economics</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Soc 03</div><div class="title">Urban economics</div></div></div></div>
 <div id="page-comm" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 01</div><div class="title">Communication & Media — prosocial behaviour</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 02</div><div class="title">Digital comms</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Comm 03</div><div class="title">Social media effect</div></div></div></div>
 <div id="page-hum" class="paperBox"><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 01</div><div class="title">Humanities, Lit & Culture</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 02</div><div class="title">Literature & Society</div></div></div><div class="pCard" onclick="selectCard(this)"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><div class="label">Hum 03</div><div class="title">Philosophy of Mind</div></div></div></div>
 </div>
-<div class="toolsSub">04 — PRACTICE, NOT MAZE — 4 TOOLS — FOLDER VIDEOS</div>
-<div class="toolsTitle">Four quiet tools — folder for videos.</div>
+<div style="margin-top:24px"><div class="label">04 — TOOLBOX — AI ENABLED</div></div>
 <div class="toolGrid">
 <div class="toolA">
-<div class="toolHead">A — TURN IDEA INTO PROJECT</div>
-<div class="toolMain">Roadmap + template to copy</div>
-<div class="toolDesc">Put idea/field → AI gives hypothesis, methods, timeline + example<br>Abstract/Intro/Methods/Results/Discussion format — not exact research — format they can copy.</div>
+<div class="label">A — TURN IDEA INTO PROJECT</div>
+<div class="title">Roadmap + template to copy</div>
+<div class="mini">Put idea/field → AI gives hypothesis, methods, timeline + example Abstract/Intro/Methods/Results/Discussion format — not exact research — format they can copy.</div>
 <input id="ideaInput" placeholder="Idea — e.g. How do trees become woodwind?">
 <button class="genBtn" onclick="generateRoadmap()">Generate roadmap + template</button>
 <div id="roadmapOut" style="display:none;margin-top:12px;background:#fff;border:1px dashed #a8b98a;border-radius:14px;padding:12px;font-size:12px;line-height:1.5;"></div>
 </div>
 <div class="toolB">
-<div class="toolHead">B — UNDERSTAND WORK BEHIND — FOLDER TYPE — 5 VIDEOS</div>
-<div class="toolMain" style="font-size:22px;">Video library — click folder to open</div>
+<div class="label">B — UNDERSTAND WORK BEHIND — FOLDER TYPE — 5 VIDEOS</div>
+<div class="title">Video library — click folder to open</div>
 <div class="folderVideo" onclick="toggleFolder('f1')"><span>📁 01 — How to Write a Paper</span><span>▶ 2 FILES</span></div>
 <div id="f1" class="folderContent">
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How Neural Networks Learn</b><div style="font-size:11px;margin-top:4px;opacity:0.7">3Blue1Brown — methods</div><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">What is Dark Matter? — NASA</b><div style="font-size:11px;margin-top:4px;opacity:0.7">Frame big questions</div><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div>
+<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/aircAruvnKk?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How Neural Networks Learn</b><br><a class="btn red" href="https://www.youtube.com/watch?v=aircAruvnKk" target="_blank">Watch →</a></div></div>
+<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/3pAnRKD4RA8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">What is Dark Matter? — NASA</b><br><a class="btn red" href="https://www.youtube.com/watch?v=3pAnRKD4RA8" target="_blank">Watch →</a></div></div>
 </div>
 <div class="folderVideo green" onclick="toggleFolder('f2')"><span>📁 02 — Methods & Reading</span><span>▶ 3 FILES</span></div>
 <div id="f2" class="folderContent">
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Mirror Neurons — Ramachandran</b><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How to Read a Paper</b><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div>
-<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Soft Robots — Nature</b><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank">Watch →</a></div></div>
+<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/t0pwKzTRG5E?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Mirror Neurons — Ramachandran TED</b><br><a class="btn red" href="https://www.youtube.com/watch?v=t0pwKzTRG5E" target="_blank">Watch →</a></div></div>
+<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/S0qjK3TWZE8?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">How to Read a Paper</b><br><a class="btn red" href="https://www.youtube.com/watch?v=S0qjK3TWZE8" target="_blank">Watch →</a></div></div>
+<div class="smallVid"><div class="vid"><iframe src="https://www.youtube-nocookie.com/embed/z9pD_UK6vGU?rel=0" allowfullscreen></iframe></div><div class="pBody"><b style="font-size:12px">Soft Robots — Nature</b><br><a class="btn red" href="https://www.youtube.com/watch?v=z9pD_UK6vGU" target="_blank">Watch →</a></div></div>
 </div>
 </div>
 <div class="toolC">
-<div class="toolHead" style="color:#ffddb8;">C — MAKE ARGUMENT CLEARER</div>
-<div class="toolMain" style="color:#fff;">Paste research — fix + weakness</div>
-<textarea id="researchInput" class="darkInput" placeholder="Paste your full research here..." style="height:220px;margin-top:12px;"></textarea>
+<div class="label" style="color:#ffddb8;">C — MAKE ARGUMENT CLEARER</div>
+<div class="title" style="color:#fff;">Paste research — fix + weakness</div>
+<textarea id="researchInput" class="darkInput" placeholder="Paste your full research here..." style="height:200px;margin-top:12px;"></textarea>
 <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;">
 <button class="btn" style="background:#fff;color:#000" onclick="fixResearch('grammar')">Fix grammar</button>
 <button class="btn" style="background:#fff;color:#000" onclick="fixResearch('weak')">Find weakness</button>
@@ -136,22 +129,43 @@ input,textarea,select{width:100%;padding:12px;border-radius:14px;border:1.5px so
 <div id="fixOut" style="display:none;margin-top:12px;background:#1e1e1e;border-radius:12px;padding:12px;font-size:12px;"></div>
 </div>
 <div class="toolD">
-<div class="toolHead">D — FIND RIGHT AUDIENCE + PROOF + TRACK + REVIEW EMAIL</div>
-<div class="toolMain" style="font-size:22px;">Where should this live?</div>
+<div class="label">D — FIND RIGHT AUDIENCE + PROOF + TRACK</div>
+<div class="title">Where should this live?</div>
 <input id="q1" placeholder="What is it based upon?">
 <input id="q2" placeholder="What question are you answering?">
 <input id="q3" placeholder="References / proof">
 <textarea id="q4" placeholder="Target audience? e.g. JEI, Curiosity Journal..." style="height:70px;"></textarea>
-<input id="q5" placeholder="Your email for review updates">
-<div style="display:flex;gap:8px;margin-top:10px;">
 <button class="btn" onclick="publishResearch()">Publish + Track</button>
-<button class="btn red" onclick="document.getElementById('pubLinks').style.display='block'">Get publish links</button>
-</div>
-<div id="pubLinks" style="display:none;margin-top:10px;background:#fff;padding:10px;border-radius:12px;font-size:11px;">
-<b>Publish at:</b><br>• <a href="https://emerginginvestigators.org/submit" target="_blank">JEI Submit →</a><br>• <a href="https://www.curiosity-journal.org/" target="_blank">Curiosity Journal →</a>
-</div>
+<div id="pubLinks" style="display:none;margin-top:10px;background:#fff;padding:10px;border-radius:12px;font-size:11px;"><b>Publish at:</b><br>• <a href="https://emerginginvestigators.org/submit" target="_blank">JEI Submit →</a><br>• <a href="https://www.curiosity-journal.org/" target="_blank">Curiosity Journal →</a></div>
 <div id="publishFeed" style="margin-top:10px;display:grid;gap:8px;"></div>
 </div>
+</div>
+<div class="trackerBox">
+<div class="trackerHeader">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC — REPLACES PUBLISHED PROOF</div>
+<div class="trackerTitle">Track yourself — be first</div>
+<div class="trackerDesc">This replaces "Others see this — proof not lying / No published yet — be first" — now private, not public.</div>
+<div class="trackGrid">
+<div class="trackItem" id="track-search" onclick="toggleTrack('search')"><input type="checkbox" id="cb-search" onchange="updateProgress()"> <span>🔍 Search</span></div>
+<div class="trackItem" id="track-reading" onclick="toggleTrack('reading')"><input type="checkbox" id="cb-reading" onchange="updateProgress()"> <span>📖 Reading</span></div>
+<div class="trackItem" id="track-idea" onclick="toggleTrack('idea')"><input type="checkbox" id="cb-idea" onchange="updateProgress()"> <span>💡 Idea</span></div>
+<div class="trackItem" id="track-data" onclick="toggleTrack('data')"><input type="checkbox" id="cb-data" onchange="updateProgress()"> <span>🧪 Data</span></div>
+<div class="trackItem" id="track-draft" onclick="toggleTrack('draft')"><input type="checkbox" id="cb-draft" onchange="updateProgress()"> <span>✍️ Draft</span></div>
+<div class="trackItem" id="track-submitted" onclick="toggleTrack('submitted')"><input type="checkbox" id="cb-submitted" onchange="updateProgress()"> <span>📤 Submitted</span></div>
+</div>
+<div class="trackBarWrap"><div class="trackBar" id="trackBar"></div></div>
+<div class="trackPercent" id="trackPercent">0% — Start</div>
+<div class="privateNotes"><textarea id="privateNotes" placeholder="Private notes... (only you see this, saved locally)" oninput="saveNotes()"></textarea></div>
+</div>
+<div class="reviewBox">
+<div class="label">REVIEW & FEEDBACK — SENDS TO YOUR MAIL</div>
+<div class="title">Leave a review / ask for review — goes to jamaljuweria21@gmail.com</div>
+<div class="mini" style="margin-bottom:8px;">User's review will open their mail app and send to you. No backend needed — works instantly.</div>
+<input id="reviewName" placeholder="Your name">
+<input id="reviewEmail" placeholder="Your email (for reply)">
+<select id="reviewType"><option>⭐ Review / Feedback</option><option>❓ Question about paper</option><option>🤝 Request for collaboration</option><option>🐛 Bug report</option></select>
+<textarea id="reviewText" placeholder="Write your review / feedback here... Be honest, be first." style="height:100px;"></textarea>
+<button class="btn red" style="width:100%; padding:12px; font-size:13px; margin-top:12px;" onclick="sendReview()">📧 Send Review to jamaljuweria21@gmail.com</button>
+<div id="reviewStatus" style="display:none; margin-top:10px; padding:10px; background:#e8f5e9; border-radius:12px; font-size:12px; color:#2e7d32;"></div>
 </div>
 </div>
 <script>
@@ -191,6 +205,57 @@ function publishResearch(){
   div.innerHTML='<b>Published:</b> '+q1+'<br><i>Question:</i> '+q2;
   feed.prepend(div);
   document.getElementById('pubLinks').style.display='block';
+  updateProgress();
+}
+function toggleTrack(name){
+  const cb=document.getElementById('cb-'+name);
+  cb.checked=!cb.checked;
+  updateProgress();
+}
+function updateProgress(){
+  const names=['search','reading','idea','data','draft','submitted'];
+  let count=0;
+  names.forEach(n=>{
+    const cb=document.getElementById('cb-'+n);
+    const item=document.getElementById('track-'+n);
+    if(cb.checked){ count++; item.classList.add('checked'); } else { item.classList.remove('checked'); }
+  });
+  const pct=Math.round(count/6*100);
+  document.getElementById('trackBar').style.width=pct+'%';
+  let txt='0% — Start';
+  if(pct>0 && pct<20) txt=pct+'% — Just started';
+  else if(pct<40) txt=pct+'% — Searching';
+  else if(pct<60) txt=pct+'% — Idea forming';
+  else if(pct<80) txt=pct+'% — Drafting';
+  else if(pct<100) txt=pct+'% — Almost there';
+  else txt='100% — Submitted! Be first!';
+  document.getElementById('trackPercent').innerText=txt;
+  try{ localStorage.setItem('curio_progress', JSON.stringify(names.map(n=>document.getElementById('cb-'+n).checked))); localStorage.setItem('curio_notes', document.getElementById('privateNotes').value); }catch(e){}
+}
+function saveNotes(){
+  try{ localStorage.setItem('curio_notes', document.getElementById('privateNotes').value); }catch(e){}
+}
+try{
+  const saved=JSON.parse(localStorage.getItem('curio_progress')||'[]');
+  const names=['search','reading','idea','data','draft','submitted'];
+  saved.forEach((v,i)=>{ if(v && names[i]) document.getElementById('cb-'+names[i]).checked=true; });
+  document.getElementById('privateNotes').value=localStorage.getItem('curio_notes')||'';
+  updateProgress();
+}catch(e){}
+function sendReview(){
+  const name=document.getElementById('reviewName').value||'Anonymous';
+  const email=document.getElementById('reviewEmail').value||'no email';
+  const type=document.getElementById('reviewType').value;
+  const text=document.getElementById('reviewText').value;
+  if(!text){ alert('Write your review first!'); return; }
+  const subject=encodeURIComponent('[Curio.Paper Review] '+type+' from '+name);
+  const body=encodeURIComponent('Name: '+name+'\nEmail: '+email+'\nType: '+type+'\n\nReview:\n'+text+'\n\n---\nSent from curio.paper');
+  const mailto='mailto:jamaljuweria21@gmail.com?subject='+subject+'&body='+body;
+  window.location.href=mailto;
+  const status=document.getElementById('reviewStatus');
+  status.style.display='block';
+  status.innerHTML='✅ Opening your mail app to send review to <b>jamaljuweria21@gmail.com</b><br>If mail app does not open, copy this:<br><br><b>To:</b> jamaljuweria21@gmail.com<br><b>Subject:</b> '+decodeURIComponent(subject)+'<br><b>Body:</b> '+text.slice(0,200)+'...';
+  try{ const reviews=JSON.parse(localStorage.getItem('curio_reviews')||'[]'); reviews.push({name,email,type,text,date:new Date().toISOString()}); localStorage.setItem('curio_reviews', JSON.stringify(reviews)); }catch(e){}
 }
 </script>
 </body>
