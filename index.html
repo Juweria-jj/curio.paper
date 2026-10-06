@@ -1,272 +1,160 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Curio.paper - Research Discovery Platform</title>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>curio-paper — From idea to publication</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,500;6..72,600&display=swap" rel="stylesheet">
-<style>
-  body{font-family:'Inter',sans-serif;background:#FCFCF9}
- .serif{font-family:'Newsreader',serif}
- .line-clamp-2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
-</style>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
+<style>body{font-family:'Inter',sans-serif;background:#F5F1D5}.serif{font-family:'Newsreader',serif}</style>
 </head>
-<body class="text-zinc-900">
-<!-- HEADER -->
-<header class="sticky top-0 z-40 bg-[#FCFCF9]/90 backdrop-blur border-b border-zinc-200">
-  <div class="max-w-[1400px] mx-auto px-6 py-4 flex justify-between items-center">
-    <h1 class="serif text-2xl font-semibold">curio.paper</h1>
-    <div class="flex gap-3 items-center">
-      <input id="search" placeholder="Search papers..." class="hidden md:block w-[320px] px-4 py-2 rounded-full border border-zinc-200 bg-white text-sm outline-none focus:border-black">
-      <a href="#toolbox" class="px-4 py-2 bg-black text-white rounded-full text-sm">Turn Idea → Project</a>
-    </div>
-  </div>
-</header>
+<body class="min-h-screen">
+<div class="max-w-[1250px] mx-auto px-5 py-4">
+<div class="text-[11px] tracking-[0.2em] text-zinc-600 font-semibold">04 — 4 TOOLS — YOUR 5 YOUTUBE VIDEOS</div>
+<h1 class="serif text-[30px] mt-1">Four quiet tools — folder for videos.</h1>
 
-<!-- HERO + BEST RESEARCH ADVERTISE -->
-<section class="max-w-[1400px] mx-auto px-6 pt-10 pb-4">
-  <div class="flex flex-col lg:flex-row gap-8">
-    <div class="flex-1">
-      <h2 class="serif text-[42px] leading-[1.05] font-[600] tracking-tight">Discover, refine,<br>and publish research<br>that matters.</h2>
-      <p class="text-zinc-500 mt-4 max-w-xl text-[15px] leading-relaxed">Curated research library from Nature, Springer, Caltech + AI toolbox to turn keywords into full research drafts, plus built-in grammar, weakness, rephrase & AI detection using your own detector.</p>
-      <div class="mt-6 flex gap-2 flex-wrap" id="field-filter"></div>
-    </div>
-    <!-- Featured Best Researchs - You gave 4 google share links -->
-    <div class="flex-1">
-      <div class="flex justify-between items-center mb-3">
-        <h3 class="text-xs uppercase tracking-widest font-semibold text-zinc-500">★ Featured Best Researchs</h3>
-        <span class="text-[11px] bg-black text-white px-2 py-1 rounded-full">Editor's Pick</span>
-      </div>
-      <div class="grid grid-cols-2 gap-3">
-        <a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="group bg-white border border-zinc-200 rounded-[18px] p-4 hover:bg-black hover:text-white transition">
-          <div class="text-[11px] uppercase tracking-wide opacity-60">Featured #1</div>
-          <div class="serif text-[18px] leading-tight mt-1">Breakthrough Research Example - How to Structure Abstract & Methods</div>
-          <div class="text-[11px] mt-3 opacity-60 group-hover:opacity-80">share.google → open →</div>
-        </a>
-        <a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="group bg-white border border-zinc-200 rounded-[18px] p-4 hover:bg-black hover:text-white transition">
-          <div class="text-[11px] uppercase tracking-wide opacity-60">Featured #2</div>
-          <div class="serif text-[18px] leading-tight mt-1">Award-Winning Student Paper - What Makes It Publishable</div>
-          <div class="text-[11px] mt-3 opacity-60 group-hover:opacity-80">share.google → open →</div>
-        </a>
-        <a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="group bg-white border border-zinc-200 rounded-[18px] p-4 hover:bg-black hover:text-white transition">
-          <div class="text-[11px] uppercase tracking-wide opacity-60">Featured #3</div>
-          <div class="serif text-[18px] leading-tight mt-1">Best Research Presentation - From Idea to Publication</div>
-          <div class="text-[11px] mt-3 opacity-60 group-hover:opacity-80">share.google → open →</div>
-        </a>
-        <a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="group bg-white border border-zinc-200 rounded-[18px] p-4 hover:bg-black hover:text-white transition">
-          <div class="text-[11px] uppercase tracking-wide opacity-60">Featured #4</div>
-          <div class="serif text-[18px] leading-tight mt-1">Top Cited Paper Template - Steal This Structure</div>
-          <div class="text-[11px] mt-3 opacity-60 group-hover:opacity-80">share.google → open →</div>
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- TOOLBOX: TURN IDEAS INTO PROJECT -->
-<section id="toolbox" class="max-w-[1400px] mx-auto px-6 py-8">
-  <div class="bg-white border border-zinc-200 rounded-[24px] p-6 md:p-8 shadow-sm">
-    <div class="flex flex-col md:flex-row justify-between gap-6">
-      <div class="flex-1">
-        <h3 class="serif text-2xl font-semibold">Turn Ideas into Project Toolbox</h3>
-        <p class="text-sm text-zinc-500 mt-1">Type keywords + research question → AI gives you example research template, hypothesis, methodology & references.</p>
-        <div class="mt-5 space-y-3">
-          <input id="tb-keywords" placeholder="Keywords: e.g. microplastics, marine, AI detection" class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-[#FCFCF9] text-sm outline-none">
-          <input id="tb-question" placeholder="Research Question: e.g. How does AI detect microplastics in ocean water?" class="w-full px-4 py-3 rounded-xl border border-zinc-200 bg-[#FCFCF9] text-sm outline-none">
-          <button onclick="generateProject()" class="w-full py-3 bg-black text-white rounded-xl text-sm font-medium hover:bg-zinc-800">✨ Generate Example Research Template</button>
-        </div>
-      </div>
-      <div class="flex-1 bg-[#FCFCF9] border border-dashed border-zinc-300 rounded-2xl p-5 min-h-[280px]">
-        <div class="text-xs uppercase tracking-wide text-zinc-400 font-semibold">AI Generated Template</div>
-        <pre id="toolbox-output" class="whitespace-pre-wrap text-[13px] leading-relaxed mt-3 text-zinc-800">Your research template will appear here...
-Example:
-Title:...
-Abstract:...
-Hypothesis:...
-Methodology:...
-Expected Results:...
-References:...</pre>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- PUBLISH TRACK -->
-<section id="publish" class="max-w-[1400px] mx-auto px-6 py-4">
-  <div class="bg-black text-[#FCFCF9] rounded-[24px] p-6 md:p-7 flex flex-col md:flex-row justify-between items-start md:items-center gap-4">
-    <div>
-      <h3 class="serif text-xl">Ready to Publish Your Research?</h3>
-      <p class="text-sm text-zinc-400 mt-1 max-w-xl">Curio.paper's Publish Track - Submit to peer-reviewed student journals directly from here.</p>
-    </div>
-    <div class="flex gap-3">
-      <a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="px-5 py-2.5 bg-white text-black rounded-full text-sm font-medium">Publish via JSR →</a>
-      <a href="https://www.theyoungresearcher.com/" target="_blank" class="px-5 py-2.5 bg-zinc-800 text-white border border-zinc-700 rounded-full text-sm">The Young Researcher →</a>
-    </div>
-  </div>
-</section>
-
-<!-- LIBRARY -->
-<div class="max-w-[1400px] mx-auto px-6 pb-24 pt-6">
-  <input id="searchMobile" placeholder="Search papers..." class="md:hidden w-full px-4 py-3 mb-4 rounded-full border border-zinc-200 bg-white text-sm">
-  <div id="library" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5"></div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
+<!-- A -->
+<div class="bg-[#C8CDA6] rounded-[22px] p-5 border">
+  <div class="text-[10px] tracking-widest font-bold opacity-70">A — TURN IDEA INTO PROJECT</div>
+  <h2 class="font-bold text-[17px] mt-1">Roadmap + template to copy</h2>
+  <input id="ideaInput" placeholder="Idea — e.g. How do trees become woodwind?" class="mt-4 w-full px-4 py-3 rounded-full bg-white/80 border text-sm outline-none">
+  <button onclick="generateRoadmap()" class="mt-3 w-full py-3 bg-black text-white rounded-full text-sm">Generate roadmap + template</button>
+  <pre id="roadmapOut" class="hidden mt-4 bg-white/70 rounded-2xl p-4 text-[12.5px] whitespace-pre-wrap max-h-[350px] overflow-auto"></pre>
 </div>
 
-<!-- AI MODAL -->
-<div id="ai-modal" class="fixed inset-0 hidden z-[100] bg-black/50 backdrop-blur flex items-center justify-center p-4">
-  <div class="bg-[#FCFCF9] rounded-[20px] max-w-2xl w-full max-h-[85vh] overflow-auto p-6 border border-zinc-200 shadow-xl">
-    <div class="flex justify-between items-center mb-4 sticky top-0 bg-[#FCFCF9] pb-2">
-      <h3 id="modal-title" class="font-semibold serif text-lg">AI Result</h3>
-      <div class="flex gap-2">
-        <a id="detector-link" href="https://ai-detector-free.lovable.app" target="_blank" class="hidden text-xs px-3 py-1 bg-yellow-200 rounded-full">Open Your Detector App →</a>
-        <button onclick="closeModal()" class="w-8 h-8 rounded-full bg-black text-white">✕</button>
+<!-- B - CLASSIFIED VIDEOS + ARTICLE FOLDERS -->
+<div class="bg-[#C8D1B5] rounded-[22px] p-5 border">
+  <div class="text-[10px] tracking-widest font-bold opacity-70">B — UNDERSTAND WORK BEHIND — YOUR 5 YOUTUBE</div>
+  <h2 class="font-bold text-[17px] mt-1">Video library — click folder (YOUR LINKS)</h2>
+
+  <div class="mt-4 space-y-3">
+    <!-- RESEARCH PROCESS - 2 VIDEOS -->
+    <div onclick="toggleFolder('proc')" class="cursor-pointer bg-black text-white rounded-full px-4 py-3 flex justify-between items-center">
+      <span class="text-[13px] font-semibold">📁 01 — Research Process (2 videos)</span><span class="text-[10px] bg-white text-black px-2 py-0.5 rounded-full">2 FILES</span>
+    </div>
+    <div id="proc" class="space-y-3 px-1">
+      <div class="bg-white rounded-[16px] p-2 border">
+        <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/UY7sVKJPTMA" title="How to Write a Paper in a Weekend" allowfullscreen></iframe>
+        <div class="p-2"><div class="font-bold text-[12px]">How to Write a Paper in a Weekend — Prof. Pete Carr</div><div class="text-[11px] opacity-60">Process: don't procrastinate, outline, experimental section first, then results, then editing</div></div>
+      </div>
+      <div class="bg-white rounded-[16px] p-2 border">
+        <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/WVv2jWXW0K4" title="How To Read Research Papers Effectively" allowfullscreen></iframe>
+        <div class="p-2"><div class="font-bold text-[12px]">How To Read Research Papers Effectively — Prof. David Stuckler</div><div class="text-[11px] opacity-60">Process: Bird's eye view → Swoop → Street view, triple-pass method</div></div>
       </div>
     </div>
-    <pre id="modal-content" class="whitespace-pre-wrap text-[13.5px] leading-relaxed bg-white border border-zinc-200 p-4 rounded-xl min-h-[120px]"></pre>
-    <div class="mt-3 text-[11px] text-zinc-500">Powered by your detector: ai-detector-free.lovable.app + GPT-4o-mini</div>
+
+    <!-- METHODS & INSPIRATION - 3 VIDEOS -->
+    <div onclick="toggleFolder('meth')" class="cursor-pointer bg-[#E9E5C0] rounded-full px-4 py-3 flex justify-between items-center hover:bg-white">
+      <span class="text-[13px] font-semibold">📁 02 — Methods & Inspiration (3 videos)</span><span class="text-[10px] bg-black text-white px-2 py-0.5 rounded-full">3 FILES</span>
+    </div>
+    <div id="meth" class="hidden space-y-3 px-1">
+      <div class="bg-white rounded-[16px] p-2 border">
+        <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/yRxFwMHS_A8" title="Methods Inspiration 1" allowfullscreen></iframe>
+        <div class="p-2"><div class="font-bold text-[12px]">Methods & Experiment Design</div><div class="text-[11px] opacity-60">How to design methods that reviewers love</div></div>
+      </div>
+      <div class="bg-white rounded-[16px] p-2 border">
+        <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" title="Finding Research Gaps" allowfullscreen></iframe>
+        <div class="p-2"><div class="font-bold text-[12px]">Finding Research Gaps & Building Methodology</div><div class="text-[11px] opacity-60">How to find gap from literature + turn into hypothesis</div></div>
+      </div>
+      <div class="bg-white rounded-[16px] p-2 border">
+        <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/7gGi1-g2Hek" title="Inspiration Journey" allowfullscreen></iframe>
+        <div class="p-2"><div class="font-bold text-[12px]">Inspiration: From Idea to Published Paper</div><div class="text-[11px] opacity-60">Full journey + motivation for student researchers</div></div>
+      </div>
+    </div>
+
+    <!-- ARTICLE LIBRARY FOLDERS -->
+    <div class="pt-3 border-t border-black/10">
+      <div class="text-[10px] font-bold tracking-widest opacity-60">YOUR ARTICLE LIBRARY — 30+ PAPERS</div>
+      <div id="articleFolders" class="mt-2 space-y-2"></div>
+    </div>
   </div>
+</div>
+
+<!-- C -->
+<div class="bg-black rounded-[22px] p-5 text-white">
+  <div class="text-[10px] tracking-widest font-bold text-[#E9C46A]">C — MAKE ARGUMENT CLEARER</div>
+  <h2 class="font-bold text-[17px] mt-1">Paste research — fix + weakness</h2>
+  <textarea id="researchInput" placeholder="Paste your full research here..." class="mt-4 w-full h-[200px] p-4 rounded-2xl bg-[#1A1A1A] border border-zinc-800 text-sm"></textarea>
+  <div class="flex flex-wrap gap-2 mt-4">
+    <button onclick="runFix('fix-grammar')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Fix grammar</button>
+    <button onclick="runFix('weakness')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Weakness</button>
+    <button onclick="runFix('rephrase')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Rephrase</button>
+    <button onclick="runFix('detect-ai')" class="px-4 py-2 bg-[#FF4D2E] text-white rounded-full text-xs font-bold">AI Detect - ai-detector-free.lovable.app</button>
+  </div>
+  <pre id="fixOut" class="hidden mt-4 bg-[#1A1A1A] border border-zinc-800 rounded-2xl p-4 text-[12.5px] whitespace-pre-wrap max-h-[400px] overflow-auto"></pre>
+</div>
+
+<!-- D -->
+<div class="bg-[#D4D8C0] rounded-[22px] p-5 border">
+  <div class="text-[10px] tracking-widest font-bold opacity-70">D — FIND RIGHT AUDIENCE + PROOF + TRACK + REVIEW</div>
+  <h2 class="font-bold text-[22px] mt-1 serif">Where should this live?</h2>
+  <div class="mt-4 space-y-3">
+    <input id="based" placeholder="What is it based upon?" class="w-full px-4 py-3 rounded-full bg-white/70 border text-sm">
+    <input id="question" placeholder="What question are you answering?" class="w-full px-4 py-3 rounded-full bg-white/70 border text-sm">
+    <input id="refs" placeholder="References / proof" class="w-full px-4 py-3 rounded-full bg-white/70 border text-sm">
+    <textarea id="audience" placeholder="Target audience? JEI, Curiosity Journal..." class="w-full px-4 py-3 rounded-2xl bg-white/70 border text-sm h-[80px]"></textarea>
+    <button onclick="publishTrack()" class="px-5 py-2.5 bg-black text-white rounded-full text-xs">Publish + Track</button>
+  </div>
+  <div id="publishOut" class="hidden mt-4 bg-white rounded-2xl p-4 text-sm"></div>
+</div>
+</div>
+
+<!-- TRACKER -->
+<div class="mt-6 bg-[#FFFEF2] rounded-[22px] border p-5">
+  <div class="text-[10px] tracking-[0.18em] font-bold text-[#8B7D3A]">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC</div>
+  <h2 class="font-black text-[20px] mt-1">Track yourself — be first</h2>
+  <div class="mt-4 grid grid-cols-3 md:grid-cols-6 gap-3">
+    <button onclick="toggleStep('search')" id="btn-search" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">🔍 Search</div></button>
+    <button onclick="toggleStep('reading')" id="btn-reading" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">📖 Reading</div></button>
+    <button onclick="toggleStep('idea')" id="btn-idea" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">💡 Idea</div></button>
+    <button onclick="toggleStep('data')" id="btn-data" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">🧪 Data</div></button>
+    <button onclick="toggleStep('draft')" id="btn-draft" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">✍️ Draft</div></button>
+    <button onclick="toggleStep('submitted')" id="btn-submitted" class="bg-[#E8E0A0] rounded-[16px] py-4 px-2 text-left border-2"><div class="text-[11px]">☐</div><div class="mt-1 text-[13px] font-bold">📤 Submitted</div></button>
+  </div>
+  <div class="mt-5 h-2 w-full bg-black/10 rounded-full overflow-hidden"><div id="progressBar" class="h-full bg-black w-[0%] transition-all"></div></div>
+  <div id="progressText" class="mt-2 text-[13px] font-bold">0% — Start</div>
+</div>
+
+<!-- REVIEW -->
+<div class="mt-5 bg-[#FFFEF2] rounded-[22px] border p-5">
+  <div class="text-[10px] tracking-[0.2em] font-bold">REVIEW & FEEDBACK</div>
+  <h2 class="font-black text-[18px] mt-1">Leave a review — helps others</h2>
+  <div class="mt-4 space-y-3">
+    <input id="revName" placeholder="Your name" class="w-full px-4 py-3 rounded-full border bg-white text-sm">
+    <textarea id="revText" placeholder="Write your honest review here..." class="w-full px-4 py-4 rounded-[20px] border bg-white text-sm h-[100px]"></textarea>
+    <button onclick="submitReview()" id="revBtn" class="w-full py-3.5 bg-[#FF2E1F] text-white rounded-full text-sm font-bold">📧 Submit Review → jamaljuweria21@gmail.com</button>
+    <div id="revStatus" class="hidden text-xs text-center p-2"></div>
+  </div>
+</div>
 </div>
 
 <script>
-const DB = {
-  "Biological Science": [
-    {title:"How Does the Human Brain Work?",url:"https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works",source:"Caltech",type:"Explainer"},
-    {title:"Allergy Research Review",url:"https://link.springer.com/article/10.1186/s13223-018-0278-1",source:"Springer",type:"Review"},
-    {title:"Biological Science 2026",url:"https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239",source:"Taylor & Francis",type:"Journal"}
-  ],
-  "AI and Data Science": [
-    {title:"Review on AI in Computational Methods",url:"https://link.springer.com/article/10.1007/s11831-024-10209-0",source:"Springer",type:"Review"},
-    {title:"AI in Data Processing",url:"https://www.sciencedirect.com/science/article/pii/S1877050924003752",source:"ScienceDirect",type:"Article"},
-    {title:"State of AI 2025 - Nature MI",url:"https://www.nature.com/articles/s42256-025-01000-2",source:"Nature MI",type:"Nature"}
-  ],
-  "Physics and Space": [
-    {title:"IITK Physics Notes PDF",url:"https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf",source:"IISER/IITK",type:"PDF"},
-    {title:"Dying Stars Give Second Wind to Exoplanets",url:"https://www.nature.com/articles/d41586-025-01445-w",source:"Nature",type:"News"},
-    {title:"Exoplanet Discovery 2025",url:"https://www.nature.com/articles/s41550-025-02763-9",source:"Nature Astronomy",type:"Research"}
-  ],
-  "Chemistry and Material Science": [
-    {title:"Chemistry Review 2025",url:"https://www.nature.com/articles/s41570-025-00706-6",source:"Nature",type:"Review"},
-    {title:"Advanced Materials",url:"https://www.nature.com/articles/s41563-025-02137-6",source:"Nature Materials",type:"Research"},
-    {title:"Communications Chemistry",url:"https://www.nature.com/articles/s42004-025-01500-7",source:"Nature",type:"Article"}
-  ],
-  "Neuroscience and Physiology": [
-    {title:"Neuroscience Breakthrough",url:"https://www.nature.com/articles/s41467-025-65499-0",source:"Nature Comms",type:"Research"},
-    {title:"Neuroscience Student Articles",url:"https://emerginginvestigators.org/articles?q=neuroscience",source:"Emerging Inv.",type:"Journal"},
-    {title:"Neuroscience PDF",url:"https://emerginginvestigators.org/articles/22-080/pdf",source:"Emerging Inv.",type:"PDF"}
-  ],
-  "Engineering and Robotics": [
-    {title:"Engineering Systems",url:"https://www.nature.com/articles/s41467-025-56025-3",source:"Nature Comms",type:"Article"},
-    {title:"Robotics Research 2025",url:"https://www.nature.com/articles/s41467-025-57741-6",source:"Nature Comms",type:"Research"},
-    {title:"Engineering Innovation",url:"https://www.nature.com/articles/s44287-025-00152-y",source:"Nature",type:"Article"}
-  ],
-  "Climate Environment and Earth": [
-    {title:"Climate & Earth Latest",url:"https://emerginginvestigators.org/?s=last+updated",source:"Emerging Inv.",type:"Database"},
-    {title:"Environmental Science Papers",url:"https://emerginginvestigators.org/?s=last+updated",source:"Emerging Inv.",type:"List"}
-  ],
-  "Humanities, Literature & Culture": [
-    {title:"Machine-assisted quantitizing designs with AI",url:"https://www.nature.com/articles/s41599-025-04503-w",source:"Nature HSS",type:"Research"},
-    {title:"Human Behaviour & Culture",url:"https://www.nature.com/articles/s41562-025-02242-1",source:"Nature",type:"Article"},
-    {title:"Humanities PDF",url:"https://www.emerginginvestigators.org/articles/24-254/pdf",source:"Emerging Inv.",type:"PDF"}
-  ],
-  "Society, Economics and Public Policy": [
-    {title:"Society & Economics - Nature",url:"https://www.nature.com/articles/s41586-023-06840-9",source:"Nature",type:"Nature"},
-    {title:"Public Policy & Economics",url:"https://www.nature.com/articles/s41599-020-00552-5",source:"Nature",type:"Article"},
-    {title:"Social Science Perspectives",url:"https://www.nature.com/articles/s41599-019-0232-y",source:"Nature",type:"Review"}
-  ],
-  "Business and Management": [
-    {title:"Business Research - HSS",url:"https://www.nature.com/articles/s41599-020-00552-5",source:"Nature",type:"Article"},
-    {title:"Business Collection",url:"https://www.nature.com/collections/jijcddffij",source:"Nature",type:"Collection"}
-  ],
-  "Communication and Media": [
-    {title:"Media & Communication",url:"https://www.nature.com/articles/s41562-025-02102-y",source:"Nature",type:"Article"},
-    {title:"Communication Research",url:"https://www.nature.com/articles/s41586-023-06840-9",source:"Nature",type:"Article"}
-  ]
+const RESEARCH_DB = {
+  "Biological Science": [{t:"How Does Human Brain Work? - Caltech",u:"https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works"},{t:"Allergy Review - Springer",u:"https://link.springer.com/article/10.1186/s13223-018-0278-1"},{t:"Bio Science 2026 - T&F",u:"https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239"}],
+  "AI and Data Science": [{t:"AI in Computational Methods",u:"https://link.springer.com/article/10.1007/s11831-024-10209-0"},{t:"AI & Data Processing",u:"https://www.sciencedirect.com/science/article/pii/S1877050924003752"},{t:"State of AI 2025 - Nature",u:"https://www.nature.com/articles/s42256-025-01000-2"}],
+  "Physics and Space": [{t:"IITK Physics Notes PDF",u:"https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf"},{t:"Dying Stars & Exoplanets - Nature",u:"https://www.nature.com/articles/d41586-025-01445-w"},{t:"Exoplanet Discovery 2025",u:"https://www.nature.com/articles/s41550-025-02763-9"}],
+  "Chemistry": [{t:"Chemistry Review 2025",u:"https://www.nature.com/articles/s41570-025-00706-6"},{t:"Advanced Materials",u:"https://www.nature.com/articles/s41563-025-02137-6"},{t:"Comms Chemistry",u:"https://www.nature.com/articles/s42004-025-01500-7"}],
+  "Neuroscience": [{t:"Neuroscience Breakthrough",u:"https://www.nature.com/articles/s41467-025-65499-0"},{t:"Neuroscience Articles - EI",u:"https://emerginginvestigators.org/articles?q=neuroscience"},{t:"Neuro PDF",u:"https://emerginginvestigators.org/articles/22-080/pdf"}],
+  "Engineering": [{t:"Engineering Systems",u:"https://www.nature.com/articles/s41467-025-56025-3"},{t:"Robotics 2025",u:"https://www.nature.com/articles/s41467-025-57741-6"},{t:"Engineering Innovation",u:"https://www.nature.com/articles/s44287-025-00152-y"}],
+  "Humanities": [{t:"Machine-assisted designs with AI - Nature HSS",u:"https://www.nature.com/articles/s41599-025-04503-w"},{t:"Human Behaviour",u:"https://www.nature.com/articles/s41562-025-02242-1"},{t:"Humanities PDF",u:"https://www.emerginginvestigators.org/articles/24-254/pdf"}],
+  "Society & Policy": [{t:"Society & Policy - Nature",u:"https://www.nature.com/articles/s41586-023-06840-9"},{t:"Public Policy",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Social Science",u:"https://www.nature.com/articles/s41599-019-0232-y"}],
+  "Business": [{t:"Business Research",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Business Collection",u:"https://www.nature.com/collections/jijcddffij"}],
+  "Communication": [{t:"Media & Communication",u:"https://www.nature.com/articles/s41562-025-02102-y"},{t:"Communication Research",u:"https://www.nature.com/articles/s41586-023-06840-9"}]
 };
-
-const library=document.getElementById('library');
-const filter=document.getElementById('field-filter');
-const search=document.getElementById('search');
-const searchMobile=document.getElementById('searchMobile');
-let activeField="All";
-
-function renderFilters(){
-  const fields=["All",...Object.keys(DB)];
-  filter.innerHTML=fields.map(f=>`<button onclick="setField('${f}')" class="px-3 py-1.5 rounded-full text-xs border ${activeField===f?'bg-black text-white border-black':'bg-white border-zinc-200'}">${f}</button>`).join('');
-}
-function setField(f){activeField=f;renderFilters();renderLibrary((search.value||searchMobile.value||""))}
-window.setField=setField;
-
-function renderLibrary(q=""){
-  library.innerHTML="";
-  Object.entries(DB).forEach(([field,papers])=>{
-    if(activeField!=="All" && activeField!==field) return;
-    let filtered=papers.filter(p=> (p.title+p.source).toLowerCase().includes(q.toLowerCase()) || field.toLowerCase().includes(q.toLowerCase()));
-    if(filtered.length===0 && q!=="") return;
-    const col=document.createElement('div');
-    col.className="bg-white rounded-[16px] border border-zinc-200 p-4 h-fit";
-    col.innerHTML=`
-      <div class="flex justify-between items-center mb-3">
-        <h3 class="font-semibold text-[12px] uppercase tracking-wide">${field}</h3>
-        <span class="text-[10px] bg-[#FCFCF9] border px-2 py-0.5 rounded-full">${filtered.length}</span>
-      </div>
-      <div class="space-y-3">
-        ${filtered.map(p=>`
-          <div class="group p-3 rounded-xl bg-[#FCFCF9] border border-zinc-100 hover:border-zinc-300 transition">
-            <a href="${p.url}" target="_blank" class="block">
-              <div class="text-[13.5px] font-medium leading-[1.3] group-hover:underline">${p.title}</div>
-              <div class="text-[11px] mt-1 flex justify-between opacity-60"><span>${p.source}</span><span class="bg-white border px-2 rounded-full text-[10px]">${p.type}</span></div>
-            </a>
-            <div class="mt-3 grid grid-cols-2 gap-1.5">
-              <button onclick="runAI('make-clear','${p.title.replace(/'/g,"")}','${p.url}')" class="text-[11px] py-1.5 bg-black text-white rounded-full">Make Argument Clear</button>
-              <button onclick="runAI('fix-grammar','${p.title.replace(/'/g,"")}','${p.url}')" class="text-[11px] py-1.5 bg-white border rounded-full">Fix Grammar</button>
-              <button onclick="runAI('weakness','${p.title.replace(/'/g,"")}','${p.url}')" class="text-[11px] py-1.5 bg-white border rounded-full">Weakness</button>
-              <button onclick="runAI('rephrase','${p.title.replace(/'/g,"")}','${p.url}')" class="text-[11px] py-1.5 bg-white border rounded-full">Rephrase</button>
-              <button onclick="runAI('detect-ai','${p.title.replace(/'/g,"")}','${p.url}')" class="col-span-2 text-[11px] py-1.5 bg-yellow-100 border border-yellow-200 rounded-full">🤖 Detect AI - ai-detector-free.lovable.app</button>
-            </div>
-          </div>
-        `).join('')}
-      </div>`;
-    library.appendChild(col);
-  });
-}
-
-function closeModal(){document.getElementById('ai-modal').classList.add('hidden')}
-window.closeModal=closeModal;
-
-async function runAI(action,title,url){
-  const modal=document.getElementById('ai-modal');
-  const content=document.getElementById('modal-content');
-  const titleEl=document.getElementById('modal-title');
-  const dLink=document.getElementById('detector-link');
-  titleEl.innerText=action.replace('-',' ').toUpperCase();
-  content.innerText="⏳ Analyzing with AI + your detector (ai-detector-free.lovable.app)...";
-  dLink.classList.toggle('hidden', action!=='detect-ai' && action!=='make-clear');
-  modal.classList.remove('hidden');
-  try{
-    const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action,text:title,url})});
-    const data=await res.json();
-    content.innerText=typeof data.result==='string'?data.result:JSON.stringify(data.result,null,2);
-  }catch(e){content.innerText="Error: "+e.message}
-}
-window.runAI=runAI;
-
-async function generateProject(){
-  const kw=document.getElementById('tb-keywords').value;
-  const q=document.getElementById('tb-question').value;
-  const out=document.getElementById('toolbox-output');
-  if(!kw||!q){out.innerText="Please enter keywords and research question.";return;}
-  out.innerText="⏳ Generating research template with AI...";
-  try{
-    const res=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'toolbox',text:`Keywords: ${kw}\nResearch Question: ${q}`})});
-    const data=await res.json();
-    out.innerText=data.result;
-  }catch(e){out.innerText="Error: "+e.message}
-}
-window.generateProject=generateProject;
-
-search.addEventListener('input',e=>renderLibrary(e.target.value));
-searchMobile.addEventListener('input',e=>renderLibrary(e.target.value));
-renderFilters();renderLibrary();
+const folderDiv=document.getElementById('articleFolders');
+let idx=10;
+Object.entries(RESEARCH_DB).forEach(([field,papers])=>{
+  idx++; const id='af-'+idx;
+  folderDiv.innerHTML+=`<div onclick="toggleFolder('${id}')" class="cursor-pointer bg-white rounded-full px-4 py-2.5 flex justify-between items-center border hover:bg-black hover:text-white text-[12px]"><span>📁 ${field} (${papers.length})</span><span class="text-[10px]">▶</span></div><div id="${id}" class="hidden space-y-1.5 px-2 mt-1.5 mb-2">${papers.map(p=>`<a href="${p.u}" target="_blank" class="block bg-white rounded-xl p-2.5 text-[11px] hover:bg-black hover:text-white border"><div class="font-medium">${p.t}</div><div class="text-[9px] opacity-60 truncate mt-0.5">${p.u}</div></a>`).join('')}</div>`;
+});
+function toggleFolder(id){document.getElementById(id).classList.toggle('hidden')}
+let steps={search:false,reading:false,idea:false,data:false,[STRIPPED]
+const saved=localStorage.getItem('curio_tracker'); if(saved) steps=JSON.parse(saved);
+function updateTracker(){localStorage.setItem('curio_tracker',JSON.stringify(steps));let done=Object.values(steps).filter(Boolean).length;let pct=Math.round(done/6*100);document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').innerText=pct+'% — '+(pct==0?'Start':pct==100?'Submitted! 🎉':'Keep going');Object.keys(steps).forEach(k=>{const btn=document.getElementById('btn-'+k);if(steps[k]){btn.classList.add('bg-black','!text-white');btn.classList.remove('bg-[#E8E0A0]');}else{btn.classList.remove('bg-black','!text-white');btn.classList.add('bg-[#E8E0A0]');}});}function toggleStep(k){steps[k]=!steps[k];updateTracker();}updateTracker();
+async function generateRoadmap(){const idea=document.getElementById('ideaInput').value;const out=document.getElementById('roadmapOut');if(!idea)return alert('Type idea');out.classList.remove('hidden');out.innerText="⏳ Generating...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:idea})});const j=await r.json();out.innerText=j.result;}
+async function runFix(act){const txt=document.getElementById('researchInput').value;const out=document.getElementById('fixOut');if(!txt)return alert('Paste research');out.classList.remove('hidden');out.innerText="⏳ Running "+act+" via ai-detector-free.lovable.app...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:act,text:txt})});const j=await r.json();out.innerText=j.result;}
+async function publishTrack(){const data={based:document.getElementById('based').value,question:document.getElementById('question').value,refs:document.getElementById('refs').value,audience:document.getElementById('audience').value};const out=document.getElementById('publishOut');out.classList.remove('hidden');out.innerText="⏳ Finding journal...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'publish-track',text:JSON.stringify(data)})});const j=await r.json();out.innerHTML=`<div>${j.result}</div><div class="mt-3 flex gap-2"><a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="px-4 py-2 bg-black text-white rounded-full text-xs">Submit to JSR →</a><a href="https://www.theyoungresearcher.com/" target="_blank" class="px-4 py-2 bg-white border rounded-full text-xs">Young Researcher →</a></div>`;}
+async function submitReview(){const name=document.getElementById('revName').value,text=document.getElementById('revText').value,btn=document.getElementById('revBtn'),status=document.getElementById('revStatus');if(!name||!text){alert('Fill name & review');return;}btn.innerText="Sending...";btn.disabled=true;try{const r=await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,text,progress:steps})});status.classList.remove('hidden');status.className="text-xs text-center p-3 rounded-full bg-green-100 text-green-800 mt-2";status.innerText="✅ Sent to jamaljuweria21@gmail.com!";}catch(e){status.innerText="Error: "+e.message;}btn.innerText="📧 Submit Review";btn.disabled=false;}
 </script>
 </body>
 </html>
