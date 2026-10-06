@@ -4,179 +4,186 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>curio.paper — From idea to publication</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:wght@600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Newsreader:ital,wght@0,600;1,400&display=swap" rel="stylesheet">
 <style>
   body{font-family:'Inter',sans-serif;background:#FCFCF9}
- .serif{font-family:'Newsreader',serif}
- .sunset{ background: linear-gradient(90deg,#FF2E1F 0%, #FF6A2B 25%, #FFB12E 55%, #FFE55A 100%) }
- .sunset-soft{ background: linear-gradient(90deg,rgba(255,46,31,0.15),rgba(255,177,46,0.15),rgba(255,229,90,0.3)) }
- .card{ background:white; border:1px solid #E8E2D0; border-radius:22px }
+.serif{font-family:'Newsreader',serif}
+.sunset{ background: linear-gradient(90deg,#FF2E1F 0%, #FF6A2B 35%, #FFB12E 70%, #FFE55A 100%) }
+.sunset-soft{ background: linear-gradient(90deg,rgba(255,46,31,0.08),rgba(255,177,46,0.12),rgba(255,229,90,0.18)) }
+.card{ background:white; border:1px solid #E8E2D0; border-radius:22px }
 </style>
 </head>
 <body>
-<!-- TOP SUNSET LINE LIKE YOUR SCREENSHOT -->
 <div class="h-[6px] w-full sunset sticky top-0 z-50"></div>
 
-<div class="max-w-[1300px] mx-auto px-5 py-5">
-<div class="flex justify-between items-center">
-  <h1 class="serif text-[26px] font-bold">curio.paper</h1>
-  <div class="text-[10px] tracking-widest bg-black text-white px-3 py-1.5 rounded-full">THEME: SUNSET INSPIRED • NOT FULL BG</div>
-</div>
-
-<h2 class="serif text-[36px] leading-[0.95] mt-6">Four quiet tools — folder for videos.</h2>
-
-<!-- 4 TOOLS -->
-<div class="grid grid-cols-1 md:grid-cols-2 gap-5 mt-6">
-<!-- A -->
-<div class="card p-5">
-  <div class="text-[10px] tracking-widest font-bold opacity-60">A — TURN IDEA INTO PROJECT</div>
-  <h3 class="font-bold text-[16px] mt-1">Roadmap + template to copy</h3>
-  <p class="text-[12px] opacity-70 mt-1">Put idea/field → AI gives hypothesis, methods, timeline + Abstract/Intro/Methods/Results/Discussion format to copy.</p>
-  <input id="tb-keys" placeholder="Keywords: e.g. microplastics, marine, AI" class="mt-4 w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-sm outline-none">
-  <input id="tb-q" placeholder="Research Question: e.g. How to detect?" class="mt-2 w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-sm outline-none">
-  <button onclick="generateRoadmap()" class="mt-3 w-full py-3 sunset text-white rounded-full text-sm font-bold">Generate roadmap + template</button>
-  <pre id="roadmapOut" class="hidden mt-4 bg-[#FCFCF9] rounded-2xl p-4 text-[12px] whitespace-pre-wrap max-h-[350px] overflow-auto border"></pre>
-</div>
-
-<!-- B - YOUR 5 VIDEOS CLASSIFIED -->
-<div class="card p-5">
-  <div class="text-[10px] tracking-widest font-bold opacity-60">B — UNDERSTAND WORK BEHIND — YOUR 5 YOUTUBE</div>
-  <h3 class="font-bold text-[16px] mt-1">Video library — click folder (YOUR LINKS)</h3>
-
-  <div onclick="toggleFolder('proc')" class="cursor-pointer mt-4 sunset text-white rounded-full px-4 py-3 flex justify-between">
-    <span class="text-[13px] font-bold">📁 01 — Research Process (2 videos)</span><span class="text-[10px] bg-white text-black px-2 py-1 rounded-full">2 FILES</span>
-  </div>
-  <div id="proc" class="space-y-3 mt-2">
-    <div class="bg-[#FCFCF9] rounded-[16px] p-2 border">
-      <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/UY7sVKJPTMA" allowfullscreen></iframe>
-      <div class="p-2 text-[12px] font-bold">How to Write a Paper in a Weekend — Process</div>
+<!-- SIGN IN MODAL - Must sign in to start research -->
+<div id="signinModal" class="fixed inset-0 z-[100] bg-[#FCFCF9]/90 backdrop-blur-md flex items-center justify-center p-5 hidden">
+  <div class="card max-w-[420px] w-full p-7 shadow-2xl">
+    <div class="h-[4px] w-full sunset rounded-full mb-5"></div>
+    <h2 class="serif text-[26px] font-bold leading-[1.1]">Sign in to start<br>your research</h2>
+    <p class="text-[13px] opacity-60 mt-2">Your progress will be saved privately. Only 10 seconds.</p>
+    <div class="mt-6 space-y-3">
+      <input id="signinName" placeholder="Your name" class="w-full px-4 py-3 rounded-full border bg-[#FCFCF9] text-[14px] outline-none">
+      <input id="signinEmail" placeholder="Email (for progress updates)" type="email" class="w-full px-4 py-3 rounded-full border bg-[#FCFCF9] text-[14px] outline-none">
+      <button onclick="doSignin()" class="w-full py-3.5 bg-black text-white rounded-full text-[14px] font-bold">Start researching →</button>
+      <div class="text-[10px] text-center opacity-40">No spam. Your data stays private on your device.</div>
     </div>
-    <div class="bg-[#FCFCF9] rounded-[16px] p-2 border">
-      <iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/WVv2jWXW0K4" allowfullscreen></iframe>
-      <div class="p-2 text-[12px] font-bold">How To Read Research Papers Effectively — Process</div>
+  </div>
+</div>
+
+<div class="max-w-[1300px] mx-auto px-5 py-6">
+  <!-- HEADER + SIGN IN STATUS -->
+  <div class="flex justify-between items-center">
+    <h1 class="serif text-[28px] font-bold tracking-tight">curio.paper</h1>
+    <div class="flex items-center gap-3">
+      <div id="userBadge" class="hidden text-[11px] bg-black text-white px-4 py-2 rounded-full font-bold">Hi, Researcher</div>
+      <button id="signinBtn" onclick="openSignin()" class="text-[11px] bg-white border px-4 py-2 rounded-full font-bold hover:bg-black hover:text-white transition">Sign in</button>
+      <button id="signoutBtn" onclick="doSignout()" class="hidden text-[11px] underline opacity-60">Sign out</button>
     </div>
   </div>
 
-  <div onclick="toggleFolder('meth')" class="cursor-pointer mt-3 bg-[#F5F1D5] border rounded-full px-4 py-3 flex justify-between">
-    <span class="text-[13px] font-bold">📁 02 — Methods & Inspiration (3 videos)</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 FILES</span>
+  <!-- MOTIVATIONAL LINES - 3 aesthetic lines -->
+  <div class="mt-6 sunset-soft rounded-[18px] p-4 border border-[#E8E2D0]/50 flex flex-col md:flex-row gap-3 md:gap-8 items-start md:items-center">
+    <div class="serif italic text-[15px] leading-[1.3]">“ Every great paper started as a messy idea in a notebook. ”</div>
+    <div class="hidden md:block h-6 w-px bg-black/10"></div>
+    <div class="serif italic text-[15px] leading-[1.3]">“ You don’t need permission to ask a big question. ”</div>
+    <div class="hidden md:block h-6 w-px bg-black/10"></div>
+    <div class="serif italic text-[15px] leading-[1.3]">“ Publish messy, refine later — progress over perfection. ”</div>
   </div>
-  <div id="meth" class="hidden space-y-3 mt-2">
-    <div class="bg-[#FCFCF9] rounded-[16px] p-2 border"><iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/yRxFwMHS_A8" allowfullscreen></iframe><div class="p-2 text-[12px] font-bold">Methods — yRxFwMHS_A8</div></div>
-    <div class="bg-[#FCFCF9] rounded-[16px] p-2 border"><iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" allowfullscreen></iframe><div class="p-2 text-[12px] font-bold">Finding Research Gaps — QBMk2Bfs4Fs</div></div>
-    <div class="bg-[#FCFCF9] rounded-[16px] p-2 border"><iframe class="w-full h-[170px] rounded-[12px]" src="https://www.youtube.com/embed/7gGi1-g2Hek" allowfullscreen></iframe><div class="p-2 text-[12px] font-bold">Inspiration — 7gGi1-g2Hek</div></div>
-  </div>
-</div>
 
-<!-- C - FIX GRAMMAR / WEAKNESS / REPHRASE / AI DETECT - OPTIONS YOU CIRCLED -->
-<div class="bg-black rounded-[22px] p-5 text-white">
-  <div class="text-[10px] tracking-widest font-bold text-[#FFE55A]">C — MAKE ARGUMENT CLEARER</div>
-  <h3 class="font-bold text-[16px] mt-1">Paste research — fix + weakness</h3>
-  <textarea id="researchInput" placeholder="Paste your full research here..." class="mt-4 w-full h-[190px] p-4 rounded-2xl bg-[#1A1A1A] border border-zinc-800 text-sm"></textarea>
-  <div class="flex flex-wrap gap-2 mt-4">
-    <button onclick="runFix('fix-grammar')" class="px-4 py-2 bg-white text-black rounded-full text-xs font-medium">Fix grammar</button>
-    <button onclick="runFix('weakness')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Weakness</button>
-    <button onclick="runFix('rephrase')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Rephrase</button>
-    <button onclick="runFix('detect-ai')" class="px-4 py-2 sunset text-white rounded-full text-xs font-bold">AI Detect — ai-detector-free.lovable.app</button>
+  <!-- 1. BEST RESEARCHS - TOP - AESTHETIC -->
+  <div class="mt-8">
+    <div class="flex items-baseline gap-3">
+      <h2 class="serif text-[26px] font-bold">Best Researchs</h2>
+      <div class="h-px flex-1 bg-gradient-to-r from-[#FF2E1F]/30 to-transparent"></div>
+      <span class="text-[10px] tracking-widest opacity-50 font-bold">EDITOR PICK</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mt-4">
+      <a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="group card p-0 overflow-hidden hover:border-black transition"><div class="h-[4px] sunset"></div><div class="p-5"><div class="text-[10px] font-bold tracking-widest opacity-40">01</div><div class="serif text-[17px] leading-[1.1] font-semibold mt-2 group-hover:underline">How to Structure Abstract & Methods</div><div class="mt-4 text-[11px] opacity-50">Read →</div></div></a>
+      <a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="group card p-0 overflow-hidden hover:border-black transition"><div class="h-[4px] sunset"></div><div class="p-5"><div class="text-[10px] font-bold tracking-widest opacity-40">02</div><div class="serif text-[17px] leading-[1.1] font-semibold mt-2 group-hover:underline">Award-Winning Student Paper</div><div class="mt-4 text-[11px] opacity-50">Read →</div></div></a>
+      <a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="group card p-0 overflow-hidden hover:border-black transition"><div class="h-[4px] sunset"></div><div class="p-5"><div class="text-[10px] font-bold tracking-widest opacity-40">03</div><div class="serif text-[17px] leading-[1.1] font-semibold mt-2 group-hover:underline">From Idea to Publication Journey</div><div class="mt-4 text-[11px] opacity-50">Read →</div></div></a>
+      <a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="group card p-0 overflow-hidden hover:border-black transition"><div class="h-[4px] sunset"></div><div class="p-5"><div class="text-[10px] font-bold tracking-widest opacity-40">04</div><div class="serif text-[17px] leading-[1.1] font-semibold mt-2 group-hover:underline">Most Cited Template — Steal Structure</div><div class="mt-4 text-[11px] opacity-50">Read →</div></div></a>
+    </div>
   </div>
-  <pre id="fixOut" class="hidden mt-4 bg-[#1A1A1A] border border-zinc-800 rounded-2xl p-4 text-[12px] whitespace-pre-wrap max-h-[350px] overflow-auto"></pre>
-</div>
 
-<!-- D - PUBLISH + TRACK OPTIONS -->
-<div class="card p-5">
-  <div class="text-[10px] tracking-widest font-bold opacity-60">D — FIND RIGHT AUDIENCE + PROOF + TRACK + REVIEW</div>
-  <h3 class="font-bold text-[20px] mt-1 serif">Where should this live?</h3>
-  <div class="mt-4 space-y-3">
-    <input id="based" placeholder="What is it based upon?" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-sm">
-    <input id="question" placeholder="What question are you answering?" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-sm">
-    <input id="refs" placeholder="References / proof" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-sm">
-    <textarea id="audience" placeholder="Target audience? JEI, Curiosity Journal..." class="w-full px-4 py-3 rounded-2xl bg-[#FCFCF9] border text-sm h-[70px]"></textarea>
-    <button onclick="publishTrack()" class="w-full py-2.5 bg-black text-white rounded-full text-xs font-bold">Publish + Track</button>
+  <!-- 2. FIELDS -->
+  <div class="mt-8 card p-0 overflow-hidden">
+    <div class="sunset-soft p-6 flex justify-between items-center border-b"><h3 class="serif text-[20px] font-bold">All 11 Fields</h3><span class="text-[10px] bg-black text-white px-3 py-1.5 rounded-full">30+ PAPERS</span></div>
+    <div class="p-5 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3" id="fieldFolders"></div>
   </div>
-  <div id="publishOut" class="hidden mt-4 bg-[#FCFCF9] rounded-2xl p-4 text-sm border"></div>
-  <div class="mt-3 flex gap-2">
-    <a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="flex-1 py-3 bg-black text-white rounded-full text-xs font-bold text-center">Publish via JSR Path →</a>
-    <a href="https://www.theyoungresearcher.com/" target="_blank" class="flex-1 py-3 bg-white border rounded-full text-xs font-bold text-center">Young Researcher →</a>
-  </div>
-</div>
-</div>
 
-<!-- FEATURED BEST RESEARCHS - YOUR 4 LINKS -->
-<div class="mt-8 card p-5">
-  <div class="flex justify-between items-center"><h3 class="serif text-[18px] font-bold">★ Featured Best Researchs — Your 4 Links</h3><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">EDITOR PICK</span></div>
-  <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-4">
-    <a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="bg-[#FCFCF9] border rounded-xl p-3 hover:bg-black hover:text-white"><div class="text-[11px] font-bold">Featured #1</div><div class="text-[12px] mt-1">How to Structure Abstract & Methods</div></a>
-    <a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="bg-[#FCFCF9] border rounded-xl p-3 hover:bg-black hover:text-white"><div class="text-[11px] font-bold">Featured #2</div><div class="text-[12px] mt-1">Award-Winning Student Paper</div></a>
-    <a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="bg-[#FCFCF9] border rounded-xl p-3 hover:bg-black hover:text-white"><div class="text-[11px] font-bold">Featured #3</div><div class="text-[12px] mt-1">Idea to Publication Journey</div></a>
-    <a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="bg-[#FCFCF9] border rounded-xl p-3 hover:bg-black hover:text-white"><div class="text-[11px] font-bold">Featured #4</div><div class="text-[12px] mt-1">Most Cited Template</div></a>
-  </div>
-</div>
+  <!-- 3. 4 TOOLBOXES - ALIGNED - REQUIRE SIGN IN -->
+  <div class="mt-8">
+    <div class="flex items-center gap-3 mb-4">
+      <h3 class="serif text-[22px] font-bold">Toolbox</h3>
+      <span id="lockMsg" class="text-[11px] bg-[#FFE55A] px-3 py-1 rounded-full font-bold">🔒 Sign in to unlock all tools</span>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 items-stretch">
+      <div class="card p-6 flex flex-col relative overflow-hidden">
+        <div id="lock-A" class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><button onclick="openSignin()" class="px-5 py-2.5 bg-black text-white rounded-full text-xs font-bold">Sign in to start →</button></div>
+        <div class="text-[10px] tracking-[0.2em] font-bold opacity-40">A — TURN IDEA INTO PROJECT</div>
+        <h4 class="font-bold text-[17px] mt-2">Roadmap + template to copy</h4>
+        <input id="tb-keys" placeholder="Keywords" class="mt-5 w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-[13px] outline-none">
+        <input id="tb-q" placeholder="Research Question" class="mt-2 w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-[13px] outline-none">
+        <button onclick="generateRoadmap()" class="mt-3 w-full py-3 bg-black text-white rounded-full text-[13px] font-bold">Generate roadmap + template</button>
+        <pre id="roadmapOut" class="hidden mt-4 bg-[#FCFCF9] rounded-2xl p-4 text-[12px] whitespace-pre-wrap max-h-[350px] overflow-auto border flex-1"></pre>
+      </div>
 
-<!-- ALL 11 FIELDS - CLICK TO SEE YOUR ARTICLES - THIS WAS MISSING -->
-<div class="mt-6 card p-0 overflow-hidden">
-  <div class="sunset-soft p-5 flex justify-between items-center">
-    <h3 class="serif text-[20px] font-bold">📚 All 11 Fields — Click to see your articles</h3>
-    <span class="text-[10px] bg-black text-white px-3 py-1.5 rounded-full">30+ PAPERS YOU GAVE</span>
-  </div>
-  <div class="p-5 grid grid-cols-1 md:grid-cols-2 gap-3" id="fieldFolders"></div>
-</div>
+      <div class="card p-6 flex flex-col relative overflow-hidden">
+        <div id="lock-B" class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><button onclick="openSignin()" class="px-5 py-2.5 bg-black text-white rounded-full text-xs font-bold">Sign in to view →</button></div>
+        <div class="text-[10px] tracking-[0.2em] font-bold opacity-40">B — UNDERSTAND WORK BEHIND</div>
+        <h4 class="font-bold text-[17px] mt-2">Video Library</h4>
+        <div class="mt-4 space-y-3">
+          <div onclick="toggleFolder('proc')" class="cursor-pointer sunset text-white rounded-full px-4 py-3 flex justify-between"><span class="text-[13px] font-bold">📁 Research Process</span><span class="text-[10px] bg-white text-black px-2 py-1 rounded-full">2 VIDEOS</span></div>
+          <div id="proc" class="space-y-3"><div class="rounded-[14px] overflow-hidden border"><iframe class="w-full h-[165px]" src="https://www.youtube.com/embed/UY7sVKJPTMA" allowfullscreen></iframe></div><div class="rounded-[14px] overflow-hidden border"><iframe class="w-full h-[165px]" src="https://www.youtube.com/embed/WVv2jWXW0K4" allowfullscreen></iframe></div></div>
+          <div onclick="toggleFolder('meth')" class="cursor-pointer bg-[#F5F1D5] border rounded-full px-4 py-3 flex justify-between"><span class="text-[13px] font-bold">📁 Methods & Inspiration</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 VIDEOS</span></div>
+          <div id="meth" class="hidden space-y-3"><div class="rounded-[14px] overflow-hidden border"><iframe class="w-full h-[165px]" src="https://www.youtube.com/embed/yRxFwMHS_A8" allowfullscreen></iframe></div><div class="rounded-[14px] overflow-hidden border"><iframe class="w-full h-[165px]" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" allowfullscreen></iframe></div><div class="rounded-[14px] overflow-hidden border"><iframe class="w-full h-[165px]" src="https://www.youtube.com/embed/7gGi1-g2Hek" allowfullscreen></iframe></div></div>
+        </div>
+      </div>
 
-<!-- PRIVATE PROGRESS TRACKER - OPTIONS FROM YOUR SCREENSHOT -->
-<div class="mt-6 card p-5">
-  <div class="text-[10px] tracking-[0.2em] font-bold opacity-60">🔒 MY PRIVATE PROGRESS — ONLY FOR YOU — NOT PUBLIC</div>
-  <h3 class="font-black text-[22px] mt-1">Track yourself — be first</h3>
-  <div class="mt-4 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-    <button onclick="toggleStep('search')" id="btn-search" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">🔍 Search</div></button>
-    <button onclick="toggleStep('reading')" id="btn-reading" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">📖 Reading</div></button>
-    <button onclick="toggleStep('idea')" id="btn-idea" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">💡 Idea</div></button>
-    <button onclick="toggleStep('data')" id="btn-data" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">🧪 Data</div></button>
-    <button onclick="toggleStep('draft')" id="btn-draft" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">✍️ Draft</div></button>
-    <button onclick="toggleStep('submitted')" id="btn-submitted" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-1 font-bold text-[13px]">📤 Submitted</div></button>
-  </div>
-  <div class="mt-5 h-2 w-full bg-black/10 rounded-full overflow-hidden"><div id="progressBar" class="h-full sunset w-[0%] transition-all duration-500"></div></div>
-  <div id="progressText" class="mt-2 text-[13px] font-bold">0% — Start</div>
-</div>
+      <div class="bg-black rounded-[22px] p-6 text-white flex flex-col min-h-[420px] relative overflow-hidden">
+        <div id="lock-C" class="absolute inset-0 bg-black/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><button onclick="openSignin()" class="px-5 py-2.5 bg-white text-black rounded-full text-xs font-bold">Sign in to fix →</button></div>
+        <div class="text-[10px] tracking-[0.2em] font-bold text-[#FFE55A]">C — MAKE ARGUMENT CLEARER</div>
+        <h4 class="font-bold text-[17px] mt-2">Paste research — fix + weakness</h4>
+        <textarea id="researchInput" placeholder="Paste your full research here..." class="mt-5 w-full h-[190px] p-4 rounded-2xl bg-[#1A1A1A] border border-zinc-800 text-[13px] outline-none resize-none"></textarea>
+        <div class="flex flex-wrap gap-2 mt-4"><button onclick="runFix('fix-grammar')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Fix grammar</button><button onclick="runFix('weakness')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Weakness</button><button onclick="runFix('rephrase')" class="px-4 py-2 bg-white text-black rounded-full text-xs">Rephrase</button><button onclick="runFix('detect-ai')" class="px-4 py-2 sunset text-white rounded-full text-xs font-bold">AI Detect</button></div>
+        <pre id="fixOut" class="hidden mt-4 bg-[#1A1A1A] border border-zinc-800 rounded-2xl p-4 text-[12px] whitespace-pre-wrap max-h-[350px] overflow-auto flex-1"></pre>
+      </div>
 
-<!-- REVIEW FEEDBACK -->
-<div class="mt-6 card p-5">
-  <div class="text-[10px] tracking-[0.2em] font-bold opacity-60">REVIEW & FEEDBACK → jamaljuweria21@gmail.com</div>
-  <h3 class="font-black text-[18px] mt-1">Leave a review — helps others</h3>
-  <div class="mt-4 flex gap-3">
-    <input id="revName" placeholder="Your name" class="flex-1 px-4 py-3 rounded-full border bg-[#FCFCF9] text-sm">
-    <button onclick="submitReview()" id="revBtn" class="px-6 py-3 sunset text-white rounded-full text-sm font-bold">📧 Submit</button>
+      <div class="card p-6 flex flex-col min-h-[420px] relative overflow-hidden">
+        <div id="lock-D" class="absolute inset-0 bg-white/70 backdrop-blur-[2px] z-10 flex items-center justify-center"><button onclick="openSignin()" class="px-5 py-2.5 bg-black text-white rounded-full text-xs font-bold">Sign in to publish →</button></div>
+        <div class="text-[10px] tracking-[0.2em] font-bold opacity-40">D — FIND RIGHT AUDIENCE</div>
+        <h4 class="font-bold text-[20px] mt-2 serif">Where should this live?</h4>
+        <div class="mt-5 space-y-3"><input id="based" placeholder="What is it based upon?" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-[13px]"><input id="question" placeholder="What question are you answering?" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-[13px]"><input id="refs" placeholder="References / proof" class="w-full px-4 py-3 rounded-full bg-[#FCFCF9] border text-[13px]"><textarea id="audience" placeholder="Target audience?" class="w-full px-4 py-3 rounded-2xl bg-[#FCFCF9] border text-[13px] h-[80px]"></textarea><button onclick="publishTrack()" class="w-full py-3 bg-black text-white rounded-full text-[13px] font-bold">Publish + Track</button></div>
+        <div id="publishOut" class="hidden mt-4 bg-[#FCFCF9] rounded-2xl p-4 text-[13px] border"></div>
+        <div class="mt-4 grid grid-cols-2 gap-2"><a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="py-3 bg-black text-white rounded-full text-[11px] font-bold text-center">Publish via JSR Path →</a><a href="https://www.theyoungresearcher.com/" target="_blank" class="py-3 bg-white border rounded-full text-[11px] font-bold text-center">Young Researcher →</a></div>
+      </div>
+    </div>
   </div>
-  <textarea id="revText" placeholder="Write your honest review here..." class="mt-3 w-full px-4 py-4 rounded-[20px] border bg-[#FCFCF9] text-sm h-[90px]"></textarea>
-  <div id="revStatus" class="hidden mt-2 text-xs text-center p-3 rounded-full"></div>
-</div>
 
+  <!-- PRIVATE PROGRESS -->
+  <div class="mt-8 card p-6"><div class="text-[10px] tracking-[0.2em] font-bold opacity-40">MY PRIVATE PROGRESS — ONLY FOR YOU</div><h3 class="font-black text-[20px] mt-1">Track yourself — be first</h3><div class="mt-5 grid grid-cols-3 md:grid-cols-6 gap-3"><button onclick="toggleStep('search')" id="btn-search" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2 border-transparent hover:border-black"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">🔍 Search</div></button><button onclick="toggleStep('reading')" id="btn-reading" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">📖 Reading</div></button><button onclick="toggleStep('idea')" id="btn-idea" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">💡 Idea</div></button><button onclick="toggleStep('data')" id="btn-data" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">🧪 Data</div></button><button onclick="toggleStep('draft')" id="btn-draft" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">✍️ Draft</div></button><button onclick="toggleStep('submitted')" id="btn-submitted" class="bg-[#EDE8C5] rounded-[16px] p-4 text-left border-2"><div class="text-[14px]">☐</div><div class="mt-2 font-bold text-[13px]">📤 Submitted</div></button></div><div class="mt-6 h-2 w-full bg-black/10 rounded-full overflow-hidden"><div id="progressBar" class="h-full sunset w-[0%] transition-all duration-500"></div></div><div id="progressText" class="mt-2 text-[13px] font-bold">0% — Start</div></div>
+
+  <!-- REVIEW - NO MAIL SHOWN -->
+  <div class="mt-6 card p-6"><div class="text-[10px] tracking-[0.2em] font-bold opacity-40">REVIEW & FEEDBACK</div><h3 class="font-black text-[18px] mt-1">Leave a review — helps others</h3><div class="mt-4 flex gap-3"><input id="revName" placeholder="Your name" class="flex-1 px-4 py-3 rounded-full border bg-[#FCFCF9] text-[13px]"><button onclick="submitReview()" id="revBtn" class="px-6 py-3 bg-black text-white rounded-full text-[13px] font-bold">Submit Review</button></div><textarea id="revText" placeholder="Write your honest review here..." class="mt-3 w-full px-4 py-4 rounded-[20px] border bg-[#FCFCF9] text-[13px] h-[90px]"></textarea><div id="revStatus" class="hidden mt-2 text-xs text-center p-3 rounded-full"></div></div>
 </div>
 
 <script>
+// SIGN IN LOGIC
+function getUser(){return JSON.parse(localStorage.getItem('curio_user')||'null')}
+function isSignedIn(){return!!getUser()}
+function openSignin(){document.getElementById('signinModal').classList.remove('hidden')}
+function closeSignin(){document.getElementById('signinModal').classList.add('hidden')}
+function doSignin(){
+  const name=document.getElementById('signinName').value.trim(), email=document.getElementById('signinEmail').value.trim();
+  if(!name||!email){alert('Enter name & email');return;}
+  localStorage.setItem('curio_user',JSON.stringify({name,email,time:Date.now()}));
+  closeSignin(); updateAuthUI();
+  // mail progress in background
+  fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,email,text:`NEW SIGNUP: ${name} (${email}) started research on curio.paper`,type:'signup'})});
+}
+function doSignout(){localStorage.removeItem('curio_user'); updateAuthUI();}
+function updateAuthUI(){
+  const user=getUser();
+  const badge=document.getElementById('userBadge'), signinBtn=document.getElementById('signinBtn'), signoutBtn=document.getElementById('signoutBtn'), lockMsg=document.getElementById('lockMsg');
+  ['A','B','C','D'].forEach(k=>{ const el=document.getElementById('lock-'+k); if(el) el.style.display = user? 'none' : 'flex'; });
+  if(user){
+    badge.classList.remove('hidden'); badge.innerText='Hi, '+user.name.split(' ')[0];
+    signinBtn.classList.add('hidden'); signoutBtn.classList.remove('hidden'); lockMsg.classList.add('hidden');
+  } else {
+    badge.classList.add('hidden'); signinBtn.classList.remove('hidden'); signoutBtn.classList.add('hidden'); lockMsg.classList.remove('hidden');
+  }
+}
+updateAuthUI();
+// Auto popup after 2s if not signed in
+setTimeout(()=>{ if(!isSignedIn()) openSignin(); }, 2000);
+
 const DB={
-  "Biological Science": [{t:"How Does the Human Brain Work? - Caltech",u:"https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works"},{t:"Allergy Research Review - Springer",u:"https://link.springer.com/article/10.1186/s13223-018-0278-1"},{t:"Biological Science 2026 - T&F",u:"https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239"}],
-  "AI and Data Science": [{t:"Review on AI in Computational Methods",u:"https://link.springer.com/article/10.1007/s11831-024-10209-0"},{t:"AI in Data Processing - ScienceDirect",u:"https://www.sciencedirect.com/science/article/pii/S1877050924003752"},{t:"State of AI 2025 - Nature MI",u:"https://www.nature.com/articles/s42256-025-01000-2"}],
-  "Physics and Space": [{t:"IITK Physics Notes PDF",u:"https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf"},{t:"Dying Stars & Exoplanets - Nature",u:"https://www.nature.com/articles/d41586-025-01445-w"},{t:"Exoplanet Discovery 2025",u:"https://www.nature.com/articles/s41550-025-02763-9"}],
-  "Chemistry and Material Science": [{t:"Chemistry Review 2025 - Nature",u:"https://www.nature.com/articles/s41570-025-00706-6"},{t:"Advanced Materials",u:"https://www.nature.com/articles/s41563-025-02137-6"},{t:"Comms Chemistry",u:"https://www.nature.com/articles/s42004-025-01500-7"}],
-  "Neuroscience and Physiology": [{t:"Neuroscience Breakthrough",u:"https://www.nature.com/articles/s41467-025-65499-0"},{t:"Neuroscience Articles - EI",u:"https://emerginginvestigators.org/articles?q=neuroscience"},{t:"Neuro PDF - EI",u:"https://emerginginvestigators.org/articles/22-080/pdf"}],
+  "Biological Science": [{t:"How Does the Human Brain Work? - Caltech",u:"https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works"},{t:"Allergy Review - Springer",u:"https://link.springer.com/article/10.1186/s13223-018-0278-1"},{t:"Bio Science 2026",u:"https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239"}],
+  "AI and Data Science": [{t:"Review on AI in Computational Methods",u:"https://link.springer.com/article/10.1007/s11831-024-10209-0"},{t:"AI & Data Processing",u:"https://www.sciencedirect.com/science/article/pii/S1877050924003752"},{t:"State of AI 2025 - Nature MI",u:"https://www.nature.com/articles/s42256-025-01000-2"}],
+  "Physics and Space": [{t:"IITK Physics Notes PDF",u:"https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf"},{t:"Dying Stars & Exoplanets",u:"https://www.nature.com/articles/d41586-025-01445-w"},{t:"Exoplanet Discovery 2025",u:"https://www.nature.com/articles/s41550-025-02763-9"}],
+  "Chemistry and Material Science": [{t:"Chemistry Review 2025",u:"https://www.nature.com/articles/s41570-025-00706-6"},{t:"Advanced Materials",u:"https://www.nature.com/articles/s41563-025-02137-6"},{t:"Comms Chemistry",u:"https://www.nature.com/articles/s42004-025-01500-7"}],
+  "Neuroscience and Physiology": [{t:"Neuroscience Breakthrough",u:"https://www.nature.com/articles/s41467-025-65499-0"},{t:"Neuroscience Articles - EI",u:"https://emerginginvestigators.org/articles?q=neuroscience"},{t:"Neuro PDF",u:"https://emerginginvestigators.org/articles/22-080/pdf"}],
   "Engineering and Robotics": [{t:"Engineering Systems",u:"https://www.nature.com/articles/s41467-025-56025-3"},{t:"Robotics 2025",u:"https://www.nature.com/articles/s41467-025-57741-6"},{t:"Engineering Innovation",u:"https://www.nature.com/articles/s44287-025-00152-y"}],
-  "Climate Environment and Earth": [{t:"Climate & Earth Latest - EI",u:"https://emerginginvestigators.org/?s=last+updated"},{t:"Environmental Papers",u:"https://emerginginvestigators.org/?s=last+updated"}],
-  "Humanities, Literature & Culture": [{t:"Machine-assisted designs with AI - HSS",u:"https://www.nature.com/articles/s41599-025-04503-w"},{t:"Human Behaviour & Culture",u:"https://www.nature.com/articles/s41562-025-02242-1"},{t:"Humanities PDF - EI",u:"https://www.emerginginvestigators.org/articles/24-254/pdf"}],
-  "Society, Economics and Public Policy": [{t:"Society & Economics - Nature",u:"https://www.nature.com/articles/s41586-023-06840-9"},{t:"Public Policy",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Social Science Perspectives",u:"https://www.nature.com/articles/s41599-019-0232-y"}],
-  "Business and Management": [{t:"Business Research - HSS",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Business Collection - Nature",u:"https://www.nature.com/collections/jijcddffij"}],
-  "Communication and Media": [{t:"Media & Communication - Nature",u:"https://www.nature.com/articles/s41562-025-02102-y"},{t:"Communication Research",u:"https://www.nature.com/articles/s41586-023-06840-9"}]
+  "Climate Environment and Earth": [{t:"Climate Latest - EI",u:"https://emerginginvestigators.org/?s=last+updated"}],
+  "Humanities, Literature & Culture": [{t:"Machine-assisted designs with AI",u:"https://www.nature.com/articles/s41599-025-04503-w"},{t:"Human Behaviour",u:"https://www.nature.com/articles/s41562-025-02242-1"},{t:"Humanities PDF",u:"https://www.emerginginvestigators.org/articles/24-254/pdf"}],
+  "Society, Economics and Public Policy": [{t:"Society & Economics",u:"https://www.nature.com/articles/s41586-023-06840-9"},{t:"Public Policy",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Social Science",u:"https://www.nature.com/articles/s41599-019-0232-y"}],
+  "Business and Management": [{t:"Business Research",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Business Collection",u:"https://www.nature.com/collections/jijcddffij"}],
+  "Communication and Media": [{t:"Media & Communication",u:"https://www.nature.com/articles/s41562-025-02102-y"},{t:"Communication Research",u:"https://www.nature.com/articles/s41586-023-06840-9"}]
 };
 const fieldDiv=document.getElementById('fieldFolders');
 Object.entries(DB).forEach(([field,papers],idx)=>{
-  const id='f-'+idx;
-  fieldDiv.innerHTML+=`<div class="border rounded-[16px] overflow-hidden bg-[#FCFCF9]"><div onclick="toggleFolder('${id}')" class="cursor-pointer px-4 py-3 flex justify-between items-center hover:bg-black hover:text-white bg-white"><span class="font-bold text-[12px]">📁 ${String(idx+1).padStart(2,'0')} — ${field}</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">${papers.length} PAPERS</span></div><div id="${id}" class="hidden p-2 space-y-2 bg-[#FFFEF2]">${papers.map(p=>`<a href="${p.u}" target="_blank" class="block bg-white rounded-xl p-3 border hover:bg-black hover:text-white"><div class="font-medium text-[11px]">${p.t}</div><div class="text-[9px] opacity-60 truncate mt-1">${p.u}</div></a>`).join('')}</div></div>`;
+  const id='fld-'+idx;
+  fieldDiv.innerHTML+=`<div class="border rounded-[14px] overflow-hidden bg-[#FCFCF9]"><div onclick="toggleFolder('${id}')" class="cursor-pointer px-4 py-3 flex justify-between items-center hover:bg-black hover:text-white bg-white"><span class="font-bold text-[12px]">📁 ${String(idx+1).padStart(2,'0')} — ${field}</span><span class="text-[10px] bg-[#EDE8C5] text-black px-2 py-1 rounded-full">${papers.length} FILES</span></div><div id="${id}" class="hidden p-2 space-y-2">${papers.map(p=>`<a href="${p.u}" target="_blank" class="block bg-white rounded-xl p-3 border hover:bg-black hover:text-white"><div class="font-medium text-[11px]">${p.t}</div><div class="text-[9px] opacity-50 truncate mt-1">${p.u}</div></a>`).join('')}</div></div>`;
 });
 function toggleFolder(id){document.getElementById(id).classList.toggle('hidden')}
-let steps={search:false,reading:false,idea:false,data:false,draft:false,submitted:false};
+let steps={search:false,reading:false,idea:false,data:false,[STRIPPED]
 const saved=localStorage.getItem('curio_tracker'); if(saved) steps=JSON.parse(saved);
-function updateTracker(){localStorage.setItem('curio_tracker',JSON.stringify(steps));let done=Object.values(steps).filter(Boolean).length;let pct=Math.round(done/6*100);document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').innerText=pct+'% — '+(pct==0?'Start':pct==100?'Submitted! 🎉':'Keep going');Object.keys(steps).forEach(k=>{const b=document.getElementById('btn-'+k); if(steps[k]){b.classList.add('bg-black','!text-white');b.classList.remove('bg-[#EDE8C5]');}else{b.classList.remove('bg-black','!text-white');b.classList.add('bg-[#EDE8C5]');}});}function toggleStep(k){steps[k]=!steps[k];updateTracker();}updateTracker();
-async function generateRoadmap(){const keys=document.getElementById('tb-keys').value,q=document.getElementById('tb-q').value,out=document.getElementById('roadmapOut');if(!keys||!q){alert('Enter keywords + question');return;}out.classList.remove('hidden');out.innerText="⏳ Generating roadmap + template...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:`Keywords: ${keys}\nQuestion: ${q}`})});const j=await r.json();out.innerText=j.result;}
-async function runFix(act){const txt=document.getElementById('researchInput').value,out=document.getElementById('fixOut');if(!txt){alert('Paste research');return;}out.classList.remove('hidden');out.innerText="⏳ Running "+act+" via ai-detector-free.lovable.app...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:act,text:txt})});const j=await r.json();out.innerText=j.result;}
-async function publishTrack(){const data={based:document.getElementById('based').value,question:document.getElementById('question').value,refs:document.getElementById('refs').value,audience:document.getElementById('audience').value};const out=document.getElementById('publishOut');out.classList.remove('hidden');out.innerText="⏳ Finding best journal...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'publish-track',text:JSON.stringify(data)})});const j=await r.json();out.innerHTML=`<div>${j.result}</div><div class="mt-3 flex gap-2"><a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="px-4 py-2 bg-black text-white rounded-full text-xs">JSR Path →</a><a href="https://www.theyoungresearcher.com/" target="_blank" class="px-4 py-2 bg-white border rounded-full text-xs">Young Researcher →</a></div>`;}
-async function submitReview(){const name=document.getElementById('revName').value,text=document.getElementById('revText').value,btn=document.getElementById('revBtn'),status=document.getElementById('revStatus');if(!name||!text){alert('Fill name & review');return;}btn.innerText="Sending...";btn.disabled=true;try{await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,text,progress:steps})});status.classList.remove('hidden');status.className="text-xs text-center p-3 rounded-full bg-green-100 text-green-800 mt-2";status.innerText="✅ Sent to jamaljuweria21@gmail.com!";}catch(e){status.innerText="Error "+e.message;}btn.innerText="📧 Submit";btn.disabled=false;}
+function updateTracker(){localStorage.setItem('curio_tracker',JSON.stringify(steps));let done=Object.values(steps).filter(Boolean).length;let pct=Math.round(done/6*100);document.getElementById('progressBar').style.width=pct+'%';document.getElementById('progressText').innerText=pct+'% — '+(pct==0?'Start':pct==100?'Submitted! 🎉':'Keep going');Object.keys(steps).forEach(k=>{const b=document.getElementById('btn-'+k); if(steps[k]){b.classList.add('bg-black','!text-white');b.classList.remove('bg-[#EDE8C5]');}else{b.classList.remove('bg-black','!text-white');b.classList.add('bg-[#EDE8C5]');}});}function toggleStep(k){if(!isSignedIn()){openSignin();return;}steps[k]=!steps[k];updateTracker();}updateTracker();
+async function generateRoadmap(){if(!isSignedIn()){openSignin();return;}const keys=document.getElementById('tb-keys').value,q=document.getElementById('tb-q').value,out=document.getElementById('roadmapOut');if(!keys||!q){alert('Enter keywords + question');return;}out.classList.remove('hidden');out.innerText="⏳ Generating...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:`Keywords: ${keys}\nQuestion: ${q}`})});const j=await r.json();out.innerText=j.result;}
+async function runFix(act){if(!isSignedIn()){openSignin();return;}const txt=document.getElementById('researchInput').value,out=document.getElementById('fixOut');if(!txt){alert('Paste research');return;}out.classList.remove('hidden');out.innerText="⏳ Running "+act+"...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:act,text:txt})});const j=await r.json();out.innerText=j.result;}
+async function publishTrack(){if(!isSignedIn()){openSignin();return;}const data={based:document.getElementById('based').value,question:document.getElementById('question').value,refs:document.getElementById('refs').value,audience:document.getElementById('audience').value};const out=document.getElementById('publishOut');out.classList.remove('hidden');out.innerText="⏳ Finding journal...";const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'publish-track',text:JSON.stringify(data)})});const j=await r.json();out.innerHTML=`<div>${j.result}</div><div class="mt-3 flex gap-2"><a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="px-4 py-2 bg-black text-white rounded-full text-xs">JSR Path →</a><a href="https://www.theyoungresearcher.com/" target="_blank" class="px-4 py-2 bg-white border rounded-full text-xs">Young Researcher →</a></div>`;}
+async function submitReview(){const name=document.getElementById('revName').value||getUser()?.name||'Anonymous',text=document.getElementById('revText').value,btn=document.getElementById('revBtn'),status=document.getElementById('revStatus');if(!text){alert('Write review');return;}btn.innerText="Sending...";btn.disabled=true;try{await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,text,progress:steps,user:getUser()})});status.classList.remove('hidden');status.className="text-xs text-center p-3 rounded-full bg-green-100 text-green-800 mt-2";status.innerText="✅ Review submitted!";document.getElementById('revText').value="";}catch(e){status.innerText="Error "+e.message;}btn.innerText="Submit Review";btn.disabled=false;}
 </script>
 </body>
 </html>
