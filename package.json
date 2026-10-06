@@ -1,11 +1,5 @@
 {
   "name": "curio-paper",
   "version": "1.0.0",
-  "description": "From curiosity to research",
-  "type": "commonjs",
-  "main": "index.html",
-  "scripts": {
-    "start": "echo curio.paper"
-  },
   "dependencies": {}
 }
