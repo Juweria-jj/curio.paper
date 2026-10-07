@@ -2,189 +2,157 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>curio.paper — From curiosity to research</title>
+<title>curio.paper</title>
 <script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700;1,9..144,700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#FFFEF5;--ink:#11100E;--line:#E9DFC2}
-body{background:var(--paper);color:var(--ink);font-family:'Inter Tight',sans-serif;overflow-x:hidden;position:relative}
-.serif{font-family:'Fraunces',serif;letter-spacing:-.045em}
+body{background:#FFFEF5;color:#11100E;font-family:'Inter Tight',sans-serif}
+.serif{font-family:'Fraunces',serif;letter-spacing:-.04em}
 .serif-i{font-family:'Instrument Serif',serif}
 .mono{font-family:'JetBrains Mono',monospace}
-.top-line{height:6px;background:linear-gradient(90deg,#FF1F0F 0%,#FF6A14 22%,#FFB81A 50%,#FFE75E 80%,#FFF6B0 100%);position:sticky;top:0;z-index:50}
-.wash{position:fixed;left:-180px;top:-60px;width:820px;height:900px;background:radial-gradient(58% at 35% 30%,#FF3B0E 0%,#FF7A18 20%,#FFC21C 42%,#FFE85E 62%,transparent 72%);opacity:.92;pointer-events:none;z-index:-1;filter:blur(.5px)}
-.wash2{position:fixed;right:-200px;top:500px;width:600px;height:600px;background:radial-gradient(60% at 50% 50%,#FFF0A8 0%,#FFE0A0 35%,transparent 70%);opacity:.55;pointer-events:none;z-index:-1;filter:blur(10px)}
-.card{border:1.8px solid var(--line);background:rgba(255,255,255,.92);backdrop-filter:blur(12px);border-radius:22px;box-shadow:0 14px 36px rgba(0,0,0,.06);transition:.22s}
-.card:hover{transform:translateY(-2px);box-shadow:0 20px 50px rgba(0,0,0,.09)}
-.inp{width:100%;background:#fff;border:1.8px solid var(--line);border-radius:9999px;padding:12px 16px;font-size:13px;outline:none}
-.inp:focus{border-color:#111;box-shadow:0 0 0 3px rgba(0,0,0,.06)}
-.btn-b{background:#11100E;color:#FFFEF5;border-radius:9999px;padding:12px 20px;font-weight:700;font-size:12.5px}
+.top{height:6px;background:linear-gradient(90deg,#FF1F0F,#FF6A14,#FFB81A,#FFE75E,#FFF6B0);position:sticky;top:0;z-index:50}
+.wash{position:fixed;left:-180px;top:-60px;width:820px;height:900px;background:radial-gradient(58% at 35% 30%,#FF3B0E 0%,#FF7A18 20%,#FFC21C 42%,#FFE85E 62%,transparent 72%);opacity:.9;pointer-events:none;z-index:-1}
+.card{border:1.8px solid #E9DFC2;background:rgba(255,255,255,.92);border-radius:22px}
+.inp{width:100%;background:#fff;border:1.8px solid #E9DFC2;border-radius:9999px;padding:12px 16px;font-size:13px;outline:none}
+.btn-b{background:#11100E;color:#FFFEF5;border-radius:9999px;padding:12px 18px;font-weight:700;font-size:12.5px}
 .btn-o{border:1.8px solid #11100E;border-radius:9999px;padding:11px 18px;font-weight:700;font-size:12px;background:#fff}
-.folder{border:1.8px solid var(--line);border-radius:9999px;padding:12px 18px;display:flex;justify-content:space-between;align-items:center;cursor:pointer;background:#fff;transition:.2s}
+.folder{border:1.8px solid #E9DFC2;border-radius:9999px;padding:12px 18px;display:flex;justify-content:space-between;cursor:pointer;background:#fff}
 .folder:hover{background:#11100E;color:#fff}
 </style>
 </head>
 <body>
-<div class="top-line"></div><div class="wash"></div><div class="wash2"></div>
+<div class="top"></div><div class="wash"></div>
+<div class="max-w-[1180px] mx-auto px-6 md:px-10 py-6">
 
-<div class="max-w-[1220px] mx-auto px-5 md:px-10 py-6">
+<!-- 1 CATCHY HEADING -->
+<div class="flex justify-between"><div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-full bg-black text-white grid place-items-center serif font-bold">c</div><div><div class="serif text-[28px] font-bold leading-none">curio.paper</div><div class="mono text-[9px] opacity-40">FROM CURIOSITY TO RESEARCH • CATCHY</div></div></div><div class="hidden md:flex gap-2 mono text-[9px]"><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">JSR • REAL</span><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">SPRINGER NATURE • REAL</span></div></div>
+<h1 class="serif text-[56px] md:text-[86px] leading-[.82] font-bold mt-10">From<br><span class="serif-i italic font-normal">curiosity</span> to<br>research.</h1>
+<p class="serif-i italic text-[18px] opacity-60 mt-4 max-w-[500px]">Every great paper started as a messy idea. 11 fields, 33 papers, 4 tools, real journals.</p>
 
-<!-- 1. CATCHY HEADING -->
-<div class="flex justify-between items-center">
-<div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-full bg-black text-white grid place-items-center serif text-[20px] font-bold">c</div><div><div class="serif text-[28px] font-bold leading-none tracking-tight">curio.paper</div><div class="mono text-[9px] tracking-[.22em] opacity-40 font-bold">FROM CURIOSITY TO RESEARCH</div></div></div>
-<div class="hidden md:flex gap-2 mono text-[9px]"><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">JSR • REAL JOURNAL</span><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">SPRINGER NATURE • REAL</span></div>
-</div>
-
-<div class="mt-10 md:mt-14">
-<h1 class="serif text-[56px] md:text-[88px] leading-[.82] font-bold tracking-tight">From<br><span class="serif-i italic font-normal">curiosity</span> to<br>research.</h1>
-<p class="serif-i italic text-[18px] md:text-[20px] opacity-60 mt-5 max-w-[520px] leading-[1.25]">“ Every great paper started as a messy idea in a notebook. Turn a question into a paper you can publish. AI guides, you write. ”</p>
-<div class="mt-6 flex gap-3 mono text-[10px]"><span class="bg-black text-white rounded-full px-3 py-1">100% ORIGINAL</span><span class="border rounded-full px-3 py-1">2 REAL JOURNALS</span><span class="border rounded-full px-3 py-1">NO COPY-PASTE</span></div>
-</div>
-
-<!-- 2. MAIN 4 RESEARCH -->
+<!-- 2 MAIN 4 RESEARCH -->
 <div class="mt-10 card p-6">
-<div class="flex justify-between items-baseline"><div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">BEST RESEARCHS — EDITOR PICK • 4</div><div class="mono text-[9px] opacity-40">Click to open • Real examples</div></div>
+<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">BEST RESEARCHS — 4 • EDITOR PICK</div>
 <div class="mt-4 grid md:grid-cols-4 gap-[1px] bg-[#E9DFC2] border border-[#E9DFC2] rounded-[18px] overflow-hidden">
-<a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white transition group"><div class="mono text-[10px] opacity-40">01</div><div class="serif text-[18px] font-bold leading-[1.05] mt-2">How to Structure Abstract & Methods</div><div class="mono text-[10px] mt-8 opacity-40 group-hover:opacity-100">Open ↗</div></a>
-<a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white transition group"><div class="mono text-[10px] opacity-40">02</div><div class="serif text-[18px] font-bold leading-[1.05] mt-2">Award-Winning Student Paper</div><div class="mono text-[10px] mt-8 opacity-40 group-hover:opacity-100">Open ↗</div></a>
-<a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white transition group"><div class="mono text-[10px] opacity-40">03</div><div class="serif text-[18px] font-bold leading-[1.05] mt-2">From Idea to Publication</div><div class="mono text-[10px] mt-8 opacity-40 group-hover:opacity-100">Open ↗</div></a>
-<a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white transition group"><div class="mono text-[10px] opacity-40">04</div><div class="serif text-[18px] font-bold leading-[1.05] mt-2">Most Cited Template</div><div class="mono text-[10px] mt-8 opacity-40 group-hover:opacity-100">Open ↗</div></a>
+<a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white"><div class="mono text-[9px]">01</div><div class="serif font-bold text-[15px] leading-[1.1] mt-2">How to Structure Abstract & Methods</div></a>
+<a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white"><div class="mono text-[9px]">02</div><div class="serif font-bold text-[15px] leading-[1.1] mt-2">Award-Winning Student Paper</div></a>
+<a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white"><div class="mono text-[9px]">03</div><div class="serif font-bold text-[15px] leading-[1.1] mt-2">From Idea to Publication</div></a>
+<a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="bg-white p-5 hover:bg-black hover:text-white"><div class="mono text-[9px]">04</div><div class="serif font-bold text-[15px] leading-[1.1] mt-2">Most Cited Template</div></a>
 </div>
 </div>
 
-<!-- 3. 11 FIELDS x 3 ARTICLES -->
+<!-- 3 11 FIELDS — STATIC SO YOU CAN SEE -->
 <div class="mt-12">
-<div class="flex items-baseline gap-4"><h2 class="serif text-[30px] font-bold">Fields</h2><span class="mono text-[11px] opacity-40">11 fields • 3 articles each • 33 papers • click to open</span></div>
-<p class="serif-i italic text-[15px] opacity-50 mt-1">“ You don’t need permission to ask a big question. ”</p>
-<div id="fields" class="mt-5 space-y-3"></div>
+<h2 class="serif text-[32px] font-bold">Fields — 11 fields × 3 articles = 33 papers</h2>
+<p class="mono text-[11px] opacity-40 mt-1">All 11 fields below — click any article to open. This is STATIC so it always shows.</p>
+
+<div class="mt-6 space-y-3">
+
+<!-- 1 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">01 — Biological Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">How Does Human Brain Work? - Caltech</b><div class="mono text-[8px] opacity-60 truncate">caltech.edu</div></a>
+<a href="https://link.springer.com/article/10.1186/s13223-018-0278-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Allergy Review - Springer</b><div class="mono text-[8px] opacity-60 truncate">springer.com</div></a>
+<a href="https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Bio Science 2026 - T&F</b><div class="mono text-[8px] opacity-60 truncate">tandfonline.com</div></a>
+</div></div>
+
+<!-- 2 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">02 — AI and Data Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://link.springer.com/article/10.1007/s11831-024-10209-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Review on AI in Computational Methods</b></a>
+<a href="https://www.sciencedirect.com/science/article/pii/S1877050924003752" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">AI & Data Processing</b></a>
+<a href="https://www.nature.com/articles/s42256-025-01000-2" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">State of AI 2025 - Nature MI</b></a>
+</div></div>
+
+<!-- 3 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">03 — Physics and Space</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">IITK Physics Notes PDF</b></a>
+<a href="https://www.nature.com/articles/d41586-025-01445-w" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Dying Stars & Exoplanets - Nature</b></a>
+<a href="https://www.nature.com/articles/s41550-025-02763-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Exoplanet Discovery 2025</b></a>
+</div></div>
+
+<!-- 4 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">04 — Chemistry and Material Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41570-025-00706-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Chemistry Review 2025</b></a>
+<a href="https://www.nature.com/articles/s41563-025-02137-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Advanced Materials</b></a>
+<a href="https://www.nature.com/articles/s42004-025-01500-7" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Comms Chemistry</b></a>
+</div></div>
+
+<!-- 5 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">05 — Neuroscience and Physiology</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuroscience Breakthrough</b></a>
+<a href="https://emerginginvestigators.org/articles?q=neuroscience" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuroscience Articles - EI</b></a>
+<a href="https://emerginginvestigators.org/articles/22-080/pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuro PDF</b></a>
+</div></div>
+
+<!-- 6 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">06 — Engineering and Robotics</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Engineering Systems</b></a>
+<a href="https://www.nature.com/articles/s41467-025-57741-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Robotics 2025</b></a>
+<a href="https://www.nature.com/articles/s44287-025-00152-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Engineering Innovation</b></a>
+</div></div>
+
+<!-- 7 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">07 — Climate Environment and Earth</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://emerginginvestigators.org/?s=last+updated" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Climate Latest - EI</b></a>
+<a href="https://www.nature.com/articles/s41558-025-02300-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Climate Change Review - Nature</b></a>
+<a href="https://www.nature.com/articles/s41561-025-01700-2" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Earth Systems Research</b></a>
+</div></div>
+
+<!-- 8 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">08 — Humanities, Literature & Culture</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41599-025-04503-w" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Machine-assisted designs with AI</b></a>
+<a href="https://www.nature.com/articles/s41562-025-02242-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Human Behaviour</b></a>
+<a href="https://www.emerginginvestigators.org/articles/24-254/pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Humanities PDF</b></a>
+</div></div>
+
+<!-- 9 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">09 — Society, Economics and Public Policy</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Society & Economics</b></a>
+<a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Public Policy</b></a>
+<a href="https://www.nature.com/articles/s41599-019-0232-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Social Science</b></a>
+</div></div>
+
+<!-- 10 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">10 — Business and Management</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Business Research</b></a>
+<a href="https://www.nature.com/collections/jijcddffij" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Business Collection</b></a>
+<a href="https://www.nature.com/articles/s41599-025-04400-3" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Management Science 2025</b></a>
+</div></div>
+
+<!-- 11 -->
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">11 — Communication and Media</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></div>
+<div class="p-3 bg-[#FFFEF2] space-y-2">
+<a href="https://www.nature.com/articles/s41562-025-02102-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Media & Communication</b></a>
+<a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Communication Research</b></a>
+<a href="https://www.nature.com/articles/s41599-024-04000-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Digital Media Studies</b></a>
+</div></div>
+
+</div>
 </div>
 
-<!-- 4. 4 TOOLBOX -->
+<!-- 4 TOOLBOX -->
 <div class="mt-14">
-<h2 class="serif text-[30px] font-bold">Toolbox — 4 quiet tools</h2>
-<p class="mono text-[11px] opacity-40 mt-1">A = roadmap • B = videos • C = AI mentor + detector • D = publish JSR + Springer</p>
-<div class="grid md:grid-cols-2 gap-6 mt-6 items-start">
+<h2 class="serif text-[32px] font-bold">Toolbox — 4 quiet tools</h2>
+<div class="grid md:grid-cols-2 gap-6 mt-6">
 
-<!-- A -->
-<div class="card p-6">
-<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">A — TURN IDEA INTO PROJECT</div>
-<div class="serif text-[20px] font-bold mt-1">Roadmap + template</div>
-<div class="mt-2 mono text-[9px] bg-[#FFF6B8] border border-[#E8D88A] rounded-full inline-block px-3 py-1">⚠️ Just template — not to copy-paste. AI guides only.</div>
-<input id="k1" placeholder="Keywords: e.g., sleep, scrolling" class="inp mt-4">
-<input id="k2" placeholder="Research question: e.g., does late scroll affect sleep?" class="inp mt-2">
-<button onclick="gen()" class="btn-b w-full mt-3">✨ Generate roadmap + template →</button>
-<pre id="outA" class="hidden mt-4 p-4 rounded-[16px] bg-[#FFFEF2] border text-[12.5px] whitespace-pre-wrap leading-[1.6]"></pre>
-</div>
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">A — ROADMAP</div><div class="serif text-[20px] font-bold">Turn idea into project</div><input id="k1" placeholder="Keywords" class="inp mt-4"><input id="k2" placeholder="Question" class="inp mt-2"><button onclick="gen()" class="btn-b w-full mt-3">Generate roadmap →</button><pre id="outA" class="hidden mt-3 p-3 bg-[#FFFEF2] border rounded-[12px] text-[12px] whitespace-pre-wrap"></pre></div>
 
-<!-- B -->
-<div class="card p-6">
-<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">B — UNDERSTAND WORK BEHIND • VIDEO LIBRARY</div>
-<div class="serif text-[20px] font-bold mt-1">5 videos in folders</div>
-<div class="mt-5 space-y-3">
-<div>
-<div onclick="toggleF('f-research')" class="folder"><span class="serif font-bold text-[14px]">📁 Research Process</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">2 videos</span></div>
-<div id="f-research" class="mt-3 space-y-3">
-<div class="rounded-[14px] overflow-hidden border bg-white"><iframe class="w-full h-[200px]" src="https://www.youtube.com/embed/UY7sVKJPTMA" allowfullscreen></iframe><div class="p-3 serif font-bold text-[13px]">How to Write a Paper in a Weekend</div></div>
-<div class="rounded-[14px] overflow-hidden border bg-white"><iframe class="w-full h-[200px]" src="https://www.youtube.com/embed/WVv2jWXW0K4" allowfullscreen></iframe><div class="p-3 serif font-bold text-[13px]">How To Read Research Papers Effectively</div></div>
-</div>
-</div>
-<div>
-<div onclick="toggleF('f-methods')" class="folder"><span class="serif font-bold text-[14px]">📁 Methods & Inspiration</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3 videos</span></div>
-<div id="f-methods" class="hidden mt-3 space-y-3">
-<div class="rounded-[14px] overflow-hidden border bg-white"><iframe class="w-full h-[200px]" src="https://www.youtube.com/embed/yRxFwMHS_A8" allowfullscreen></iframe><div class="p-3 serif font-bold text-[13px]">Methods & Experiment Design</div></div>
-<div class="rounded-[14px] overflow-hidden border bg-white"><iframe class="w-full h-[200px]" src="https://www.youtube.com/embed/QBMk2Bfs4Fs" allowfullscreen></iframe><div class="p-3 serif font-bold text-[13px]">Finding Research Gaps</div></div>
-<div class="rounded-[14px] overflow-hidden border bg-white"><iframe class="w-full h-[200px]" src="https://www.youtube.com/embed/7gGi1-g2Hek" allowfullscreen></iframe><div class="p-3 serif font-bold text-[13px]">Inspiration — Idea to Published</div></div>
-</div>
-</div>
-</div>
-</div>
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">B — VIDEO LIBRARY • 5 VIDEOS</div><div class="serif text-[20px] font-bold">In folders</div><div class="mt-4 space-y-3"><div><div class="folder" onclick="document.getElementById('f1').classList.toggle('hidden')"><span class="serif font-bold text-[13px]">📁 Research Process — 2 videos</span><span>▼</span></div><div id="f1" class="mt-2 space-y-2"><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/UY7sVKJPTMA"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/WVv2jWXW0K4"></iframe></div></div><div><div class="folder" onclick="document.getElementById('f2').classList.toggle('hidden')"><span class="serif font-bold text-[13px]">📁 Methods — 3 videos</span><span>▼</span></div><div id="f2" class="hidden mt-2 space-y-2"><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/yRxFwMHS_A8"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/QBMk2Bfs4Fs"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/7gGi1-g2Hek"></iframe></div></div></div></div>
 
-<!-- C -->
-<div class="bg-black rounded-[22px] p-6 text-white border-[1.8px] border-black">
-<div class="flex justify-between items-center"><span class="mono text-[10px] tracking-[.2em] text-[#FFE75E] font-bold">C — MAKE ARGUMENT CLEARER • AI MENTOR</span><a href="https://ai-detector-free.lovable.app" target="_blank" class="mono text-[9px] bg-[#FFE75E] text-black px-2 py-1 rounded-full font-bold">Check on ai-detector-free →</a></div>
-<div class="serif text-[22px] font-bold leading-[.95] mt-3">Paste research — fix +<br><span class="serif-i italic font-normal text-[#FFE75E]">AI detect like lovable.app</span></div>
-<textarea id="research" oninput="checkAI()" placeholder="Paste your full research here... AI bar updates live" class="mt-4 w-full h-[170px] p-4 rounded-[16px] bg-[#1C1A18] border border-[#2A2825] text-[12.5px] text-white outline-none"></textarea>
-<div class="flex flex-wrap gap-2 mt-3">
-<button onclick="fix('fix-grammar')" class="px-3 py-2 bg-white text-black rounded-full text-[11px] font-bold">Fix grammar</button>
-<button onclick="fix('weakness')" class="px-3 py-2 bg-white text-black rounded-full text-[11px] font-bold">Weakness</button>
-<button onclick="fix('rephrase')" class="px-3 py-2 bg-white text-black rounded-full text-[11px] font-bold">Rephrase</button>
-<button onclick="fix('detect-ai')" class="px-3 py-2 bg-[#FFE75E] text-black rounded-full text-[11px] font-bold">AI Detect 🔍</button>
-</div>
-<div class="mt-4 p-3 rounded-[12px] bg-[#1C1A18] border border-[#2A2825]">
-<div class="flex justify-between mono text-[9px]"><span>AI DETECTION BAR — LIVE (like lovable.app)</span><span id="aiBarText" class="font-bold">12% AI risk</span></div>
-<div class="h-2 bg-[#2A2825] rounded-full mt-2 overflow-hidden"><div id="aiBar" class="h-full bg-[#FFE75E] w-[12%] transition-all duration-500"></div></div>
-<div class="flex gap-3 mt-2 mono text-[8px] opacity-60"><span id="perp">Perplexity: 44.2</span><span id="burst">Burstiness: 32.1</span><span>Human: <span id="human">88%</span></span></div>
-</div>
-<pre id="outC" class="hidden mt-3 p-3 rounded-[12px] bg-[#1C1A18] border border-[#2A2825] text-[11.5px] whitespace-pre-wrap leading-[1.6]"></pre>
-</div>
+<div class="bg-black rounded-[22px] p-6 text-white"><div class="mono text-[10px] text-[#FFE75E]">C — AI MENTOR + DETECTOR LIKE ai-detector-free.lovable.app</div><div class="serif text-[20px] font-bold mt-2">Paste research — fix + detect</div><textarea id="research" oninput="checkAI()" placeholder="Paste research..." class="mt-3 w-full h-[140px] p-3 rounded-[14px] bg-[#1C1A18] border border-zinc-800 text-[12px] text-white"></textarea><div class="flex gap-2 mt-3 flex-wrap"><button onclick="fix('fix-grammar')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Fix grammar</button><button onclick="fix('weakness')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Weakness</button><button onclick="fix('rephrase')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Rephrase</button><button onclick="fix('detect-ai')" class="bg-[#FFE75E] text-black rounded-full px-3 py-1.5 text-[11px] font-bold">AI Detect</button></div><div class="mt-3 p-2 bg-[#1C1A18] border border-zinc-800 rounded-[10px]"><div class="flex justify-between mono text-[9px]"><span>AI BAR</span><span id="aiBarText">12% AI</span></div><div class="h-1.5 bg-zinc-800 rounded-full mt-1 overflow-hidden"><div id="aiBar" class="h-full bg-[#FFE75E] w-[12%]"></div></div></div><pre id="outC" class="hidden mt-3 p-3 bg-[#1C1A18] border border-zinc-800 rounded-[10px] text-[11px] whitespace-pre-wrap"></pre></div>
 
-<!-- D -->
-<div class="card p-6">
-<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">D — FIND RIGHT AUDIENCE • PUBLISH ON JSR + SPRINGER NATURE</div>
-<div class="serif text-[22px] font-bold leading-[.9] mt-2">Where should<br>this live?</div>
-<input id="based" placeholder="What is it based upon?" class="inp mt-4">
-<input id="q" placeholder="What question are you answering?" class="inp mt-2">
-<input id="refs" placeholder="References / proof" class="inp mt-2">
-<input id="aud" placeholder="Target audience?" class="inp mt-2">
-<input id="authorEmail" placeholder="Your email (for review)" class="inp mt-2">
-<button onclick="publish()" class="btn-b w-full mt-3">Publish + Track →</button>
-<div id="outD" class="hidden mt-3 p-3 bg-[#FFFEF2] border rounded-[12px] text-[11px] leading-[1.5]"></div>
-<div class="mt-5 grid gap-3">
-<div class="p-4 rounded-[16px] border bg-[#FFFEF2]"><div class="mono text-[9px] font-bold">JSR • Journal of Student Research — REAL</div><div class="text-[11px] opacity-70 mt-1">Free DOI, peer-reviewed for high school. Register and submit.</div><a href="https://www.jsr.org/index.php/path/user/register" target="_blank" class="btn-b inline-block mt-3 text-[11px]">Publish on JSR →</a></div>
-<div class="p-4 rounded-[16px] border bg-white"><div class="mono text-[9px] font-bold">SPRINGER NATURE — REAL PUBLISHER</div><div class="text-[11px] opacity-70 mt-1">Official manuscript writing guide, then submit to journals.</div><a href="https://www.springernature.com/gp/authors/campaign/writing-a-manuscript" target="_blank" class="btn-o inline-block mt-3 text-[11px] bg-[#FFFEF2]">Publish on Springer Nature →</a></div>
-</div>
-</div>
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">D — PUBLISH • JSR + SPRINGER NATURE</div><div class="serif text-[20px] font-bold mt-1">Where should this live?</div><input id="based" placeholder="Based upon?" class="inp mt-4"><input id="q" placeholder="Question?" class="inp mt-2"><input id="refs" placeholder="References" class="inp mt-2"><input id="aud" placeholder="Audience?" class="inp mt-2"><input id="authorEmail" placeholder="Email" class="inp mt-2"><button onclick="publish()" class="btn-b w-full mt-3">Publish + Track</button><div id="outD" class="hidden mt-3 p-3 bg-[#FFFEF2] border rounded-[12px] text-[11px]"></div><div class="mt-4 grid gap-2"><a href="https://www.jsr.org/index.php/path/user/register" target="_blank" class="btn-b text-center">Publish on JSR →</a><a href="https://www.springernature.com/gp/authors/campaign/writing-a-manuscript" target="_blank" class="btn-o text-center bg-[#FFFEF2]">Publish on Springer Nature →</a></div></div>
 
 </div>
 </div>
 
-<!-- 5. TRACKER AT LAST -->
-<div class="mt-14 card p-6">
-<div class="flex justify-between items-baseline"><h2 class="serif text-[24px] font-bold">My private progress • Tracker + Review bar</h2><span class="mono text-[10px] opacity-40">Be first to finish</span></div>
-<div class="mt-5 grid grid-cols-3 md:grid-cols-6 gap-3">
-<button onclick="step('search')" id="b-search" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Search</div></button>
-<button onclick="step('reading')" id="b-reading" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Reading</div></button>
-<button onclick="step('idea')" id="b-idea" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Idea</div></button>
-<button onclick="step('data')" id="b-data" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Data</div></button>
-<button onclick="step('draft')" id="b-draft" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Draft</div></button>
-<button onclick="step('submitted')" id="b-submitted" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div class="mono text-[12px]">☐</div><div class="text-[13px] font-bold mt-1">Submitted</div></button>
-</div>
-<div class="mt-5 h-2 w-full bg-black/10 rounded-full overflow-hidden"><div id="bar" class="h-full w-0 transition-all duration-500" style="background:linear-gradient(90deg,#FF1F0F,#FFB81A,#FFE75E)"></div></div>
-<div id="barT" class="mt-2 mono text-[12px] font-bold">0% — Start</div>
-<div id="reviewBar" class="mt-4 grid md:grid-cols-6 gap-2 mono text-[10px]"></div>
-</div>
-
-<div class="mt-6 card p-6">
-<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">WHAT STUDENTS SAY AFTER PUBLISHING • REVIEW BAR</div>
-<div class="flex gap-2 mt-4"><input id="rname" placeholder="Your name" class="inp flex-1"><button onclick="rev()" class="btn-b">Submit review</button></div>
-<textarea id="rtext" placeholder="Write your review..." class="inp mt-2!rounded-[16px] h-[80px]"></textarea>
-<div id="rstat" class="hidden mt-2 mono text-[10px] text-center"></div>
-<div id="revList" class="mt-4 space-y-2 max-h-[320px] overflow-auto"></div>
-</div>
-
-<p class="serif-i italic text-[13px] opacity-40 mt-10 text-center">“ Publish messy, refine later — progress beats perfection. ” — curio.paper</p>
-
-</div>
-
-<script>
-const DB={
- "Biological Science": [{t:"How Does Human Brain Work? - Caltech",u:"https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works"},{t:"Allergy Review - Springer",u:"https://link.springer.com/article/10.1186/s13223-018-0278-1"},{t:"Bio Science 2026 - T&F",u:"https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239"}],
- "AI and Data Science": [{t:"Review on AI in Computational Methods",u:"https://link.springer.com/article/10.1007/s11831-024-10209-0"},{t:"AI & Data Processing",u:"https://www.sciencedirect.com/science/article/pii/S1877050924003752"},{t:"State of AI 2025 - Nature MI",u:"https://www.nature.com/articles/s42256-025-01000-2"}],
- "Physics and Space": [{t:"IITK Physics Notes PDF",u:"https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf"},{t:"Dying Stars & Exoplanets - Nature",u:"https://www.nature.com/articles/d41586-025-01445-w"},{t:"Exoplanet Discovery 2025",u:"https://www.nature.com/articles/s41550-025-02763-9"}],
- "Chemistry and Material Science": [{t:"Chemistry Review 2025",u:"https://www.nature.com/articles/s41570-025-00706-6"},{t:"Advanced Materials",u:"https://www.nature.com/articles/s41563-025-02137-6"},{t:"Comms Chemistry",u:"https://www.nature.com/articles/s42004-025-01500-7"}],
- "Neuroscience and Physiology": [{t:"Neuroscience Breakthrough",u:"https://www.nature.com/articles/s41467-025-65499-0"},{t:"Neuroscience Articles - EI",u:"https://emerginginvestigators.org/articles?q=neuroscience"},{t:"Neuro PDF",u:"https://emerginginvestigators.org/articles/22-080/pdf"}],
- "Engineering and Robotics": [{t:"Engineering Systems",u:"https://www.nature.com/articles/s41467-025-56025-3"},{t:"Robotics 2025",u:"https://www.nature.com/articles/s41467-025-57741-6"},{t:"Engineering Innovation",u:"https://www.nature.com/articles/s44287-025-00152-y"}],
- "Climate Environment and Earth": [{t:"Climate Latest - EI",u:"https://emerginginvestigators.org/?s=last+updated"},{t:"Climate Change Review - Nature",u:"https://www.nature.com/articles/s41558-025-02300-1"},{t:"Earth Systems Research",u:"https://www.nature.com/articles/s41561-025-01700-2"}],
- "Humanities, Literature & Culture": [{t:"Machine-assisted designs with AI",u:"https://www.nature.com/articles/s41599-025-04503-w"},{t:"Human Behaviour",u:"https://www.nature.com/articles/s41562-025-02242-1"},{t:"Humanities PDF",u:"https://www.emerginginvestigators.org/articles/24-254/pdf"}],
- "Society, Economics and Public Policy": [{t:"Society & Economics",u:"https://www.nature.com/articles/s41586-023-06840-9"},{t:"Public Policy",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Social Science",u:"https://www.nature.com/articles/s41599-019-0232-y"}],
- "Business and Management": [{t:"Business Research",u:"https://www.nature.com/articles/s41599-020-00552-5"},{t:"Business Collection",u:"https://www.nature.com/collections/jijcddffij"},{t:"Management Science 2025",u:"https://www.nature.com/articles/s41599-025-04400-3"}],
- "Communication and Media": [{t:"Media & Communication",u:"https://www.nature.com/articles/s41562-025-02102-y"},{t:"Communication Research",u:"https://www.nature.com/articles/s41586-023-06840-9"},{t:"Digital Media Studies",u:"https://www.nature.com/articles/s41599-024-04000-0"}]
-};
-const fieldsEl=document.getElementById('fields');
-Object.entries(DB).forEach(([name,papers],i)=>{
- const id='fld'+i;
- fieldsEl.innerHTML+=`
-  <div class="card overflow-hidden">
-    <div onclick="toggleF('${id}')" class="folder"><span class="serif text-[15px] font-bold tracking-tight">${String(i+1).padStart(2,'0')} — ${name}</span><span class="mono text-[10px] bg-black text-white px-3 py-1 rounded-full">${papers.length} papers</span></div>
-    <div id="${id}" class="${i===0?'':'hidden'} p-3 bg-[#FFFEF2] space-y-2">
-      ${papers.map(p=>`<a href="${p.u}" target="_blank" class="block bg-white border-[1.5px] border-[#E9DFC2] rounded-[14px] p-4 hover:bg-black hover:text-white transition group"><div class="serif text-[14px] font-bold leading-[1.1]">${p.t}</div><div class="mono text-[9px] opacity-60 truncate mt-2 group-hover:text-white/60">${
+<!-- 5 TRACKER -->
+<div class="mt-14 card p-6"><div class="serif text-[22px] font-bold">My private progress • Tracker + Review bar — LAST</div><div class="mt-4 grid grid-cols-3 md:grid-cols-6 gap-2"><button onclick="step('search'
