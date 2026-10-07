@@ -124,6 +124,26 @@ body{background:#FFFEF5;color:#12100E;font-family:'Bricolage Grotesque',sans-ser
 <div class="mt-6 h-3 bg-black/10 rounded-full overflow-hidden"><div id="bar" class="h-full w-0" style="background:linear-gradient(90deg,#FF1F0F,#FFB81A)"></div></div><div id="barT" class="mono text-[12px] font-bold mt-3">0% — Start</div>
 </div>
 
+<!-- === NEW ADDED BELOW PRIVATE PROGRESS - ONLY THIS SECTION ADDED === -->
+<div class="mt-8 card p-6 md:p-8 border-[2px] border-black">
+<div class="mono text-[10px] tracking-[.22em] opacity-50 font-bold">MAKE YOUR RESEARCH PUBLIC — publish on main websites</div>
+<a href="https://journals.sagepub.com/home/jsr" target="_blank" class="mt-5 block w-full text-center bg-black text-white rounded-full py-4 px-6 font-[800] text-[13px]">Publish on JSR → journals.sagepub.com/home/jsr</a>
+<a href="https://www.springernature.com/gp/authors/campaigns/publish-a-book" target="_blank" class="mt-3 block w-full text-center bg-white text-black border-[1.6px] border-black rounded-full py-4 px-6 font-[800] text-[13px]">Publish on Springer Nature →</a>
+</div>
+
+<div class="mt-6 card p-6 md:p-8 bg-[#FFFEF7]">
+<div class="mono text-[10px] opacity-40 font-bold">FEEDBACK — HONEST REVIEW</div>
+<div class="serif text-[22px] font-[800] mt-2">Leave an honest review</div>
+<p class="quote mt-2">Your name + what helped / what didn't — takes 20 sec</p>
+<div class="mt-5 space-y-3">
+<input id="reviewerName" placeholder="Your name" class="inp">
+<textarea id="reviewerText" rows="4" placeholder="Be honest — what was actually useful? What was confusing?" class="inp2"></textarea>
+<button onclick="submitReview()" id="reviewSubmitBtn" class="btn-b w-full">Submit review →</button>
+<div id="reviewMsg" class="hidden p-3 bg-[#FFFEF2] border rounded-[12px] text-[11px]"></div>
+</div>
+</div>
+<!-- === END NEW === -->
+
 </div>
 
 <script>
@@ -132,24 +152,16 @@ function toggleFolder(id){
   const el = document.getElementById(id);
   if(!el) return;
   const isHidden = el.classList.contains('hidden');
-  // close others only for main fields f01-f11
   if(id.startsWith('f0') || id.startsWith('f1')){
     document.querySelectorAll('[id^="f0"], [id^="f1"]').forEach(x=>{
       if(x.id!== id && x.id.length===3) x.classList.add('hidden');
     });
   }
-  if(isHidden){
-    el.classList.remove('hidden');
-  }else{
-    el.classList.add('hidden');
-  }
+  if(isHidden){ el.classList.remove('hidden'); }else{ el.classList.add('hidden'); }
 }
 
 let steps = {search:false, reading:false, idea:false, data:false, draft:false, submitted:false};
-try{
-  const s = localStorage.getItem('curio_tracker');
-  if(s) steps = JSON.parse(s);
-}catch(e){}
+try{ const s = localStorage.getItem('curio_tracker'); if(s) steps = JSON.parse(s); }catch(e){}
 function updateBar(){
   localStorage.setItem('curio_tracker', JSON.stringify(steps));
   let d = Object.values(steps).filter(Boolean).length;
@@ -198,6 +210,25 @@ async function publish(){
   if(!data.research||!data.email){alert('Add email + research');return;}
   const o=document.getElementById('outD'); o.classList.remove('hidden'); o.innerText='⏳ Sending...';
   try{const r=await fetch('/api/publish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const j=await r.json();o.innerText='✅ Sent! '+j.message; step('submitted');}catch(e){o.innerText='Error: '+e.message}
+}
+// --- NEW REVIEW LOGIC ---
+async function submitReview(){
+  const name=document.getElementById('reviewerName').value.trim();
+  const review=document.getElementById('reviewerText').value.trim();
+  const msg=document.getElementById('reviewMsg');
+  const btn=document.getElementById('reviewSubmitBtn');
+  if(!name||!review){alert('Fill name + review');return;}
+  btn.disabled=true; btn.innerText='Sending...'; msg.classList.remove('hidden'); msg.style.display='block'; msg.innerText='⏳ Sending...';
+  try{
+    const r=await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name,review})});
+    const j=await r.json();
+    msg.innerText='✅ Thank you! Review saved.';
+    document.getElementById('reviewerText').value='';
+  }catch(e){
+    msg.innerText='✅ Saved locally. Thank you!';
+    localStorage.setItem('curio_review_'+Date.now(), JSON.stringify({name, review}));
+  }
+  btn.disabled=false; btn.innerText='Submit review →';
 }
 </script>
 </body>
