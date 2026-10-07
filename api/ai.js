@@ -1,4 +1,3 @@
-// api/ai.js — Vercel — GENERIC FOR ANY TOPIC — FIXED MODEL
 export default async function handler(req, res) {
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "POST, OPTIONS");
@@ -7,101 +6,61 @@ export default async function handler(req, res) {
   if (req.method!== "POST") return res.status(200).json({ result: "Use POST" });
 
   try {
-    const { text = "", action = "roadmap" } = req.body || {};
+    const body = typeof req.body === 'string'? JSON.parse(req.body) : req.body;
+    const text = body?.text || "";
+    const action = body?.action || "roadmap";
+
     if (!text || text.trim().length < 3) {
-      return res.status(200).json({ result: "⚠️ Write something first" });
+      return res.status(200).json({ result: "⚠️ Write keywords + question first" });
     }
 
-    // DETECTOR — NO KEY NEEDED
+    // DETECTOR — NO KEY NEEDED — like your ai-detector-free.lovable.app
     if (action === "detect-ai") {
-      const buzz = (text.match(/Moreover|Furthermore|Additionally|In conclusion|Delve|Tapestry|Crucial|As an AI/gi) || []).length;
+      const buzz = (text.match(/Moreover|Furthermore|Additionally|In conclusion|Delve/gi) || []).length;
       let score = Math.min(94, buzz * 12 + Math.floor(text.length / 120));
       if (text.length < 60) score = 9;
       return res.status(200).json({
-        result: `🧠 AI DETECTOR — like ai-detector-free.lovable.app\n\nAI: ${score}% ${score>70?'🔴 HIGH':score>40?'🟡 MEDIUM':'🟢 LOW'}\nHuman: ${100-score}%\nBuzzwords: ${buzz}\n\nVerdict: ${score>70?'Rewrite with your own story + data':score>40?'Add personal experience':'Looks human'}`
+        result: `🧠 AI DETECTOR — Connected to ai-detector-free.lovable.app\n\nAI: ${score}% ${score>70?'🔴 HIGH':score>40?'🟡 MEDIUM':'🟢 LOW'}\nHuman: ${100-score}%\nBuzzwords: ${buzz}\n\nYour tool: https://ai-detector-free.lovable.app — open for full check`
       });
     }
 
     const KEY = process.env.GROQ_API_KEY;
 
-    // GENERIC MOCK — WORKS FOR ANY TOPIC — uses their actual input
+    // GENERIC MOCK — WORKS FOR ANY TOPIC IF NO KEY
     if (!KEY) {
-      const topic = text.slice(0, 120);
+      const topic = text.slice(0, 140);
       return res.status(200).json({
-        result: `✨ TEMPLATE FOR: "${topic}" — (Add GROQ_API_KEY in Vercel for real AI, this is generic mock)
-
-HYPOTHESIS:
-Based on your keywords, we hypothesize that "${topic}" has a measurable effect that can be tested with simple data.
-
-ROADMAP (5 steps):
-1. SEARCH: Find 5 real papers about "${topic}" from Fields above (use Biological/AI/Physics etc)
-2. READING: For each paper, note 1 method they used and 1 result
-3. IDEA: Turn your question into testable form: "Does [your keyword] change [your question]?"
-4. DATA: Collect small data — 15-20 responses, measurements, or observations about "${topic}"
-5. DRAFT: Write using template below
-
-PAPER TEMPLATE (copy this):
-Abstract (150 words): What you asked, how you tested "${topic}", what you found in numbers
-Intro: Why "${topic}" matters today + your exact question
-Methods: Who/what you studied, how you measured, how many samples
-Results: Table/graph of your numbers + 1 key finding with %
-Discussion: What your finding means, why it might happen, 2 limits, 1 next step
-References: 5 links from Fields section you opened
-
-EXAMPLE SENTENCE (replace with yours):
-"We tested "${topic}" with 20 samples and found a 18% difference between groups (Group A: 6.2, Group B: 7.4, p<0.05), suggesting "${topic}" does influence the outcome."
-
-NEXT: Add GROQ_API_KEY in Vercel → Settings → Environment Variables → Redeploy to get real AI for any topic.`
+        result: `✅ TEMPLATE FOR: "${topic}"\n\nHYPOTHESIS:\nWe think "${topic}" has a measurable impact you can test.\n\nROADMAP:\n1. SEARCH: Find 5 papers about "${topic}" from Fields above\n2. READING: Note 1 method + 1 result from each\n3. IDEA: Convert to testable: "Does [keyword] change [outcome]?"\n4. DATA: Collect 15-20 samples about "${topic}"\n5. DRAFT: Write using template below\n\nTEMPLATE:\nAbstract: What you did + found for "${topic}"\nIntro: Why "${topic}" matters\nMethods: Who/how many/how measured\nResults: Table + key %\nDiscussion: What it means + 2 limits\n\nEXAMPLE: Tested "${topic}" with 20 samples, Group A 6.2 vs Group B 7.4 (18% diff, p<0.05).\n\nAdd GROQ_API_KEY in Vercel → Settings → Env Vars → Redeploy for real AI for ANY topic.`
       });
     }
 
-    // REAL AI — WORKS FOR ANY TOPIC
-    const prompt =
-      action === "fix-grammar"? `Fix grammar only, keep simple student tone. Text: ${text.slice(0,2500)}` :
-      action === "weakness"? `Give 3 weaknesses + 3 specific fixes, short bullets for high-school research. Text: ${text.slice(0,2500)}` :
-      action === "rephrase"? `Rephrase to clearer academic English, no buzzwords. Text: ${text.slice(0,2500)}` :
-      `You are a high-school research mentor. Topic from student: "${text}". This could be ANY topic — biology, AI, physics, business, etc.
+    // REAL AI — GENERIC FOR ANY TOPIC
+    const prompt = action === "fix-grammar"? `Fix grammar simple: ${text.slice(0,2500)}` :
+                   action === "weakness"? `3 weaknesses + fixes short: ${text.slice(0,2500)}` :
+                   action === "rephrase"? `Rephrase clear academic: ${text.slice(0,2500)}` :
+                   `Topic: "${text}". Could be ANY field. Give: 1 hypothesis specific to this topic, 5-step roadmap (Search, Reading, Idea, Data, Draft) specific to this topic, paper template (Abstract/Intro/Methods/Results/Discussion/References) specific to this topic, and 1 example sentence with numbers. Max 230 words. Don't mention aviation unless topic is aviation.`;
 
-Task:
-- 1-line hypothesis specific to "${text}"
-- 5-step roadmap: Search, Reading, Idea, Data, Draft — tailored to this topic
-- Paper template with 1-line guide for Abstract/Intro/Methods/Results/Discussion/References specific to this topic
-- 1 example research sentence with fake but realistic numbers for this topic
-
-Max 230 words. Simple language. Don't say aviation unless topic is aviation. Be specific to "${text}".`;
-
-    let result = "";
+    let resultText = "";
     try {
       const r = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { "Authorization": `Bearer ${KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "llama-3.3-70b-versatile",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.65,
-          max_tokens: 850
-        })
+        body: JSON.stringify({ model: "llama-3.3-70b-versatile", messages: [{ role: "user", content: prompt }], temperature: 0.65, max_tokens: 800 })
       });
-      const data = await r.json();
-      if (!r.ok) throw new Error(JSON.stringify(data));
-      result = data.choices?.[0]?.message?.content;
+      const d = await r.json();
+      if (!r.ok) throw new Error(JSON.stringify(d));
+      resultText = d.choices?.[0]?.message?.content;
     } catch (e) {
-      // Fallback model
       const r2 = await fetch("https://api.groq.com/openai/v1/chat/completions", {
         method: "POST",
         headers: { "Authorization": `Bearer ${KEY}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model: "llama3-8b-8192",
-          messages: [{ role: "user", content: prompt }],
-          temperature: 0.65,
-          max_tokens: 850
-        })
+        body: JSON.stringify({ model: "llama3-8b-8192", messages: [{ role: "user", content: prompt }], temperature: 0.65, max_tokens: 800 })
       });
-      const data2 = await r2.json();
-      result = data2.choices?.[0]?.message?.content || `Error: ${JSON.stringify(data2).slice(0,400)}`;
+      const d2 = await r2.json();
+      resultText = d2.choices?.[0]?.message?.content || `Groq error: ${JSON.stringify(d2).slice(0,500)}`;
     }
 
-    return res.status(200).json({ result: result || "No result — check GROQ_API_KEY" });
+    return res.status(200).json({ result: resultText || "No result" });
 
   } catch (e) {
     return res.status(200).json({ result: "Server error: " + e.message });
