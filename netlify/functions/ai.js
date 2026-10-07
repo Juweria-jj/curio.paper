@@ -1,28 +1,127 @@
-exports.handler = async (event) => {
-  const headers = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "Content-Type", "Access-Control-Allow-Methods": "POST, OPTIONS", "Content-Type": "application/json" };
-  if (event.httpMethod === "OPTIONS") return { statusCode: 200, headers, body: "" };
-  try {
-    const body = JSON.parse(event.body||"{}");
-    let text = body.text||"", action = body.action||"roadmap";
-    if (!text) return { statusCode: 200, headers, body: JSON.stringify({ result: "Write something first" }) };
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>curio.paper</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,700&family=Instrument+Serif:ital@0;1&family=Inter+Tight:wght@400;600;700&family=JetBrains+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+body{background:#FFFEF5;color:#11100E;font-family:'Inter Tight',sans-serif}
+.serif{font-family:'Fraunces',serif;letter-spacing:-.04em}
+.serif-i{font-family:'Instrument Serif',serif}
+.mono{font-family:'JetBrains Mono',monospace}
+.top{height:6px;background:linear-gradient(90deg,#FF1F0F,#FF6A14,#FFB81A,#FFE75E,#FFF6B0);position:sticky;top:0;z-index:50}
+.wash{position:fixed;left:-180px;top:-50px;width:860px;height:900px;background:radial-gradient(58% at 35% 30%,#FF3B0E 0%,#FF7A18 22%,#FFC21C 44%,#FFE75E 64%,transparent 72%);opacity:.92;pointer-events:none;z-index:-1}
+.card{border:1.8px solid #E9DFC2;background:rgba(255,255,255,.94);border-radius:22px}
+.inp{width:100%;background:#fff;border:1.8px solid #E9DFC2;border-radius:9999px;padding:12px 16px;font-size:13px;outline:none}
+.btn-b{background:#11100E;color:#FFFEF5;border-radius:9999px;padding:12px 18px;font-weight:700;font-size:12.5px}
+.btn-o{border:1.8px solid #11100E;border-radius:9999px;padding:11px 18px;font-weight:700;background:#fff}
+.folder{border:1.8px solid #E9DFC2;border-radius:9999px;padding:12px 18px;display:flex;justify-content:space-between;cursor:pointer;background:#fff}
+.folder:hover{background:#11100E;color:#fff}
+</style>
+</head>
+<body>
+<div class="top"></div><div class="wash"></div>
+<div class="max-w-[1180px] mx-auto px-6 md:px-10 py-6">
 
-    // DETECTOR LIKE ai-detector-free.lovable.app — WORKS WITHOUT KEY
-    if (action === "detect-ai") {
-      const buzz = (text.match(/Moreover|Furthermore|Additionally|Delve|Tapestry|Crucial/gi)||[]).length;
-      let score = Math.min(92, Math.floor(text.length/25) + buzz*10);
-      if (text.length<80) score=11;
-      const human=100-score;
-      return { statusCode: 200, headers, body: JSON.stringify({ result: `🧠 AI DETECTOR — like ai-detector-free.lovable.app\n\nAI: ${score}% ${score>65?'🔴 HIGH':score>35?'🟡 MEDIUM':'🟢 LOW'}\nHuman: ${human}%\nPerplexity: ${(40+Math.random()*30).toFixed(1)} | Burstiness: ${(20+Math.random()*40).toFixed(1)}\n\nBuzzwords: ${buzz}\nVerdict: ${score>65?'Rewrite with personal voice, numbers, mistakes.':score>35?'Add personal experience.':'Looks human.'}\n\nDouble-check: https://ai-detector-free.lovable.app`, aiScore: score }) };
-    }
+<div class="flex justify-between items-center">
+<div class="flex gap-3 items-center"><div class="w-10 h-10 rounded-full bg-black text-white grid place-items-center serif font-bold">c</div><div><div class="serif text-[28px] font-bold leading-none">curio.paper</div><div class="mono text-[9px] opacity-40">FROM CURIOSITY TO RESEARCH</div></div></div>
+<div class="hidden md:flex gap-2 mono text-[9px]"><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">JSR • REAL</span><span class="border-[1.8px] border-black border-b-[4px] rounded-full px-3 py-1.5 font-bold">SPRINGER NATURE • REAL</span></div>
+</div>
 
-    const KEY = process.env.GROQ_API_KEY;
-    if (!KEY) return { statusCode: 200, headers, body: JSON.stringify({ result: `⚠️ Add GROQ_API_KEY in Netlify env vars to enable real AI.\n\nMock template for "${text.slice(0,100)}":\n\nHypothesis: Late scrolling reduces sleep.\n\nRoadmap:\n1. Search: 5 papers on screen time & sleep\n2. Reading: Note methods\n3. Idea: Test 2 weeks no phone before bed\n4. Data: Sleep hours from 20 friends\n5. Draft: Abstract/Intro/Methods/Results/Discussion\n\nTEMPLATE:\nAbstract: 150 words - what you did & found\nIntro: Why it matters\nMethods: Who, how you measured\nResults: Your numbers & graphs\nDiscussion: What it means, limits\nReferences: 5+ links\n\nExample research line: "We surveyed 20 teens, average sleep 6.2h with scrolling vs 7.4h without (p<0.05)"` }) };
+<h1 class="serif text-[56px] md:text-[88px] leading-[.82] font-bold mt-10">From<br><span class="serif-i italic font-normal">curiosity</span> to<br>research.</h1>
 
-    let prompt = action==="fix-grammar"?`Fix grammar only: ${text.slice(0,2500)}`:action==="weakness"?`3 weaknesses + fixes for: ${text.slice(0,2500)}`:action==="rephrase"?`Rephrase academic: ${text.slice(0,2500)}`:`You are mentor. Topic "${text}". Give hypothesis 1 line, 5-step roadmap, paper template sections with guide, and 1 example research sentence with fake data. Max 250 words.`;
+<!-- BEST 4 — ONLY YOUR LINKS -->
+<div class="mt-10 card p-6">
+<div class="mono text-[10px] tracking-[.2em] opacity-40 font-bold">BEST RESEARCHS — 4 • FRONT — ONLY YOUR LINKS</div>
+<div class="mt-4 grid md:grid-cols-4 gap-[1px] bg-[#E9DFC2] border border-[#E9DFC2] rounded-[20px] overflow-hidden">
+<a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="bg-white p-6 hover:bg-black hover:text-white"><div class="mono text-[9px]">01</div><div class="serif font-bold text-[16px] mt-2 leading-[1.1]">How to Structure Abstract & Methods</div><div class="mono text-[9px] mt-8 opacity-60">share.google ↗</div></a>
+<a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="bg-white p-6 hover:bg-black hover:text-white"><div class="mono text-[9px]">02</div><div class="serif font-bold text-[16px] mt-2 leading-[1.1]">Award-Winning Student Paper</div><div class="mono text-[9px] mt-8 opacity-60">share.google ↗</div></a>
+<a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="bg-white p-6 hover:bg-black hover:text-white"><div class="mono text-[9px]">03</div><div class="serif font-bold text-[16px] mt-2 leading-[1.1]">From Idea to Publication</div><div class="mono text-[9px] mt-8 opacity-60">share.google ↗</div></a>
+<a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="bg-white p-6 hover:bg-black hover:text-white"><div class="mono text-[9px]">04</div><div class="serif font-bold text-[16px] mt-2 leading-[1.1]">Most Cited Template</div><div class="mono text-[9px] mt-8 opacity-60">share.google ↗</div></a>
+</div>
+</div>
 
-    const res = await fetch("https://api.groq.com/openai/v1/chat/completions",{method:"POST",headers:{"Authorization":`Bearer ${KEY}`,"Content-Type":"application/json"},body:JSON.stringify({model:"llama-3.1-8b-instant",messages:[{role:"user",content:prompt}],temperature:0.6,max_tokens:800})});
-    const data = await res.json();
-    const result = data.choices?.[0]?.message?.content || JSON.stringify(data);
-    return { statusCode: 200, headers, body: JSON.stringify({ result }) };
-  } catch(e){ return { statusCode: 200, headers, body: JSON.stringify({ result: "Error: "+e.message }) }; }
-};
+<!-- 11 FIELDS — STATIC — ALWAYS VISIBLE -->
+<div class="mt-12">
+<h2 class="serif text-[32px] font-bold">Fields — 11 fields × 3 articles = 33 papers</h2>
+<p class="mono text-[11px] opacity-40 mt-1">STATIC HTML — cannot hide — click to open/close</p>
+<div class="mt-6 space-y-3">
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">01 — Biological Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">How Does Human Brain Work? - Caltech</b></a><a href="https://link.springer.com/article/10.1186/s13223-018-0278-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Allergy Review - Springer</b></a><a href="https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Bio Science 2026 - T&F</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">02 — AI and Data Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://link.springer.com/article/10.1007/s11831-024-10209-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Review on AI in Computational Methods</b></a><a href="https://www.sciencedirect.com/science/article/pii/S1877050924003752" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">AI & Data Processing</b></a><a href="https://www.nature.com/articles/s42256-025-01000-2" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">State of AI 2025 - Nature MI</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">03 — Physics and Space</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">IITK Physics Notes PDF</b></a><a href="https://www.nature.com/articles/d41586-025-01445-w" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Dying Stars & Exoplanets - Nature</b></a><a href="https://www.nature.com/articles/s41550-025-02763-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Exoplanet Discovery 2025</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">04 — Chemistry and Material Science</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41570-025-00706-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Chemistry Review 2025</b></a><a href="https://www.nature.com/articles/s41563-025-02137-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Advanced Materials</b></a><a href="https://www.nature.com/articles/s42004-025-01500-7" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Comms Chemistry</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">05 — Neuroscience and Physiology</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuroscience Breakthrough</b></a><a href="https://emerginginvestigators.org/articles?q=neuroscience" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuroscience Articles - EI</b></a><a href="https://emerginginvestigators.org/articles/22-080/pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Neuro PDF</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">06 — Engineering and Robotics</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Engineering Systems</b></a><a href="https://www.nature.com/articles/s41467-025-57741-6" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Robotics 2025</b></a><a href="https://www.nature.com/articles/s44287-025-00152-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Engineering Innovation</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">07 — Climate Environment and Earth</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://emerginginvestigators.org/?s=last+updated" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Climate Latest - EI</b></a><a href="https://www.nature.com/articles/s41558-025-02300-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Climate Change Review - Nature</b></a><a href="https://www.nature.com/articles/s41561-025-01700-2" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Earth Systems Research</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">08 — Humanities, Literature & Culture</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41599-025-04503-w" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Machine-assisted designs with AI</b></a><a href="https://www.nature.com/articles/s41562-025-02242-1" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Human Behaviour</b></a><a href="https://www.emerginginvestigators.org/articles/24-254/pdf" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Humanities PDF</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">09 — Society, Economics and Public Policy</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Society & Economics</b></a><a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Public Policy</b></a><a href="https://www.nature.com/articles/s41599-019-0232-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Social Science</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">10 — Business and Management</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Business Research</b></a><a href="https://www.nature.com/collections/jijcddffij" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Business Collection</b></a><a href="https://www.nature.com/articles/s41599-025-04400-3" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Management Science 2025</b></a></div></div>
+
+<div class="card overflow-hidden"><div class="folder" onclick="this.nextElementSibling.classList.toggle('hidden')"><span class="serif font-bold">11 — Communication and Media</span><span class="mono text-[10px] bg-black text-white px-2 py-1 rounded-full">3</span></div><div class="p-3 bg-[#FFFEF2] space-y-2"><a href="https://www.nature.com/articles/s41562-025-02102-y" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Media & Communication</b></a><a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Communication Research</b></a><a href="https://www.nature.com/articles/s41599-024-04000-0" target="_blank" class="block bg-white border rounded-[12px] p-3 hover:bg-black hover:text-white"><b class="text-[13px]">Digital Media Studies</b></a></div></div>
+
+</div>
+</div>
+
+<!-- TOOLBOX -->
+<div class="mt-14">
+<h2 class="serif text-[32px] font-bold">Toolbox — 4 quiet tools</h2>
+<div class="grid md:grid-cols-2 gap-6 mt-6">
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">A — TURN IDEAS INTO PROJECT • AI</div><div class="serif text-[20px] font-bold mt-1">Keywords + question → template</div><input id="k1" placeholder="Keywords" class="inp mt-4"><input id="k2" placeholder="Question" class="inp mt-2"><button onclick="gen()" class="btn-b w-full mt-3">Generate →</button><pre id="outA" class="hidden mt-3 p-3 bg-[#FFFEF2] border rounded-[12px] text-[12px] whitespace-pre-wrap"></pre></div>
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">B — VIDEO LIBRARY • 5 VIDEOS</div><div class="serif text-[20px] font-bold mt-1">In folders</div><div class="mt-4 space-y-3"><div><div class="folder" onclick="document.getElementById('f1').classList.toggle('hidden')"><span class="text-[13px] font-bold">📁 Research Process — 2</span><span>▼</span></div><div id="f1" class="mt-2 space-y-2"><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/UY7sVKJPTMA"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/WVv2jWXW0K4"></iframe></div></div><div><div class="folder" onclick="document.getElementById('f2').classList.toggle('hidden')"><span class="text-[13px] font-bold">📁 Methods — 3</span><span>▼</span></div><div id="f2" class="hidden mt-2 space-y-2"><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/yRxFwMHS_A8"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/QBMk2Bfs4Fs"></iframe><iframe class="w-full h-[180px] rounded-[12px] border" src="https://www.youtube.com/embed/7gGi1-g2Hek"></iframe></div></div></div></div>
+<div class="bg-black rounded-[22px] p-6 text-white"><div class="mono text-[10px] text-[#FFE75E]">C — MAKE ARGUMENT CLEARER • AI DETECTOR — ai-detector-free.lovable.app</div><div class="serif text-[20px] font-bold mt-2">Paste research — fix + detect</div><textarea id="research" oninput="checkAI()" placeholder="Paste research..." class="mt-3 w-full h-[140px] p-3 rounded-[14px] bg-[#1C1A18] border border-zinc-800 text-[12px] text-white"></textarea><div class="flex gap-2 mt-3 flex-wrap"><button onclick="fix('fix-grammar')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Fix grammar</button><button onclick="fix('weakness')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Weakness</button><button onclick="fix('rephrase')" class="bg-white text-black rounded-full px-3 py-1.5 text-[11px] font-bold">Rephrase</button><button onclick="fix('detect-ai')" class="bg-[#FFE75E] text-black rounded-full px-3 py-1.5 text-[11px] font-bold">AI Detect</button><a href="https://ai-detector-free.lovable.app" target="_blank" class="bg-[#2A2825] border border-[#3A3835] rounded-full px-3 py-1.5 text-[11px]">Open ai-detector-free.lovable.app ↗</a></div><div class="mt-3 p-2 bg-[#1C1A18] border border-zinc-800 rounded-[10px]"><div class="flex justify-between mono text-[9px]"><span>AI BAR</span><span id="aiBarText">12% AI</span></div><div class="h-1.5 bg-zinc-800 rounded-full mt-1 overflow-hidden"><div id="aiBar" class="h-full bg-[#FFE75E] w-[12%]"></div></div></div><pre id="outC" class="hidden mt-3 p-3 bg-[#1C1A18] border border-zinc-800 rounded-[10px] text-[11px] whitespace-pre-wrap"></pre></div>
+<div class="card p-6"><div class="mono text-[10px] opacity-40 font-bold">D — PUBLISH TRACK • YOUR LINKS</div><div class="serif text-[20px] font-bold mt-1">Where should this live?</div><input id="based" placeholder="Based upon?" class="inp mt-4"><input id="q" placeholder="Question?" class="inp mt-2"><input id="refs" placeholder="References" class="inp mt-2"><input id="aud" placeholder="Audience?" class="inp mt-2"><input id="authorEmail" placeholder="Email" class="inp mt-2"><button onclick="publish()" class="btn-b w-full mt-3">Publish + Track</button><div id="outD" class="hidden mt-3 p-3 bg-[#FFFEF2] border rounded-[12px] text-[11px]"></div><div class="mt-4 grid gap-2"><a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="btn-b text-center">Publish on JSR → https://www.jsr.org/hs/index.php/path</a><a href="https://www.springernature.com/gp/authors" target="_blank" class="btn-o text-center bg-[#FFFEF2]">Publish on Springer → https://www.springernature.com/gp/authors</a></div></div>
+</div>
+</div>
+
+<!-- TRACKER + REVIEW — FULL -->
+<div class="mt-14 card p-6">
+<div class="serif text-[24px] font-bold">My private progress • Tracker — FULL</div>
+<div class="mt-5 grid grid-cols-3 md:grid-cols-6 gap-3">
+<button onclick="step('search')" id="b-search" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Search</div></button>
+<button onclick="step('reading')" id="b-reading" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Reading</div></button>
+<button onclick="step('idea')" id="b-idea" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Idea</div></button>
+<button onclick="step('data')" id="b-data" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Data</div></button>
+<button onclick="step('draft')" id="b-draft" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Draft</div></button>
+<button onclick="step('submitted')" id="b-submitted" class="bg-[#F5F1D5] border rounded-[14px] p-4 text-left"><div>☐</div><div class="text-[13px] font-bold mt-1">Submitted</div></button>
+</div>
+<div class="mt-5 h-3 bg-black/10 rounded-full overflow-hidden"><div id="bar" class="h-full w-0" style="background:linear-gradient(90deg,#FF1F0F,#FFB81A)"></div></div>
+<div id="barT" class="mono text-[12px] font-bold mt-2">0% — Start</div>
+<div id="reviewBar" class="mt-4 flex flex-wrap gap-2"></div>
+</div>
+
+<div class="mt-6 card p-6">
+<div class="mono text-[10px] opacity-40 font-bold tracking-[.2em]">REVIEW BAR — FULL — NOT CROPPED</div>
+<div class="serif text-[20px] font-bold mt-1">What students say</div>
+<div class="flex gap-2 mt-4"><input id="rname" placeholder="Your name" class="inp flex-1"><button onclick="rev()" class="btn-b">Submit review →</button></div>
+<textarea id="rtext" placeholder="Write review..." class="inp mt-3 h-[80px]!rounded-[16px]"></textarea>
+<div id="rstat" class="hidden mt-2 mono text-[11px] text-center p-2 bg-[#FFFEF2] rounded-full"></div>
+<div id="revList" class="mt-5 space-y-3 max-h-[500px] overflow-auto"></div>
+</div>
+
+</div>
+
+<script>
+let steps={search:false,reading:false,idea:false,data:false,[STRIPPED]
+const s=localStorage.getItem('curio_tracker'); if(s) try{steps=JSON.parse(s)}catch{}
+function updateBar(){localStorage.setItem('curio_tracker',JSON.stringify(steps));let d=Object.values(steps).filter(Boolean).length,p=Math.round(d/6*100);document.getElementById('bar').style.width=p+'%';document.getElementById('barT').innerText=p+'% — '+(p==0?'Start':p==100?'Submitted!':'Keep going');Object.keys(steps).forEach(k=>{const b=document.getElementById('b-'+k); if(steps[k]){b.classList.add('!bg-black','!text-white');b.querySelector('div').innerText='☑';}else{b.classList.remove('!bg-black','!text-white');b.querySelector('div').innerText='☐';}});document.getElementById('reviewBar').innerHTML=Object.entries(steps).map(([k,v])=>`<div class="border rounded-full px-3 py-1.5 mono text-[10px] font-bold ${v?'bg-black text-white':''}">${k.toUpperCase()} ${v?'●':''}</div>`).join('');}
+function step(k){steps[k]=!steps[k];updateBar()} updateBar();
+function checkAI(){const t=document.getElementById('research').value;let sc=Math.min(88,Math.floor(t.length/16));if(t.length<50) sc=12;document.getElementById('aiBar').style.width=sc+'%';document.getElementById('aiBarText').innerText=sc+'% AI risk';}
+async function gen(){const k1=document.getElementById('k1').value,k2=document.getElementById('k2').value,o=document.getElementById('outA');if(!k1||!k2){alert('Enter both');return;}o.classList.remove('hidden');o.innerText='⏳ Generating via AI...';try{const r=await fetch('/.netlify/functions/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:`${k1} ${k2}`})});const j=await r.json();o.innerText=j.result;}catch(e){o.innerText='Error '+e.message}}
+async function fix(a){const t=document.getElementById('research').value,o=document.getElementById('outC');if(!t){alert('Paste research');return;}o.classList.remove('hidden');o.innerText='⏳ Running '+a+'...';try{const r=await fetch('/.netlify/functions/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:a,text:t})});const j=await r.json();o.innerText=j.result;}catch(e){o.innerText='Error '+e.message}}
+async function publish(){const data={based:document.getElementById('based').value,question:document.getElementById('q').value,refs:document.getElementById('refs').value,audience:document.getElementById('aud').value,research:document.getElementById('research').value,authorEmail:document.getElementById('authorEmail').value};const o=document.getElementById('outD');o.classList.remove('hidden');o.innerText='⏳ Publishing...';try{const r=await fetch('/.netlify/functions/publish',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});const j=await r.json();o.innerText=j.message;}catch(e){o.innerText='Error '+e.message}}
+async function rev(){const n=document.getElementById('rname').value||'Anon',t=document.getElementById('rtext').value;if(!t){alert('Write review');return;}const stat=document.getElementById('rstat');stat.classList.remove('hidden');stat.innerText='Sending...';try{await fetch('/.netlify/functions/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,text:t})});stat.innerText='✅ Submitted!';fetchRev();}catch(e){stat.innerText='Error'}}
+async function fetchRev(){try{const r=await fetch('/.netlify/functions/review');const d=await r.json();document.getElementById('revList').innerHTML=(d.reviews||[]).map(x=>`<div class="p-4 border rounded-[16px] bg-white"><b class="serif">${x.name}</b><div class="text-[12px] opacity-80 mt-1">${x.text}</div><div class="mono text-[9px] opacity-40 mt-2">${new Date(x.time).toLocaleDateString()}</div></div>`).join('')||'<div class="mono text-[11px] opacity-40 text-center py-6">No reviews yet — be first ✨</div>';}catch{}}fetchRev();
+</script>
+</body>
+</html>
