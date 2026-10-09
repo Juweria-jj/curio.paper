@@ -1,35 +1,70 @@
-// api/publish.js
-import nodemailer from "nodemailer";
-
+// api/publish.js - dedicated endpoint for D section
 export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
+  if (req.method!== 'POST') return res.status(405).json({ error: 'method not allowed' });
 
-  const { name, email, title, abstract, message } = req.body;
+  const { based, question } = req.body;
+  if (!based ||!question) return res.status(400).json({ error: 'fill both fields' });
 
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER, // your gmail
-      pass: process.env.EMAIL_PASS, // your app password
-    },
-  });
+  if (!process.env.OPENAI_API_KEY) {
+    return res.status(500).json({ error: 'OPENAI_API_KEY missing' });
+  }
+
+  const prompt = `
+You are curio.paper journal matcher.
+
+Student research is based on: "${based}"
+Research question: "${question}"
+
+Task: Suggest where it should live. Give 3 options in this exact format:
+
+1. **JSR - Journal of Student Research**
+   - why: 1 line fit
+   - link: https://www.jsr.org/hs/index.php/path
+   - difficulty: easy / medium
+
+2. **Springer Nature**
+   - why: 1 line fit
+   - link: https://www.springernature.com/gp/authors/campaigns/writing-a-manuscript
+   - difficulty: medium / hard
+   - tip: how to improve for springer
+
+3. **The Young Researcher**
+   - why: 1 line fit
+   - link: https://www.theyoungresearcher.com/
+   - difficulty: easy
+
+Keep all lowercase, minimal, pastel tone, friendly. No uppercase headings.
+`;
 
   try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "Thecuriopaper@gmail.com", // <-- CHANGED HERE
-      subject: `New Publish Request: ${title || "curio.paper"}`,
-      html: `
-        <h3>New Publish Response on curio.paper</h3>
-        <p><b>Name:</b> ${name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Title:</b> ${title}</p>
-        <p><b>Abstract/Message:</b><br>${abstract || message}</p>
-      `,
+    const r = await fetch('https://api.openai.com/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${process.env.OPENAI_API_KEY}`
+      },
+      body: JSON.stringify({
+        model: 'gpt-4o-mini',
+        messages: [{ role: 'user', content: prompt }],
+        temperature: 0.6,
+        max_tokens: 800
+      })
     });
 
-    return res.status(200).json({ success: true, message: "Sent to Thecuriopaper@gmail.com" });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
+    const data = await r.json();
+    const result = data.choices?.[0]?.message?.content || 'no result';
+
+    // return as HTML for frontend
+    return res.status(200).json({
+      result: result.replace(/\n/g, '<br/>'),
+      links: {
+        jsr: 'https://www.jsr.org/hs/index.php/path',
+        springer: 'https://www.springernature.com/gp/authors/campaigns/writing-a-manuscript',
+        young: 'https://www.theyoungresearcher.com/'
+      }
+    });
+
+  } catch (e) {
+    return res.status(500).json({ error: e.message });
   }
 }
