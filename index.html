@@ -3,90 +3,265 @@
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>curio.paper — From curiosity to research</title>
-<!-- TITLE FONT FOR ENTIRE WEBSITE -->
-<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
 <script src="https://cdn.tailwindcss.com"></script>
 <style>
- :root{ --lemon:#FAFFC7; --bloom:#FFD1D5; --blush:#FFF1F4; --pale:#FFE1E6; --deco:#C8DE9D; --tidal:#E0EEA3; }
- body{background:#FFFDF9;font-family:'Sora',sans-serif;position:relative;overflow-x:hidden;text-transform:lowercase}
+ :root{ --lemon:#FAFFC7; --bloom:#FFD1D5; --blush:#FFF1F4; --pale:#FFE1E6; --deco:#C8DE9D; --tidal:#E0EEA3; --azalea:#F7C9D4; --ink:#1E1E1E }
+ body{background:#FFFEFB;font-family:'Sora',sans-serif;overflow-x:hidden;color:var(--ink)}
 .serif{font-family:'Sora',sans-serif;font-weight:800;letter-spacing:-0.04em}
- /* PASTEL BG - NOT ORANGE ANYMORE */
-.bg-pastel-soft{position:fixed;top:0;left:0;right:0;height:500px;background:radial-gradient(80% 100% at 20% 0%, #FFD1D5 0%, #FAFFC7 25%, #C8DE9D 50%, #E0EEA3 70%, transparent 85%);opacity:0.35;pointer-events:none;z-index:-1;filter:blur(24px)}
-.card{background:rgba(255,255,255,0.88);backdrop-filter:blur(12px);border:1px solid #F2E8E0;border-radius:20px}
-.pastel-bar{background:linear-gradient(90deg,#FAFFC7 0%,#FFD1D5 40%,#C8DE9D 70%,#E0EEA3 100%)}
+.bg-pastel-soft{position:fixed;top:0;left:0;right:0;height:520px;background:radial-gradient(80% 100% at 15% 0%, #FFD1D5 0%, #FAFFC7 22%, #C8DE9D 48%, #E0EEA3 72%, transparent 86%);opacity:0.38;pointer-events:none;z-index:-1;filter:blur(26px)}
+.card{background:rgba(255,255,255,0.92);backdrop-filter:blur(12px);border:1px solid #F0E6DE;border-radius:22px}
+.pastel-bar{background:linear-gradient(90deg,#FAFFC7 0%,#FFD1D5 35%,#C8DE9D 68%,#E0EEA3 100%)}
+.text-lemon{color:#7A7D4A}.text-bloom{color:#9B5A5E}.text-deco{color:#4A6741}.text-tidal{color:#6B7130}
+ details>summary{list-style:none} details>summary::-webkit-details-marker{display:none}
 </style>
 </head>
 <body>
 <div class="bg-pastel-soft"></div>
 <div class="h-[6px] w-full pastel-bar sticky top-0 z-50"></div>
 
-<div class="max-w-[1150px] mx-auto px-6 py-8">
-  <!-- HEADER - TITLE FONT + LIFEY PILLS -->
+<div class="max-w-[1180px] mx-auto px-6 py-8">
+  <!-- HEADER -->
   <div class="flex justify-between items-start">
     <div>
-      <div class="flex gap-2 mb-3">
-        <div class="w-7 h-7 rounded-full bg-[#FAFFC7] grid place-items-center text-[12px]">🍋</div>
-        <div class="w-7 h-7 rounded-full bg-[#FFD1D5] grid place-items-center text-[12px]">🌸</div>
-        <div class="w-7 h-7 rounded-full bg-[#C8DE9D] grid place-items-center text-[12px]">🌿</div>
-        <div class="w-7 h-7 rounded-full bg-[#E0EEA3] grid place-items-center text-[12px]">✦</div>
+      <div class="flex gap-2 mb-4">
+        <div class="w-7 h-7 rounded-full bg-[#FAFFC7] grid place-items-center text-[11px] shadow-sm">🍋</div>
+        <div class="w-7 h-7 rounded-full bg-[#FFD1D5] grid place-items-center text-[11px] shadow-sm">🌸</div>
+        <div class="w-7 h-7 rounded-full bg-[#C8DE9D] grid place-items-center text-[11px] shadow-sm">🌿</div>
+        <div class="w-7 h-7 rounded-full bg-[#E0EEA3] grid place-items-center text-[11px] shadow-sm">✦</div>
       </div>
-      <h1 class="serif text-[38px] leading-none">curio.paper</h1>
-      <p class="font-semibold opacity-60 -mt-1 text-[15px] tracking-wide">from curiosity to research</p>
+      <h1 class="serif text-[40px] leading-none tracking-tight">curio.paper</h1>
+      <p class="font-bold tracking-wide opacity-70 text-[13px] mt-1 lowercase"><span class="text-bloom">from</span> <span class="text-deco">curiosity</span> <span class="text-lemon">to</span> research</p>
     </div>
-    <div class="text-[10px] tracking-widest opacity-40 font-bold mt-2">a little lifey — not too much</div>
+    <div class="text-[10px] tracking-[0.2em] opacity-40 font-bold mt-2 bg-[#FFF1F4] px-3 py-1.5 rounded-full">a little lifey — not too much</div>
   </div>
 
-  <p class="serif italic font-normal text-[19px] mt-8 max-w-[520px] leading-[1.3] normal-case">“ every great paper started as a messy idea in a notebook. ”</p>
+  <p class="serif font-semibold italic text-[19px] mt-8 max-w-[520px] leading-[1.25] text-deco normal-case">“ Every great paper started as a messy idea in a notebook. ”</p>
 
-  <!-- BEST RESEARCHS -->
+  <!-- 1. BEST RESEARCHS -->
   <div class="mt-10">
-    <div class="text-[10px] tracking-[0.2em] opacity-50 font-bold">BEST RESEARCHS — EDITOR PICK</div>
+    <div class="text-[10px] tracking-[0.2em] font-bold"><span class="text-bloom">BEST RESEARCHS</span> <span class="opacity-40">— EDITOR PICK</span></div>
     <div class="grid grid-cols-1 md:grid-cols-4 gap-3 mt-3">
-      <a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="card p-6 hover:bg-black hover:text-white transition group"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">01</div><div class="serif text-[17px] leading-[1.1] mt-2">how to structure abstract & methods</div><div class="text-[10px] mt-10 opacity-50">open ↗</div></a>
-      <a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="card p-6 hover:bg-black hover:text-white transition"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">02</div><div class="serif text-[17px] leading-[1.1] mt-2">award-winning student paper</div><div class="text-[10px] mt-10 opacity-50">open ↗</div></a>
-      <a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="card p-6 hover:bg-black hover:text-white transition"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">03</div><div class="serif text-[17px] leading-[1.1] mt-2">from idea to publication</div><div class="text-[10px] mt-10 opacity-50">open ↗</div></a>
-      <a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="card p-6 hover:bg-black hover:text-white transition"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">04</div><div class="serif text-[17px] leading-[1.1] mt-2">most cited template</div><div class="text-[10px] mt-10 opacity-50">open ↗</div></a>
+      <a href="https://share.google/u4mpGyEGDS036z91H" target="_blank" class="card p-6 hover:bg-black hover:!text-white transition group bg-[#FAFFC7]/60"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">01</div><div class="serif text-[16px] leading-[1.1] mt-2">how to structure abstract & methods</div><div class="text-[10px] mt-10 opacity-50 font-semibold">open ↗</div></a>
+      <a href="https://share.google/97ALZtaotz5npH3v2" target="_blank" class="card p-6 hover:bg-black hover:!text-white transition bg-[#FFD1D5]/50"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">02</div><div class="serif text-[16px] leading-[1.1] mt-2">award-winning student paper</div><div class="text-[10px] mt-10 opacity-50 font-semibold">open ↗</div></a>
+      <a href="https://share.google/DJSDh0FirG3CGAFBJ" target="_blank" class="card p-6 hover:bg-black hover:!text-white transition bg-[#C8DE9D]/40"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">03</div><div class="serif text-[16px] leading-[1.1] mt-2">from idea to publication</div><div class="text-[10px] mt-10 opacity-50 font-semibold">open ↗</div></a>
+      <a href="https://share.google/7jo7QJTqLQAAoNtXu" target="_blank" class="card p-6 hover:bg-black hover:!text-white transition bg-[#E0EEA3]/60"><div class="h-[3px] w-8 pastel-bar rounded-full mb-4"></div><div class="text-[10px] opacity-40">04</div><div class="serif text-[16px] leading-[1.1] mt-2">most cited template</div><div class="text-[10px] mt-10 opacity-50 font-semibold">open ↗</div></a>
     </div>
   </div>
 
-  <!-- FIELDS -->
+  <p class="serif italic font-normal text-[14px] opacity-60 mt-8 text-center normal-case text-bloom">“ you don’t need permission to ask a big question. ”</p>
+
+  <!-- 2. FIELDS - ALL 11 FOLDERS WITH EXACT ARTICLES -->
   <div class="mt-12">
-    <h2 class="serif text-[24px]">fields</h2>
-    <p class="text-[12px] opacity-50 normal-case">all 11 fields — pastel edition</p>
-    <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-3">
-      <details class="card overflow-hidden bg-[#FAFFC7]/60" open><summary class="list-none px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 01 — biological science</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></summary><div class="px-3 pb-3 space-y-2"><a href="https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">How Does Human Brain Work? - Caltech</a></div></details>
-      <details class="card overflow-hidden bg-[#FFD1D5]/50"><summary class="list-none px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 02 — ai and data science</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></summary><div class="px-3 pb-3 space-y-2"><a href="https://www.nature.com/articles/s42256-025-01000-2" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] normal-case">State of AI 2025 - Nature MI</a></div></details>
-      <details class="card overflow-hidden bg-[#C8DE9D]/40"><summary class="list-none px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 03 — physics and space</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></summary><div class="px-3 pb-3 space-y-2"><a href="https://www.nature.com/articles/d41586-025-01445-w" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] normal-case">Dying Stars & Exoplanets - Nature</a></div></details>
-      <details class="card overflow-hidden bg-[#E0EEA3]/60"><summary class="list-none px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 04 — chemistry and material science</span><span class="text-[10px] bg-black text-white px-2 py-1 rounded-full">3 papers</span></summary><div class="px-3 pb-3 space-y-2"><a href="https://www.nature.com/articles/s41570-025-00706-6" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] normal-case">Chemistry Review 2025</a></div></details>
+    <h2 class="serif text-[26px]"><span class="text-deco">fields</span></h2>
+    <p class="text-[12px] opacity-50 normal-case">all 11 fields — click to see articles inside</p>
+    <div class="mt-5 grid grid-cols-1 md:grid-cols-2 gap-3.5">
+
+      <details class="card overflow-hidden bg-[#FAFFC7]/70" open>
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 01 — biological science</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://scienceexchange.caltech.edu/topics/neuroscience/how-the-brain-works" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">how does human brain work? - caltech</a>
+          <a href="https://link.springer.com/article/10.1186/s13223-018-0278-1" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">allergy review - springer</a>
+          <a href="https://www.tandfonline.com/doi/full/10.1080/17451000.2026.2716239" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">biological science 2026</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FFD1D5]/60">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 02 — ai and data science</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://link.springer.com/article/10.1007/s11831-024-10209-0" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">review on ai in computational methods</a>
+          <a href="https://www.sciencedirect.com/science/article/pii/S1877050924003752" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">ai in data processing</a>
+          <a href="https://www.nature.com/articles/s42256-025-01000-2" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">state of ai 2025 - nature mi</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#E0EEA3]/70">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 03 — physics and space</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://students.iiserkol.ac.in/~sg12ms102/IITK.pdf" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">iitk physics notes pdf</a>
+          <a href="https://www.nature.com/articles/d41586-025-01445-w" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">dying stars & exoplanets - nature</a>
+          <a href="https://www.nature.com/articles/s41550-025-02763-9" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">exoplanet discovery 2025</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#C8DE9D]/50">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 04 — chemistry and material science</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41570-025-00706-6" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">chemistry review 2025</a>
+          <a href="https://www.nature.com/articles/s41563-025-02137-6" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">advanced materials</a>
+          <a href="https://www.nature.com/articles/s42004-025-01500-7" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">comms chemistry</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FFF1F4]">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 05 — neuroscience and physiology</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41467-025-65499-0" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">neuroscience breakthrough</a>
+          <a href="https://emerginginvestigators.org/articles?q=neuroscience" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">neuroscience articles - ei</a>
+          <a href="https://emerginginvestigators.org/articles/22-080/pdf" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">neuro pdf - ei</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FFE1E6]/70">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 06 — engineering and robotics</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41467-025-56025-3" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">engineering systems</a>
+          <a href="https://www.nature.com/articles/s41467-025-57741-6" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">robotics 2025</a>
+          <a href="https://www.nature.com/articles/s44287-025-00152-y" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">engineering innovation</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FAFFC7]/60">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 07 — climate environment and earth</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">2 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://emerginginvestigators.org/?s=last+updated" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">climate latest - ei</a>
+          <a href="https://emerginginvestigators.org/?s=last+updated" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">environmental papers - ei</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#E0EEA3]/60">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 08 — humanities, literature & culture</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41599-025-04503-w" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">machine-assisted designs with ai - hss</a>
+          <a href="https://www.nature.com/articles/s41562-025-02242-1" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">human behaviour</a>
+          <a href="https://www.emerginginvestigators.org/articles/24-254/pdf" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">humanities pdf - ei</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#C8DE9D]/50">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 09 — society, economics and public policy</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">3 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">society & economics - nature</a>
+          <a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">public policy</a>
+          <a href="https://www.nature.com/articles/s41599-019-0232-y" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">social science</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FFD1D5]/50">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 10 — business and management</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">2 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41599-020-00552-5" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">business research - hss</a>
+          <a href="https://www.nature.com/collections/jijcddffij" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">business collection - nature</a>
+        </div>
+      </details>
+
+      <details class="card overflow-hidden bg-[#FFF1F4]">
+        <summary class="px-5 py-4 flex justify-between cursor-pointer"><span class="text-[13px] font-bold">📁 11 — communication and media</span><span class="text-[10px] bg-black text-white px-2.5 py-1 rounded-full">2 papers</span></summary>
+        <div class="px-3 pb-3 space-y-2">
+          <a href="https://www.nature.com/articles/s41562-025-02102-y" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">media & communication</a>
+          <a href="https://www.nature.com/articles/s41586-023-06840-9" target="_blank" class="block bg-white border rounded-xl p-3 text-[12px] hover:bg-black hover:text-white normal-case">communication research</a>
+        </div>
+      </details>
+
     </div>
-    <p class="text-[11px] opacity-40 mt-3 normal-case">+ 7 more fields same as before — I kept short here, full code has all 11 like your live site</p>
   </div>
 
-  <!-- TOOLBOX + TRACKING (PASTEL) -->
-  <div class="mt-14 grid grid-cols-1 md:grid-cols-2 gap-4">
-    <div class="card p-6 bg-white"><div class="text-[10px] tracking-widest opacity-40 font-bold">A — TURN IDEA INTO PROJECT</div><div class="serif text-[17px] mt-1">roadmap + template</div><input id="k1" placeholder="keywords" class="mt-4 w-full px-4 py-3 rounded-full bg-[#FFF1F4] border text-[12px]"><input id="k2" placeholder="research question" class="mt-2 w-full px-4 py-3 rounded-full bg-[#FFF1F4] border text-[12px]"><button onclick="gen()" class="mt-3 w-full py-3 bg-black text-white rounded-full text-[12px]">generate roadmap + template</button><pre id="outA" class="hidden mt-4 bg-[#FCFCF9] border rounded-2xl p-4 text-[12px] whitespace-pre-wrap normal-case"></pre></div>
-    <div class="bg-black rounded-[20px] p-6 text-white"><div class="text-[10px] tracking-widest text-[#FAFFC7] font-bold">C — MAKE ARGUMENT CLEARER</div><div class="serif text-[17px] mt-1">paste research — fix + weakness</div><textarea id="research" placeholder="paste your research..." class="mt-4 w-full h-[120px] p-4 rounded-2xl bg-[#1A1A1A] border border-zinc-800 text-[12px] normal-case"></textarea><div class="flex gap-2 mt-3 flex-wrap"><button onclick="fix('fix-grammar')" class="px-3 py-2 bg-white text-black rounded-full text-[11px]">fix grammar</button><button onclick="fix('weakness')" class="px-3 py-2 bg-white text-black rounded-full text-[11px]">weakness</button><button onclick="fix('detect-ai')" class="px-3 py-2 pastel-bar text-black rounded-full text-[11px]">ai detect</button></div><pre id="outC" class="hidden mt-4 bg-[#1A1A1A] border border-zinc-800 rounded-2xl p-4 text-[12px] whitespace-pre-wrap normal-case"></pre></div>
+  <!-- 3. TOOLBOX - 4 TOOLS -->
+  <div class="mt-14">
+    <h2 class="serif text-[24px]"><span class="text-bloom">toolbox</span> <span class="opacity-40">— 4 quiet tools</span></h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+
+      <!-- A -->
+      <div class="card p-6 bg-[#FAFFC7]/50">
+        <div class="text-[10px] tracking-widest font-bold text-lemon">A — TURN IDEA INTO PROJECT</div>
+        <div class="serif text-[18px] mt-1">roadmap + template</div>
+        <div class="mt-3 text-[10px] bg-white border border-[#E0EEA3] rounded-full inline-block px-3 py-1 font-medium normal-case">⚠️ just template — not to copy-paste. use as guide.</div>
+        <input id="k1" placeholder="keywords" class="mt-4 w-full px-4 py-3 rounded-full bg-white border text-[12px] normal-case">
+        <input id="k2" placeholder="research question" class="mt-2 w-full px-4 py-3 rounded-full bg-white border text-[12px] normal-case">
+        <button onclick="gen()" class="mt-3 w-full py-3.5 bg-black text-white rounded-full text-[12px] font-bold">generate roadmap + template</button>
+        <pre id="outA" class="hidden mt-4 bg-white border rounded-2xl p-4 text-[12px] whitespace-pre-wrap normal-case"></pre>
+      </div>
+
+      <!-- B - 5 VIDEOS -->
+      <div class="card p-6 bg-[#FFF1F4]">
+        <div class="text-[10px] tracking-widest font-bold text-bloom">B — UNDERSTAND WORK BEHIND</div>
+        <div class="serif text-[18px] mt-1">video library</div>
+        <details class="mt-5 bg-white border rounded-[16px] px-4 py-3 cursor-pointer" open>
+          <summary class="flex justify-between text-[13px] font-bold">📁 research process <span class="text-[10px] bg-[#FFE1E6] px-2 py-0.5 rounded-full">2 videos</span></summary>
+          <div class="mt-3 space-y-3">
+            <iframe class="w-full h-[190px] rounded-[14px]" src="https://www.youtube-nocookie.com/embed/UY7sVKJPTMA" allowfullscreen></iframe>
+            <iframe class="w-full h-[190px] rounded-[14px]" src="https://www.youtube-nocookie.com/embed/WVv2jWXW0K4" allowfullscreen></iframe>
+          </div>
+        </details>
+        <details class="mt-3 bg-white border rounded-[16px] px-4 py-3 cursor-pointer" open>
+          <summary class="flex justify-between text-[13px] font-bold">📁 methods & inspiration <span class="text-[10px] bg-[#C8DE9D]/50 px-2 py-0.5 rounded-full">3 videos</span></summary>
+          <div class="mt-3 space-y-3">
+            <iframe class="w-full h-[190px] rounded-[14px]" src="https://www.youtube-nocookie.com/embed/yRxFwMHS_A8" allowfullscreen></iframe>
+            <iframe class="w-full h-[190px] rounded-[14px]" src="https://www.youtube-nocookie.com/embed/QBMk2Bfs4Fs" allowfullscreen></iframe>
+            <iframe class="w-full h-[190px] rounded-[14px]" src="https://www.youtube-nocookie.com/embed/7gGi1-g2Hek" allowfullscreen></iframe>
+          </div>
+        </details>
+      </div>
+
+      <!-- C - WITH AI DETECTOR LINK -->
+      <div class="bg-black rounded-[22px] p-6 text-white relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-40 h-40 bg-[#FAFFC7]/20 blur-[30px] rounded-full"></div>
+        <div class="text-[10px] tracking-widest text-[#FAFFC7] font-bold">C — MAKE ARGUMENT CLEARER</div>
+        <div class="serif text-[18px] mt-1">paste research — fix + weakness</div>
+        <textarea id="research" placeholder="paste your research..." class="mt-4 w-full h-[150px] p-4 rounded-2xl bg-[#1A1A1A] border border-zinc-800 text-[12px] normal-case"></textarea>
+        <div class="flex gap-2 mt-3 flex-wrap">
+          <button onclick="fix('fix-grammar')" class="px-3.5 py-2 bg-white text-black rounded-full text-[11px] font-bold">fix grammar</button>
+          <button onclick="fix('weakness')" class="px-3.5 py-2 bg-white text-black rounded-full text-[11px] font-bold">weakness</button>
+          <button onclick="fix('rephrase')" class="px-3.5 py-2 bg-white text-black rounded-full text-[11px] font-bold">rephrase</button>
+          <button onclick="fix('detect-ai')" class="px-3.5 py-2 pastel-bar text-black rounded-full text-[11px] font-bold">ai detect</button>
+        </div>
+        <a href="https://ai-detector-free.lovable.app" target="_blank" class="mt-3 inline-block text-[11px] bg-[#1A1A1A] border border-zinc-700 px-3.5 py-2 rounded-full hover:bg-white hover:text-black transition normal-case">🔍 also check → ai-detector-free.lovable.app ↗</a>
+        <pre id="outC" class="hidden mt-4 bg-[#1A1A1A] border border-zinc-800 rounded-2xl p-4 text-[12px] whitespace-pre-wrap normal-case"></pre>
+      </div>
+
+      <!-- D - FIND RIGHT AUDIENCE - JSR + SPRINGER -->
+      <div class="card p-6 bg-[#E0EEA3]/40">
+        <div class="text-[10px] tracking-widest font-bold text-deco">D — FIND RIGHT AUDIENCE</div>
+        <div class="serif text-[20px] mt-1">where should this live?</div>
+        <p class="text-[11px] mt-2 opacity-60 normal-case leading-relaxed">answer these two — we’ll suggest journal.</p>
+        <input id="based" placeholder="what is it based upon? (ex: survey, experiment, theory)" class="mt-4 w-full px-4 py-3 rounded-full bg-white border text-[12px] normal-case">
+        <input id="q" placeholder="what question are you answering?" class="mt-2 w-full px-4 py-3 rounded-full bg-white border text-[12px] normal-case">
+        <button onclick="publish()" class="mt-3 w-full py-3.5 bg-black text-white rounded-full text-[12px] font-bold">publish + track</button>
+        <div id="outD" class="hidden mt-3 bg-white border rounded-2xl p-4 text-[12px] normal-case"></div>
+        <div class="mt-4 grid grid-cols-1 gap-2">
+          <a href="https://www.jsr.org/hs/index.php/path" target="_blank" class="py-3 bg-black text-white rounded-full text-[11px] text-center font-bold">jsr path → journal of student research</a>
+          <a href="https://www.springernature.com/gp/authors/campaigns/writing-a-manuscript" target="_blank" class="py-3 bg-white border rounded-full text-[11px] text-center font-bold hover:bg-black hover:text-white transition">springer nature — writing guide →</a>
+          <a href="https://www.theyoungresearcher.com/" target="_blank" class="py-3 bg-[#FFD1D5]/60 border border-[#FFD1D5] rounded-full text-[11px] text-center font-bold hover:bg-black hover:text-white transition">the young researcher →</a>
+        </div>
+      </div>
+
+    </div>
   </div>
 
-  <!-- TRACKING PASTEL -->
-  <div class="mt-8 card p-7 relative overflow-hidden bg-white">
+  <!-- 4. TRACKING -->
+  <div class="mt-12 card p-7 relative overflow-hidden bg-white">
     <div class="absolute top-0 left-0 right-0 h-[4px] pastel-bar"></div>
-    <div class="flex justify-between"><div class="text-[10px] tracking-[0.2em] opacity-40 font-bold">MY PRIVATE PROGRESS — ONLY FOR YOU</div><div class="pastel-bar text-black text-[10px] px-3 py-1 rounded-full font-bold">private</div></div>
-    <div class="serif text-[20px] mt-1">track yourself — be first</div>
-    <div class="mt-5 grid grid-cols-3 md:grid-cols-6 gap-2.5">
-      <button onclick="step('search')" id="b-search" class="bg-[#FAFFC7] rounded-[14px] p-3.5 text-left"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">🔍 search</div></button>
-      <button onclick="step('reading')" id="b-reading" class="bg-[#FFE1E6] rounded-[14px] p-3.5 text-left"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">📖 reading</div></button>
-      <button onclick="step('idea')" id="b-idea" class="bg-[#E0EEA3] rounded-[14px] p-3.5 text-left"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">💡 idea</div></button>
-      <button onclick="step('data')" id="b-data" class="bg-[#C8DE9D]/70 rounded-[14px] p-3.5 text-left"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">🧪 data</div></button>
-      <button onclick="step('draft')" id="b-draft" class="bg-[#FFF1F4] rounded-[14px] p-3.5 text-left border"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">✍️ draft</div></button>
-      <button onclick="step('submitted')" id="b-submitted" class="bg-[#FFD1D5] rounded-[14px] p-3.5 text-left"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">📤 submitted</div></button>
+    <div class="flex justify-between items-start">
+      <div><div class="text-[10px] tracking-[0.2em] opacity-40 font-bold">MY PRIVATE PROGRESS — ONLY FOR YOU</div><div class="serif text-[20px] mt-1"><span class="text-deco">track</span> yourself — be first</div></div>
+      <div class="pastel-bar text-black text-[10px] px-3 py-1 rounded-full font-bold">private</div>
     </div>
-    <div class="mt-5 h-[4px] w-full bg-black/10 rounded-full overflow-hidden"><div id="bar" class="h-full pastel-bar w-0 transition-all"></div></div>
-    <div id="barT" class="mt-2 text-[13px] font-bold">0% — start</div>
+    <div class="mt-6 grid grid-cols-3 md:grid-cols-6 gap-2.5">
+      <button onclick="step('search')" id="b-search" class="bg-[#FAFFC7] border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">🔍 search</div></button>
+      <button onclick="step('reading')" id="b-reading" class="bg-[#FFE1E6] border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">📖 reading</div></button>
+      <button onclick="step('idea')" id="b-idea" class="bg-[#E0EEA3] border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">💡 idea</div></button>
+      <button onclick="step('data')" id="b-data" class="bg-[#C8DE9D]/60 border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">🧪 data</div></button>
+      <button onclick="step('draft')" id="b-draft" class="bg-[#FFF1F4] border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">✍️ draft</div></button>
+      <button onclick="step('submitted')" id="b-submitted" class="bg-[#FFD1D5]/70 border border-transparent hover:border-black rounded-[14px] p-3.5 text-left transition"><div class="text-[12px]">☐</div><div class="text-[12px] font-bold mt-1">📤 submitted</div></button>
+    </div>
+    <div class="mt-6 h-[4px] w-full bg-black/10 rounded-full overflow-hidden"><div id="bar" class="h-full pastel-bar w-0 transition-all duration-500"></div></div>
+    <div id="barT" class="mt-3 text-[13px] font-bold">0% — start</div>
+    <p class="serif italic font-normal text-[13px] opacity-60 mt-4 normal-case text-bloom">“ publish messy, refine later — progress beats perfection. ”</p>
   </div>
 
-  <!-- REVIEW - DIRECT WAY -->
-  <div class="mt-6 card p-6 bg-[#FFF1F4]"><div class="text-[10px] tracking-widest opacity-40 font-bold">REVIEW & FEEDBACK — direct to Preannbabu7@gmail.com</div><div class="flex gap-2 mt-3"><input id="rname" placeholder="your name" class="flex-1 px-4 py-3 rounded-full border bg-white text-[12px]"><button onclick="rev()" class="px-5 py-3 bg-black text-white rounded-full text-[11px]">submit</button></div><textarea id="rtext" placeholder="write your review... a little lifey" class="mt-2 w-full px-4 py-3 rounded-2xl border bg-white text-[12px] h-[80px] normal-case"></textarea><div id="rstat" class="hidden mt-2 text-[11px] text-center"></div></div>
+  <!-- REVIEW - NO EMAIL DISPLAY -->
+  <div class="mt-5 card p-6 bg-[#FFF1F4] border-[#FFE1E6]">
+    <div class="flex justify-between items-center">
+      <div class="text-[10px] tracking-widest opacity-40 font-bold">REVIEW & FEEDBACK</div>
+      <div class="w-6 h-6 rounded-full bg-[#FAFFC7] grid place-items-center text-[10px]">♡</div>
+    </div>
+    <div class="serif text-[18px] mt-1 text-bloom">leave a little note</div>
+    <div class="flex gap-2 mt-3">
+      <input id="rname" placeholder="your name" class="flex-1 px-4 py-3 rounded-full border bg-white text-[12px] normal-case">
+      <button onclick="rev()" class="px-6 py-3 bg-black text-white rounded-full text-[11px] font-bold">submit</button>
+    </div>
+    <textarea id="rtext" placeholder="write your review... a little lifey" class="mt-2 w-full px-4 py-3 rounded-2xl border bg-white text-[12px] h-[80px] normal-case"></textarea>
+    <div id="rstat" class="hidden mt-2 text-[11px] text-center font-bold"></div>
+  </div>
 
 </div>
 
@@ -94,9 +269,10 @@
 let steps={search:false,reading:false,idea:false,data:false,draft:false,submitted:false};
 const s=localStorage.getItem('curio_tracker'); if(s) steps=JSON.parse(s);
 function updateBar(){localStorage.setItem('curio_tracker',JSON.stringify(steps));let d=Object.values(steps).filter(Boolean).length,p=Math.round(d/6*100);document.getElementById('bar').style.width=p+'%';document.getElementById('barT').innerText=p+'% — '+(p==0?'start':p==100?'submitted! 🎉':'keep going');Object.keys(steps).forEach(k=>{const b=document.getElementById('b-'+k); if(steps[k]){b.classList.add('bg-black','!text-white'); b.querySelector('div').innerText='☑';}else{b.classList.remove('bg-black','!text-white'); b.querySelector('div').innerText='☐';}})} function step(k){steps[k]=!steps[k];updateBar()} updateBar();
-async function gen(){const k1=document.getElementById('k1').value,k2=document.getElementById('k2').value,o=document.getElementById('outA');if(!k1||!k2){alert('enter keywords + question');return;}o.classList.remove('hidden');o.innerText='⏳ generating...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:`Keywords:${k1} Q:${k2}`})});const j=await r.json();o.innerText=j.result;}
+async function gen(){const k1=document.getElementById('k1').value,k2=document.getElementById('k2').value,o=document.getElementById('outA');if(!k1||!k2){alert('enter keywords + question');return;}o.classList.remove('hidden');o.innerText='⏳ generating...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'roadmap',text:`Keywords:${k1} Q:${k2}`})});const j=await r.json();o.innerText=j.result+"\n\n⚠️ just template — not to copy-paste.";}
 async function fix(a){const t=document.getElementById('research').value,o=document.getElementById('outC');if(!t){alert('paste research');return;}o.classList.remove('hidden');o.innerText='⏳ running '+a+'...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:a,text:t})});const j=await r.json();o.innerText=j.result;}
-async function rev(){const n=document.getElementById('rname').value||'Anonymous',t=document.getElementById('rtext').value;if(!t){alert('write review');return;}const b=document.getElementById('rstat');b.classList.remove('hidden');b.innerText='sending...';try{const r=await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,text:t,progress:steps})});const j=await r.json();b.innerText=j.ok?'✅ submitted!':'error: '+j.error;}catch(e){b.innerText='error'}}
+async function publish(){const data={based:document.getElementById('based').value,question:document.getElementById('q').value};if(!data.based||!data.question){alert('fill both questions');return;}const o=document.getElementById('outD');o.classList.remove('hidden');o.innerText='⏳ finding journal...';const r=await fetch('/api/ai',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({action:'publish-track',text:JSON.stringify(data)})});const j=await r.json();o.innerHTML=j.result;}
+async function rev(){const n=document.getElementById('rname').value||'anonymous',t=document.getElementById('rtext').value;if(!t){alert('write review');return;}const b=document.getElementById('rstat');b.classList.remove('hidden');b.innerText='sending...';try{await fetch('/api/review',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({name:n,text:t,progress:steps})});b.innerText='✅ submitted! thank you ♡';}catch(e){b.innerText='error — try again'}}
 </script>
 </body>
 </html>
