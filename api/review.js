@@ -1,35 +1,15 @@
-// api/review.js
-import nodemailer from "nodemailer";
-
-export default async function handler(req, res) {
-  if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-
-  const { reviewer_name, rating, review, email } = req.body;
-
-  const transporter = nodemailer.createTransport({
-    service: "gmail",
-    auth: {
-      user: process.env.EMAIL_USER,
-      pass: process.env.EMAIL_PASS,
-    },
-  });
-
-  try {
-    await transporter.sendMail({
-      from: process.env.EMAIL_USER,
-      to: "Thecuriopaper@gmail.com", // <-- CHANGED HERE
-      subject: `New REVIEW ⭐ ${rating} - curio.paper`,
-      html: `
-        <h3>New Review on curio.paper</h3>
-        <p><b>Name:</b> ${reviewer_name}</p>
-        <p><b>Email:</b> ${email}</p>
-        <p><b>Rating:</b> ${rating} ⭐</p>
-        <p><b>Review:</b><br>${review}</p>
-      `,
+import { Resend } from 'resend';
+const resend = new Resend(process.env.RESEND_API_KEY);
+export default async function handler(req,res){
+  if(req.method!=='POST') return res.status(405).json({error:'method not allowed'});
+  const {name,text,progress} = req.body;
+  try{
+    await resend.emails.send({
+      from:'curio.paper <onboarding@resend.dev>',
+      to:'Preannbabu7@gmail.com', // backend only, not shown on site
+      subject:`new note from ${name}`,
+      html:`<div style="font-family:Sora,sans-serif;background:#FFF1F4;padding:24px;border-radius:16px"><h2 style="font-weight:800;text-transform:lowercase">curio.paper — new review</h2><p><b>name:</b> ${name}</p><p><b>review:</b><br/>${text}</p><p><b>progress:</b> ${JSON.stringify(progress)}</p></div>`
     });
-
-    return res.status(200).json({ success: true });
-  } catch (err) {
-    return res.status(500).json({ error: err.message });
-  }
+    return res.status(200).json({ok:true});
+  }catch(e){return res.status(500).json({error:e.message})}
 }
